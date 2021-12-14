@@ -20,60 +20,60 @@
 
 <!-- NAVIGATION PANEL PANEL -->
 <div class="row" id="navigation-menu">
-    <button mat-button routerLink="/" style="color: white; font-size: 17px;" fxHide.xs>Strona główna</button>
+  <button mat-button routerLink="/" style="color: white; font-size: 17px;" fxHide.xs>Strona główna</button>
 
-    <button mat-button [matMenuTriggerFor]="tracksMenu" style="color: white; font-size: 17px;" fxHide.xs>Utwory</button>
-    <mat-menu #tracksMenu="matMenu" yPosition="below">
-      <button [routerLink]="['/tracks', 'vixa']" mat-menu-item>Vixa</button>
-      <button [routerLink]="['/tracks', 'club']" mat-menu-item>Club</button>
-      <button [routerLink]="['/tracks', 'dance']" mat-menu-item>Dance</button>
-      <button [routerLink]="['/tracks', 'retro']" mat-menu-item>Retro</button>
-      <button [routerLink]="['/tracks', 'techno']" mat-menu-item>Techno</button>
-      <button [routerLink]="['/tracks', 'disco']" mat-menu-item>Disco</button>
-      <button [routerLink]="['/tracks', 'set']" mat-menu-item>Sety/Mixy</button>
-    </mat-menu>
+  <button mat-button [matMenuTriggerFor]="tracksMenu" style="color: white; font-size: 17px;" fxHide.xs>Utwory</button>
+  <mat-menu #tracksMenu="matMenu" yPosition="below">
+    <button [routerLink]="['/tracks', 'vixa']" mat-menu-item>Vixa</button>
+    <button [routerLink]="['/tracks', 'club']" mat-menu-item>Club</button>
+    <button [routerLink]="['/tracks', 'dance']" mat-menu-item>Dance</button>
+    <button [routerLink]="['/tracks', 'retro']" mat-menu-item>Retro</button>
+    <button [routerLink]="['/tracks', 'techno']" mat-menu-item>Techno</button>
+    <button [routerLink]="['/tracks', 'disco']" mat-menu-item>Disco</button>
+    <button [routerLink]="['/tracks', 'set']" mat-menu-item>Sety/Mixy</button>
+  </mat-menu>
 
-    <button mat-button [matMenuTriggerFor]="genreMenu" style="color: white; font-size: 17px;" fxHide.xs>Top ranking</button>
-      <mat-menu #genreMenu="matMenu" yPosition="below">
-        <button mat-menu-item routerLink="/tracklist/vixa">Vixa</button>
-        <button mat-menu-item routerLink="/tracklist/club">Club</button>
-        <button mat-menu-item routerLink="/tracklist/dance">Dance</button>
-        <button mat-menu-item routerLink="/tracklist/disco">House</button>
-        <button mat-menu-item routerLink="/tracklist/techno">Retro</button>
-        <button mat-menu-item routerLink="/tracklist/set">Sety/Mixy</button>
-      </mat-menu>
+  <button mat-button [matMenuTriggerFor]="genreMenu" style="color: white; font-size: 17px;" fxHide.xs>Top ranking</button>
+  <mat-menu #genreMenu="matMenu" yPosition="below">
+    <button mat-menu-item routerLink="/tracklist/vixa">Vixa</button>
+    <button mat-menu-item routerLink="/tracklist/club">Club</button>
+    <button mat-menu-item routerLink="/tracklist/dance">Dance</button>
+    <button mat-menu-item routerLink="/tracklist/disco">House</button>
+    <button mat-menu-item routerLink="/tracklist/techno">Retro</button>
+    <button mat-menu-item routerLink="/tracklist/set">Sety/Mixy</button>
+  </mat-menu>
 
-<!--    <button mat-button [matMenuTriggerFor]="providerMenu" style="color: white">Serwisy</button>-->
-<!--      <mat-menu #providerMenu="matMenu" xPosition="after">-->
-<!--        <button mat-menu-item routerLink="/provider/1/details">Nuteczki</button>-->
-<!--        <button mat-menu-item routerLink="/provider/2/details">Radioparty</button>-->
-<!--        <button mat-menu-item routerLink="/provider/4/details">Billboard</button>-->
-<!--        <button mat-menu-item routerLink="/provider/8/details">Apple</button>-->
-<!--      </mat-menu>-->
+  <!--    <button mat-button [matMenuTriggerFor]="providerMenu" style="color: white">Serwisy</button>-->
+  <!--      <mat-menu #providerMenu="matMenu" xPosition="after">-->
+  <!--        <button mat-menu-item routerLink="/provider/1/details">Nuteczki</button>-->
+  <!--        <button mat-menu-item routerLink="/provider/2/details">Radioparty</button>-->
+  <!--        <button mat-menu-item routerLink="/provider/4/details">Billboard</button>-->
+  <!--        <button mat-menu-item routerLink="/provider/8/details">Apple</button>-->
+  <!--      </mat-menu>-->
 
-<!--    <button mat-button [matMenuTriggerFor]="topMenu" style="color: white">Top ranking</button>-->
-<!--      <mat-menu #topMenu="matMenu" xPosition="after">-->
-<!--        <button mat-menu-item routerLink="/toplist/retro">Retro</button>-->
-<!--        <button mat-menu-item routerLink="/toplist/club">Club</button>-->
-<!--        <button mat-menu-item routerLink="/toplist/dance">Dance</button>-->
-<!--        <button mat-menu-item routerLink="/toplist/house">House</button>-->
-<!--        <button mat-menu-item routerLink="/toplist/techno">Techno</button>-->
-<!--      </mat-menu>-->
+  <!--    <button mat-button [matMenuTriggerFor]="topMenu" style="color: white">Top ranking</button>-->
+  <!--      <mat-menu #topMenu="matMenu" xPosition="after">-->
+  <!--        <button mat-menu-item routerLink="/toplist/retro">Retro</button>-->
+  <!--        <button mat-menu-item routerLink="/toplist/club">Club</button>-->
+  <!--        <button mat-menu-item routerLink="/toplist/dance">Dance</button>-->
+  <!--        <button mat-menu-item routerLink="/toplist/house">House</button>-->
+  <!--        <button mat-menu-item routerLink="/toplist/techno">Techno</button>-->
+  <!--      </mat-menu>-->
 
-    <button mat-button [matMenuTriggerFor]="videoMenu" style="color: white; font-size: 17px;" fxHide.xs>Video</button>
-      <mat-menu #videoMenu="matMenu" xPosition="after">
-        <button mat-menu-item routerLink="/video/category/MIX">Mixy</button>
-        <button mat-menu-item routerLink="/video/category/LUNA_MIX">Luna Mix</button>
-        <button mat-menu-item routerLink="/video/category/PSYCHO_PATH">Psychopath</button>
-        <button mat-menu-item routerLink="/video/category/RETRO">Retro</button>
-        <button mat-menu-item routerLink="/video/all">Pokaż wszystkie</button>
-      </mat-menu>
+  <button mat-button [matMenuTriggerFor]="videoMenu" style="color: white; font-size: 17px;" fxHide.xs>Video</button>
+  <mat-menu #videoMenu="matMenu" xPosition="after">
+    <button mat-menu-item routerLink="/video/category/MIX">Mixy</button>
+    <button mat-menu-item routerLink="/video/category/LUNA_MIX">Luna Mix</button>
+    <button mat-menu-item routerLink="/video/category/PSYCHO_PATH">Psychopath</button>
+    <button mat-menu-item routerLink="/video/category/RETRO">Retro</button>
+    <button mat-menu-item routerLink="/video/all">Pokaż wszystkie</button>
+  </mat-menu>
 
-<!--    <button mat-button [matMenuTriggerFor]="playlistMenu" style="color: white">Playlist</button>-->
-<!--      <mat-menu #playlistMenu="matMenu" xPosition="after">-->
-<!--        <button mat-menu-item routerLink="/playlist/all">Playlisty użytkowników</button>-->
-<!--        <button mat-menu-item *ngIf="isLoggedIn" routerLink="/playlist/all/{{username}}">Moje składanki</button>-->
-<!--      </mat-menu>-->
+  <!--    <button mat-button [matMenuTriggerFor]="playlistMenu" style="color: white">Playlist</button>-->
+  <!--      <mat-menu #playlistMenu="matMenu" xPosition="after">-->
+  <!--        <button mat-menu-item routerLink="/playlist/all">Playlisty użytkowników</button>-->
+  <!--        <button mat-menu-item *ngIf="isLoggedIn" routerLink="/playlist/all/{{username}}">Moje składanki</button>-->
+  <!--      </mat-menu>-->
 </div>
 <div class="fade-effect1"></div>
 <!-- END -->
@@ -98,10 +98,10 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content *ngIf="!getIsMobileResolution()">
-      <div style="background: #121e1b url(../../assets/img/templatemo_main_bg.png) repeat;">
+    <div style="background: #121e1b url(../../assets/img/templatemo_main_bg.png) repeat;">
       <div class="row">
         <div class="col" style="margin-left: 10px; margin-top: 30px;">
-<!--          <app-sidebar-left></app-sidebar-left>-->
+          <app-sidebar-left></app-sidebar-left>
         </div>
 
         <div class="col-8" style="background-color: rgba(0,0,0,0.4); margin-top: 20px;">
@@ -121,7 +121,7 @@
     <div class="container" style="background-color: black">
       <div fxLayout="column" fxLayoutAlign="space-evenly center" fxFlexFill>
         <div style="margin-left: 10px">
-<!--          <app-sidebar-left></app-sidebar-left>-->
+          <app-sidebar-left></app-sidebar-left>
         </div>
         <div style="width: 100%">
           <app-alert></app-alert>

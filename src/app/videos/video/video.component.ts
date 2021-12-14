@@ -53,7 +53,7 @@ export class VideoComponent implements OnInit {
 
   getVideosByCategory() {
     this.sub = this.route.params.subscribe(params => {
-      const category = params.category;
+      const category = params['category'];
       this.videoCategory = category;
       if (category) {
         this.videoService.getVideosByCategory(category).subscribe(

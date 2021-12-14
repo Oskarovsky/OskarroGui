@@ -50,7 +50,7 @@ export class UserProfileComponent implements OnInit {
 
   getUserProfile() {
     this.sub = this.route.params.subscribe(params => {
-      const username = params.username;
+      const username = params['username'];
       if (username) {
         this.userService.getUserByUsername(username).subscribe(
           response => {

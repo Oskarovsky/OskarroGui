@@ -19,7 +19,7 @@ export class PlaylistEditComponent implements OnInit {
   sub: Subscription;
   isLoggedIn = false;
   playlist: Playlist;
-  playlistId;
+  playlistId: number;
 
   modelUser: User = {
     id: null,
@@ -56,7 +56,7 @@ export class PlaylistEditComponent implements OnInit {
   }
   getPlaylist() {
     this.sub = this.route.params.subscribe(params => {
-      const id = params.id;
+      const id = params['id'];
       this.playlistId = id;
       if (id) {
         this.playlistService.getPlaylist(id).subscribe((playlist: any) => {
@@ -68,7 +68,7 @@ export class PlaylistEditComponent implements OnInit {
 
   public getPlaylistById() {
     this.sub = this.route.params.subscribe(params => {
-      const id = params.id;
+      const id = params['id'];
       if (id) {
         this.playlistService.getPlaylist(id).subscribe(
           response => {
@@ -83,7 +83,7 @@ export class PlaylistEditComponent implements OnInit {
 
   public getAllTracksFromPlaylist() {
     this.sub = this.route.params.subscribe(params => {
-      const id = params.id;
+      const id = params['id'];
       if (id) {
         this.playlistService.getAllTracksFromPlaylist(id).subscribe(
           response => {

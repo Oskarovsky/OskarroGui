@@ -12,7 +12,7 @@
     </tr>
     </thead>
     <tbody *ngIf="isLoggedIn">
-    <tr *ngFor="let track of tracks | slice:0:20; let i=index; index as i" [routerLink]="['/track', track.id]">
+    <tr *ngFor="let track of tracks | slice:0:20; let i=index;" [routerLink]="['/track', track.id]">
       <td>{{i+1}}</td>
       <td>{{track.title}}</td>
       <td>{{track.artist}}</td>
@@ -21,7 +21,7 @@
     </tr>
     </tbody>
     <tbody *ngIf="!isLoggedIn">
-    <tr *ngFor="let track of tracks | slice:0:10; let i=index; index as i" [routerLink]="['/track', track.id]">
+    <tr *ngFor="let track of tracks | slice:0:10; let i=index;" [routerLink]="['/track', track.id]">
       <td>{{i+1}}</td>
       <td>{{track.title}}</td>
       <td>{{track.artist}}</td>

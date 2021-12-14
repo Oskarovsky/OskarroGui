@@ -75,16 +75,16 @@ export class UserService {
     return this.httpClient.get<number>(USER_API + '/' + username + '/tracks/' + periodOfTime + '/amount');
   }
 
-  // /** POST update user */
-  // updateUser(userId, userDto): Observable<any> {
-  //   return this.httpClient.post(USER_API + '/' + userId + '/update',
-  //     {
-  //       id: userId,
-  //       username: userDto.username,
-  //       firstName: userDto.firstName,
-  //       facebookUrl: userDto.facebookUrl,
-  //       youtubeUrl: userDto.youtubeUrl,
-  //       city: userDto.city
-  //     }, httpOptions);
-  // }
+  /** POST update user */
+  updateUser(userId: string, userDto: { username: any; firstName: any; facebookUrl: any; youtubeUrl: any; city: any; }): Observable<any> {
+    return this.httpClient.post(USER_API + '/' + userId + '/update',
+      {
+        id: userId,
+        username: userDto.username,
+        firstName: userDto.firstName,
+        facebookUrl: userDto.facebookUrl,
+        youtubeUrl: userDto.youtubeUrl,
+        city: userDto.city
+      }, httpOptions);
+  }
 }

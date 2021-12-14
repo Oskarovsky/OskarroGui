@@ -1,14 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { UserService } from 'src/app/services/user/user.service';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from 'src/app/services/user/user.service';
 import {TokenStorageService} from '../../services/auth/token-storage.service';
-import { MustMatch } from 'src/app/auth/register/MustMatch';
 import {AlertService} from '../../services/alert/alert.service';
 import {AuthService} from '../../services/auth/auth.service';
-import {UserDto} from './user-dto';
-import { User } from 'src/app/services/user/user';
-import {Observable} from 'rxjs';
 import {first} from 'rxjs/operators';
 
 @Component({

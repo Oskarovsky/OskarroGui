@@ -46,7 +46,7 @@ export class PlaylistDetailsComponent implements OnInit {
 
   public getAllTracksFromPlaylist() {
     this.sub = this.route.params.subscribe(params => {
-      const id = params.id;
+      const id = params['id'];
       if (id) {
         this.playlistService.getAllTracksFromPlaylist(id).subscribe(
           response => {
@@ -62,7 +62,7 @@ export class PlaylistDetailsComponent implements OnInit {
 
   public getPlaylistById() {
     this.sub = this.route.params.subscribe(params => {
-      const id = params.id;
+      const id = params['id'];
       if (id) {
         this.playlistService.getPlaylist(id).subscribe(
           response => {

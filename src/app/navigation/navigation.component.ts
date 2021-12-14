@@ -37,7 +37,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   @Output() public sidenavToggle = new EventEmitter();
 
   expanded: boolean | undefined;
-  // @HostBinding('attr.aria-expanded') ariaExpanded = this.expanded;
+  @HostBinding('attr.aria-expanded') ariaExpanded = this["expanded"];
   @Input() depth: number;
   @Input() item: NavItem | undefined;
 

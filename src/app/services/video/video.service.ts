@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Track } from '../../tracks/track/model/track';
 import {Observable} from 'rxjs';
+import {Playlist} from '../../playlists/playlist/model/playlist';
 import {Video} from '../../videos/video/model/video';
 import {DomSanitizer} from '@angular/platform-browser';
 import {environment} from '../../../environments/environment';
@@ -48,10 +49,10 @@ export class VideoService {
     return this.http.get<Track[]>(VIDEO_API + '/' + videoId + '/tracks');
   }
 
-  // /** GET tracklist from Video */
-  // getPlaylistFromVideo(videoId: string): Observable<Playlist> {
-  //   return this.http.get<Playlist>(VIDEO_API + '/' + videoId + '/playlist');
-  // }
+  /** GET tracklist from Video */
+  getPlaylistFromVideo(videoId: string): Observable<Playlist> {
+    return this.http.get<Playlist>(VIDEO_API + '/' + videoId + '/playlist');
+  }
 
   /** GET list the most popular videos */
   getTopVideos(): Observable<Video> {

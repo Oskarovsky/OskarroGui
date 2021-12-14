@@ -32,7 +32,7 @@ export class TokenConfirmationComponent implements OnInit {
 
   public getTokenConfirmation() {
     this.sub = this.activatedRoute.params.subscribe(params => {
-      const token = params.token;
+      const token = params['token'];
       this.token2 = token;
       if (token) {
         this.tokenService.tokenConfirm(token).subscribe(

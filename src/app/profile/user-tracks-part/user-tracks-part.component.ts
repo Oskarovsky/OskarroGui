@@ -16,7 +16,7 @@ export class UserTracksPartComponent implements OnInit {
 
   tracks: Track[];
   totalNumberOfTracks: number;
-  totalNumberOfPages;
+  totalNumberOfPages: number;
   numberOfPage: number;
   currentPage: number;
 
@@ -28,7 +28,7 @@ export class UserTracksPartComponent implements OnInit {
               private route: ActivatedRoute,
               private tokenStorage: TokenStorageService) {
     this.sub = this.route.params.subscribe(params => {
-      this.currentPage = params.page || 1;
+      this.currentPage = params['page'] || 1;
     });
 
     this.trackService.getTrackPageByUserUsername(this.tokenStorage.getUser().username, +this.currentPage - 1).subscribe(trackResponse => {
@@ -57,7 +57,7 @@ export class UserTracksPartComponent implements OnInit {
   }
 
   // tslint:disable-next-line:variable-name
-  createRange(number) {
+  createRange(number: number) {
     const items: number[] = [];
     for (let i = 1; i <= number; i++) {
       items.push(i);
@@ -65,7 +65,7 @@ export class UserTracksPartComponent implements OnInit {
     return items;
   }
 
-  nextPage(currentPage) {
+  nextPage(currentPage: string | number) {
     return +currentPage + 1;
   }
 

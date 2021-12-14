@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Track} from '../../../tracks/track/model/track';
 import {Subscription} from 'rxjs';
-import {PostService} from '../../../services/article/post.service';
 import {TokenStorageService} from '../../../services/auth/token-storage.service';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';

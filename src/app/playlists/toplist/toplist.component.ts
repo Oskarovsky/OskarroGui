@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {TrackService} from '../../services/track/track.service';
-import {ProviderService} from '../../services/provider/provider.service';
 import {TokenStorageService} from '../../services/auth/token-storage.service';
 
 @Component({
@@ -18,7 +17,6 @@ export class ToplistComponent implements OnInit {
   isLoggedIn = false;
 
   constructor(private trackService: TrackService,
-              private providerService: ProviderService,
               private tokenStorage: TokenStorageService,
               private route: ActivatedRoute) {
   }
@@ -29,7 +27,7 @@ export class ToplistComponent implements OnInit {
     }
 
     this.sub = this.route.params.subscribe(params => {
-      const genre = params.genre;
+      const genre = params['genre'];
       if (genre) {
         if (this.isLoggedIn === true) {
           this.trackService.getTopListByGenre(genre, 20).subscribe((track: any) => {

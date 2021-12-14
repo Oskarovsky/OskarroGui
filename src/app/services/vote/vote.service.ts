@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Vote} from '../../voting/vote';
-import {Track} from '../../tracks/track/model/track';
 import {VotePayload} from '../../tracks/track-vote-button/model/vote-payload';
 
 const API: string = environment.serverUrl;

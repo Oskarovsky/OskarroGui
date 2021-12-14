@@ -10,9 +10,9 @@ export class PasswordValidator {
   //   return null;
   // }
 
-  static newIsNotOld(group: FormGroup) {
-    const newPwd = group.controls.newPwd;
-    if (group.controls.oldPwd.value === newPwd.value) {
+  static newIsNotOld(group: FormGroup): any {
+    const newPwd = group.controls['newPwd'];
+    if (group.controls['oldPwd'].value === newPwd.value) {
       newPwd.setErrors({ newIsNotOld: true });
     }
     return null;

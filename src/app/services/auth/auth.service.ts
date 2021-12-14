@@ -24,14 +24,14 @@ export class AuthService {
   }
 
 
-  login(credentials): Observable<any> {
+  login(credentials: { username: any; password: any; }): Observable<any> {
     return this.httpClient.post(AUTH_API + '/signin', {
       usernameOrEmail: credentials.username,
       password: credentials.password
     }, httpOptions);
   }
 
-  register(user): Observable<any> {
+  register(user: User): Observable<any> {
     return this.httpClient.post(AUTH_API + '/signup', {
       username: user.username,
       email: user.email,
@@ -43,7 +43,7 @@ export class AuthService {
     return this.httpClient.get<string>(AUTH_API + '/token/' + token);
   }
 
-  changeUserPassword(passwordDto): Observable<any> {
+  changeUserPassword(passwordDto: PasswordChangeDto): Observable<any> {
     return this.httpClient.post(AUTH_API + '/updatePassword', {
       email: passwordDto.email,
       oldPassword: passwordDto.oldPassword,

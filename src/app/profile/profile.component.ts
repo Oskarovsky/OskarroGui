@@ -1,13 +1,11 @@
-import { Component, OnInit, SecurityContext, } from '@angular/core';
-import { TokenStorageService } from '../services/auth/token-storage.service';
-import { Observable, Observer } from 'rxjs';
+import {Component, OnInit,} from '@angular/core';
+import {TokenStorageService} from '../services/auth/token-storage.service';
 import {UploadFileService} from '../services/storage/upload-file.service';
-import { HttpEventType, HttpResponse, HttpClient } from '@angular/common/http';
+import {HttpClient, HttpEventType, HttpResponse} from '@angular/common/http';
 import {Track} from '../tracks/track/model/track';
 import {TrackService} from '../services/track/track.service';
 import {FavoriteService} from '../services/favorite/favorite.service';
-import {DomSanitizer, SafeHtml, SafeResourceUrl} from '@angular/platform-browser';
-import {error} from 'util';
+import {DomSanitizer} from '@angular/platform-browser';
 import {AlertService} from '../services/alert/alert.service';
 import {first} from 'rxjs/operators';
 import {UserService} from '../services/user/user.service';
@@ -20,7 +18,7 @@ import {UserService} from '../services/user/user.service';
 export class ProfileComponent implements OnInit {
 
   currentUser: any;
-  selectedFile;
+  selectedFile: { item: (arg0: number) => File; };
   currentFile: File;
   message = '';
   imageToShow: any;
@@ -76,6 +74,7 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  // @ts-ignore
   selectFile(event) {
     this.selectedFile = event.target.files;
   }

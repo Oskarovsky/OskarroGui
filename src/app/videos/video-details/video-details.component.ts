@@ -44,7 +44,7 @@ export class VideoDetailsComponent implements OnInit {
 
   public getVideoById() {
     this.sub = this.route.params.subscribe(params => {
-      const id = params.id;
+      const id = params['id'];
       if (id) {
         this.videoService.getVideo(id).subscribe(
           response => {
@@ -60,7 +60,7 @@ export class VideoDetailsComponent implements OnInit {
 
   public getPlaylistFormVideo() {
     this.sub = this.route.params.subscribe(params => {
-      const id = params.id;
+      const id = params['id'];
       if (id) {
         this.videoService.getPlaylistFromVideo(id).subscribe(
           response => {
@@ -76,7 +76,7 @@ export class VideoDetailsComponent implements OnInit {
 
   public getAllTracksFromVideo() {
     this.sub = this.route.params.subscribe(params => {
-      const id = params.id;
+      const id = params['id'];
       if (id) {
         this.videoService.getAllTracksFromVideo(id).subscribe(
           response => {

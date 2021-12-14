@@ -35,8 +35,8 @@ export class Oauth2RedirectHandlerComponent implements OnInit {
               private tokenStorage: TokenStorageService, private authService: AuthService,
               private httpClient: HttpClient) {
     this.activatedRoute.queryParams.subscribe(params => {
-      this.tokenParam = params.token;
-      this.errorParam = params.error;
+      this.tokenParam = params['token'];
+      this.errorParam = params['error'];
     });
 
     if (this.tokenParam) {

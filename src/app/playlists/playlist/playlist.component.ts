@@ -30,7 +30,7 @@ export class PlaylistComponent implements OnInit {
 
   public getAllPlaylistByUsername() {
     this.sub = this.route.params.subscribe(params => {
-      const username = params.username;
+      const username = params['username'];
       if (username) {
         this.playlistService.getAllPlaylistsByUsername(username).subscribe(
           response => {

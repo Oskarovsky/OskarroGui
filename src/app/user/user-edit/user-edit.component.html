@@ -5,7 +5,7 @@
       <div class="form-group">
         <label for="firstName">Imię</label>
         <input id="firstName"
-               type="text" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+               type="text" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }"
                formControlName="firstName"
                class="form-control" />
       </div>
@@ -13,7 +13,7 @@
       <div class="form-group">
         <label for="facebookUrl">Facebook</label>
         <input id="facebookUrl"
-               type="text" [ngClass]="{ 'is-invalid': submitted && f.facebookUrl.errors }"
+               type="text" [ngClass]="{ 'is-invalid': submitted && f['facebookUrl'].errors }"
                formControlName="facebookUrl"
                class="form-control" />
       </div>
@@ -21,7 +21,7 @@
       <div class="form-group">
         <label for="youtubeUrl">Youtube</label>
         <input id="youtubeUrl"
-               type="text" [ngClass]="{ 'is-invalid': submitted && f.youtubeUrl.errors }"
+               type="text" [ngClass]="{ 'is-invalid': submitted && f['youtubeUrl'].errors }"
                formControlName="youtubeUrl"
                class="form-control" />
       </div>
@@ -29,7 +29,7 @@
       <div class="form-group">
         <label for="city">Miejscowość</label>
         <input id="city"
-               type="text" [ngClass]="{ 'is-invalid': submitted && f.city.errors }"
+               type="text" [ngClass]="{ 'is-invalid': submitted && f['city'].errors }"
                formControlName="city"
                class="form-control" />
       </div>

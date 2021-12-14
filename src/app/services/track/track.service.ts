@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpEvent, HttpHeaders, HttpParams, HttpRequest} from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Track } from 'src/app/tracks/track/model/track';
+import {HttpClient, HttpContext, HttpEvent, HttpHeaders, HttpParams, HttpRequest} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Track} from 'src/app/tracks/track/model/track';
 import {environment} from '../../../environments/environment';
 import {TrackResponse} from '../../tracks/track/model/track-response';
 import {TrackComment} from '../../tracks/track/model/track-comment';
@@ -14,8 +14,9 @@ const PROVIDER_API = API + '/providers';
 const httpOptions = {
   headers: new HttpHeaders({
     // 'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin' : '*',
-    'x-Trigger': 'CORS' })
+    'Access-Control-Allow-Origin': '*',
+    'x-Trigger': 'CORS'
+  })
 };
 
 @Injectable({providedIn: 'root'})
@@ -101,7 +102,7 @@ export class TrackService {
     return this.http.get<Track>(TRACK_API + '/genre/' + genre + '/lastAddedByUser/' + numberOfTracks);
   }
 
-  getPageTracksByGenre(params, genre: string): Observable<any> {
+  getPageTracksByGenre(params: { headers?: HttpHeaders | { [header: string]: string | string[]; }; context?: HttpContext; observe?: "body"; params?: HttpParams | { [param: string]: string | number | boolean | readonly (string | number | boolean)[]; }; reportProgress?: boolean; responseType: "arraybuffer"; withCredentials?: boolean; }, genre: string): Observable<any> {
     return this.http.get(TRACK_API + '/genre/' + genre + '/list', params);
   }
 

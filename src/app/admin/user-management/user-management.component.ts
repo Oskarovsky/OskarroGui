@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../services/user/user';
-import { Subscription, combineLatest } from 'rxjs';
+import {Subscription} from 'rxjs';
 import {UserService} from '../../services/user/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class UserManagementComponent implements OnInit {
 
-  currentAccount: Account | null = null;
+  // currentAccount: Account | null = null;
   users: User[] | null = null;
   userListSubscription?: Subscription;
   totalItems = 0;
