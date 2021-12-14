@@ -6,13 +6,13 @@
   <img src="../../assets/img/logo_oskarro.png" height="40" width="40" style="margin-right: 20px">
   <span fxFlex>{{title}}</span>
   <span class="example-spacer"></span>
-  <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon" fxHide.xs>headset</mat-icon>
+  <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">headset</mat-icon>
 
-  <button mat-button routerLink="/admin/panel" *ngIf="showAdminBoard" fxHide.xs>Admin</button>
-  <button mat-button routerLink="/register" *ngIf="!isLoggedIn" fxHide.xs>Zarejestruj się</button>
-  <button mat-button routerLink="/login" *ngIf="!isLoggedIn" fxHide.xs>Zaloguj się</button>
-  <button mat-button routerLink="/profile" *ngIf="isLoggedIn" fxHide.xs>{{ username }}</button>
-  <button mat-button (click)="logout()" *ngIf="isLoggedIn" fxHide.xs>Wyloguj się</button>
+  <button mat-button routerLink="/admin/panel" *ngIf="showAdminBoard">Admin</button>
+  <button mat-button routerLink="/register" *ngIf="!isLoggedIn">Zarejestruj się</button>
+  <button mat-button routerLink="/login" *ngIf="!isLoggedIn">Zaloguj się</button>
+  <button mat-button routerLink="/profile" *ngIf="isLoggedIn">{{ username }}</button>
+  <button mat-button (click)="logout()" *ngIf="isLoggedIn">Wyloguj się</button>
 
 </mat-toolbar>
 <!-- END -->
@@ -20,9 +20,9 @@
 
 <!-- NAVIGATION PANEL PANEL -->
 <div class="row" id="navigation-menu">
-  <button mat-button routerLink="/" style="color: white; font-size: 17px;" fxHide.xs>Strona główna</button>
+  <button mat-button routerLink="/" style="color: white; font-size: 17px;">Strona główna</button>
 
-  <button mat-button [matMenuTriggerFor]="tracksMenu" style="color: white; font-size: 17px;" fxHide.xs>Utwory</button>
+  <button mat-button [matMenuTriggerFor]="tracksMenu" style="color: white; font-size: 17px;" >Utwory</button>
   <mat-menu #tracksMenu="matMenu" yPosition="below">
     <button [routerLink]="['/tracks', 'vixa']" mat-menu-item>Vixa</button>
     <button [routerLink]="['/tracks', 'club']" mat-menu-item>Club</button>
@@ -33,7 +33,7 @@
     <button [routerLink]="['/tracks', 'set']" mat-menu-item>Sety/Mixy</button>
   </mat-menu>
 
-  <button mat-button [matMenuTriggerFor]="genreMenu" style="color: white; font-size: 17px;" fxHide.xs>Top ranking</button>
+  <button mat-button [matMenuTriggerFor]="genreMenu" style="color: white; font-size: 17px;">Top ranking</button>
   <mat-menu #genreMenu="matMenu" yPosition="below">
     <button mat-menu-item routerLink="/tracklist/vixa">Vixa</button>
     <button mat-menu-item routerLink="/tracklist/club">Club</button>
@@ -60,7 +60,7 @@
   <!--        <button mat-menu-item routerLink="/toplist/techno">Techno</button>-->
   <!--      </mat-menu>-->
 
-  <button mat-button [matMenuTriggerFor]="videoMenu" style="color: white; font-size: 17px;" fxHide.xs>Video</button>
+  <button mat-button [matMenuTriggerFor]="videoMenu" style="color: white; font-size: 17px;">Video</button>
   <mat-menu #videoMenu="matMenu" xPosition="after">
     <button mat-menu-item routerLink="/video/category/MIX">Mixy</button>
     <button mat-menu-item routerLink="/video/category/LUNA_MIX">Luna Mix</button>
