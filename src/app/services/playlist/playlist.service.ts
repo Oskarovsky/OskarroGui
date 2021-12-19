@@ -21,12 +21,12 @@ export class PlaylistService {
 
   /** GET all playlists */
   getAllPlaylists(): Observable<Playlist[]> {
-    return this.http.get<Playlist[]>(PLAYLIST_API + '/findAll');
+    return this.http.get<Playlist[]>(PLAYLIST_API + '/');
   }
 
   /** GET all playlists from User */
   getAllPlaylistsByUsername(username: string): Observable<Playlist[]> {
-    return this.http.get<Playlist[]>(PLAYLIST_API + '/all/' + username);
+    return this.http.get<Playlist[]>(PLAYLIST_API + '/user/' + username);
   }
 
   /** GET playlist by id */
