@@ -1,19 +1,16 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpContext, HttpEvent, HttpHeaders, HttpParams, HttpRequest} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpContext, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Track} from 'src/app/tracks/track/model/track';
 import {environment} from '../../../environments/environment';
 import {TrackResponse} from '../../tracks/track/model/track-response';
 import {TrackComment} from '../../tracks/track/model/track-comment';
-import {TrackKrakenfiles} from '../../tracks/track/model/track-krakenfiles';
 
 const API: string = environment.serverUrl;
 const TRACK_API = API + '/tracks';
-const PROVIDER_API = API + '/providers';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    // 'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
     'x-Trigger': 'CORS'
   })
@@ -26,27 +23,11 @@ export class TrackService {
   }
 
   getAllTracks(): Observable<Track[]> {
-    return this.http.get<Track[]>(TRACK_API + '/findAll');
+    return this.http.get<Track[]>(TRACK_API);
   }
 
   getTrackById(id: number) {
-    return this.http.get(TRACK_API + '/id/' + id, httpOptions);
-  }
-
-  getTracksFromProviderByGenre(id: string, genre: string) {
-    return this.http.get(PROVIDER_API + '/' + id + '/' + genre);
-  }
-
-  getTracksByProviderId(id: string) {
-    return this.http.get(PROVIDER_API + '/' + id + '/tracks');
-  }
-
-  getTracksByGenre(genre: string) {
-    return this.http.get(TRACK_API + '/genre/' + genre);
-  }
-
-  getTracksByProviderName(providerName: string) {
-    return this.http.get(PROVIDER_API + '/' + providerName + '/all-tracks');
+    return this.http.get(TRACK_API + '/' + id, httpOptions);
   }
 
   addTrackToRanking(track: Track): Observable<any> {
@@ -62,12 +43,7 @@ export class TrackService {
   }
 
   addTrack(track: Track): Observable<Track> {
-    return this.http.post<Track>(TRACK_API + '/add', track);
-  }
-
-  getTrackByUrl(urlX: string): Observable<any> {
-    const data = {url: urlX};
-    return this.http.get(TRACK_API + '/getByUrl', {params: data});
+    return this.http.post<Track>(TRACK_API, track);
   }
 
   deleteTrackFromPlaylist(id: number): Observable<any> {
@@ -86,10 +62,6 @@ export class TrackService {
     return this.http.get<Track>(TRACK_API + '/genre/' + genre + '/top');
   }
 
-  getLastAddedTracksByGenre(genre: string, numberOfTracks: number) {
-    return this.http.get(TRACK_API + '/genre/' + genre + '/' + numberOfTracks);
-  }
-
   getTopListByGenre(genre: string, numberOfTracks: number) {
     return this.http.get(TRACK_API + '/genre/' + genre + '/top/' + numberOfTracks);
   }
@@ -100,14 +72,6 @@ export class TrackService {
 
   getLastAddedTracksByGenreOnlyWithUser(genre: string, numberOfTracks: number) {
     return this.http.get<Track>(TRACK_API + '/genre/' + genre + '/lastAddedByUser/' + numberOfTracks);
-  }
-
-  getPageTracksByGenre(params: { headers?: HttpHeaders | { [header: string]: string | string[]; }; context?: HttpContext; observe?: "body"; params?: HttpParams | { [param: string]: string | number | boolean | readonly (string | number | boolean)[]; }; reportProgress?: boolean; responseType: "arraybuffer"; withCredentials?: boolean; }, genre: string): Observable<any> {
-    return this.http.get(TRACK_API + '/genre/' + genre + '/list', params);
-  }
-
-  getTracksByGenreFromOnePage(genre: string, page: number): Observable<Track[]> {
-    return this.http.get<Track[]>(TRACK_API + '/genre/' + genre + '/page/' + page);
   }
 
   getTrackPageByGenre(genre: string, page: number): Observable<TrackResponse> {
@@ -129,9 +93,4 @@ export class TrackService {
   deleteTrackCommentById(commentId: number) {
     return this.http.delete(TRACK_API + '/comment/' + commentId + '/remove');
   }
-
-  // getNumberOfTracksAddedByTheUser(username: string) {
-  //   return this.http.get<any>(TRACK_API + '/user/' + username + '/count');
-  // }
-
 }

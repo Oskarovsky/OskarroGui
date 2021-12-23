@@ -45,7 +45,7 @@ export class PlaylistService {
   }
 
   addPlaylist(playlist: Playlist): Observable<Playlist> {
-    return this.http.post<Playlist>(PLAYLIST_API  + '/add', playlist);
+    return this.http.post<Playlist>(PLAYLIST_API, playlist);
   }
 
   deletePlaylist(id: number): Observable<any> {
@@ -53,6 +53,6 @@ export class PlaylistService {
   }
 
   updatePlaylistViewsNumber(id: number): Observable<any> {
-    return this.http.get<number>(PLAYLIST_API + '/' + id + '/updateViews');
+    return this.http.get<number>(PLAYLIST_API + '/' + id + '/views');
   }
 }

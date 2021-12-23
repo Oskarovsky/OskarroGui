@@ -20,7 +20,7 @@ export class PostService {
 
   /** GET all posts */
   getAllPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(POST_API + '/all');
+    return this.http.get<Post[]>(POST_API);
   }
 
   /** GET all posts by User name */
@@ -45,7 +45,7 @@ export class PostService {
 
   /** POST add new post */
   addPost(post: Post): Observable<Post> {
-    return this.http.post<Post>(POST_API  + '/new', post);
+    return this.http.post<Post>(POST_API, post);
   }
 
   /** UPDATE post by id */

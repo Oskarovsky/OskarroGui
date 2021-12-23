@@ -18,7 +18,7 @@ export class UploadFileService {
     formData.append('file', file);
     formData.append('username', username);
     formData.append('destination', destination);
-    const req = new HttpRequest('POST', STORAGE_API + '/upload', formData, {
+    const req = new HttpRequest('POST', STORAGE_API + '/uploadFile', formData, {
       reportProgress: true,
       responseType: 'json'
     });
@@ -34,26 +34,15 @@ export class UploadFileService {
       reportProgress: true,
       responseType: 'json'
     });
-    // console.log('ZXCV = ' + 'trackCover_'.concat(file.name));
-    // console.log('ZXC = ' + JSON.stringify(this.getFileIdByFilename('trackCover_'.concat(file.name))));
-
-    // this.getFileIdByFilename('trackCover_'.concat(file.name)).subscribe(
-    //   response => {
-    //     console.log('ZXCVBNM = ' + response);
-    //   });
     return this.http.request(req);
   }
 
-  getTrackCoverByTrackId(trackId: number): Observable<any> {
-    return this.http.get(STORAGE_API + '/getTrackCover/' + trackId);
-  }
-
   getFile(username: string): Observable<Blob> {
-    return this.http.get(STORAGE_API + '/' + username + '/avatar', { responseType: 'blob' });
+    return this.http.get(STORAGE_API + '/avatar/' + username, { responseType: 'blob' });
   }
 
   getCoverFile(trackId: number): Observable<Blob> {
-    return this.http.get(STORAGE_API + '/' + trackId + '/cover', { responseType: 'blob' });
+    return this.http.get(STORAGE_API + '/cover/' + trackId, { responseType: 'blob' });
   }
 
 }
