@@ -1,10 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {TrackComponent} from './tracks/track/track.component';
-import {TrackListComponent} from './tracks/track-list/track-list.component';
+import {TopListComponent} from './tracks/top-list/top-list.component';
 import {NotFoundComponent} from './not-found/not-found.component';
-import {ToplistComponent} from './playlists/toplist/toplist.component';
-import {ToplistEditComponent} from './playlists/toplist-edit/toplist-edit.component';
 import {PlaylistComponent} from './playlists/playlist/playlist.component';
 import {PlaylistAddComponent} from './playlists/playlist-add/playlist-add.component';
 import {PlaylistEditComponent} from './playlists/playlist-edit/playlist-edit.component';
@@ -51,8 +49,8 @@ const routes: Routes = [
   { path: 'tracks/add', component: TrackAddComponent },
 
   /* TRACKS */
-  { path: 'tracklist', component: TrackListComponent },
-  { path: 'tracklist/:genre', component: TrackListComponent },
+  { path: 'toplist', component: TopListComponent },
+  { path: 'toplist/:genre', component: TopListComponent },
 
   { path: 'tracks/vixa', component: TracksVixaComponent },
   { path: 'tracks/club', component: TracksClubComponent },
@@ -71,10 +69,8 @@ const routes: Routes = [
   { path: 'tracks/set/:page', component: TracksSetComponent },
   { path: 'tracks/player/zippy', component: ZippyPlayerComponent },
 
-  { path: 'toplist/:genre', component: ToplistComponent },
   { path: 'playlist/all', component: PlaylistAllComponent },
   { path: 'playlist/all/:username', component: PlaylistComponent },
-  { path: 'toplist/:genre/edit', component: ToplistEditComponent },
   { path: 'playlist/add', component: PlaylistAddComponent },
   { path: 'playlist/:id/edit', component: PlaylistEditComponent },
   { path: 'playlist/:id/details', component: PlaylistDetailsComponent },

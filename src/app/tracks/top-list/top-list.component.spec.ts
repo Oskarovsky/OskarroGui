@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ToplistEditComponent } from './toplist-edit.component';
+import { TopListComponent } from './top-list.component';
 
-describe('ToplistEditComponent', () => {
-  let component: ToplistEditComponent;
-  let fixture: ComponentFixture<ToplistEditComponent>;
+describe('TrackListComponent', () => {
+  let component: TopListComponent;
+  let fixture: ComponentFixture<TopListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToplistEditComponent ]
+      declarations: [ TopListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ToplistEditComponent);
+    fixture = TestBed.createComponent(TopListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

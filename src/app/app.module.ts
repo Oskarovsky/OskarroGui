@@ -40,7 +40,7 @@ import {DateAgoPipe} from "./pipes/date-ago.pipe";
 import {TrackComponent} from "./tracks/track/track.component";
 import {TrackAddComponent} from "./tracks/track-add/track-add.component";
 import {TrackCommentAddComponent} from "./tracks/track-comment-add/track-comment-add.component";
-import {TrackListComponent} from "./tracks/track-list/track-list.component";
+import {TopListComponent} from "./tracks/top-list/top-list.component";
 import {TrackVoteButtonComponent} from "./tracks/track-vote-button/track-vote-button.component";
 import {TracksClubComponent} from "./tracks/tracks-by-genre/genre/tracks-club/tracks-club.component";
 import {TracksDanceComponent} from "./tracks/tracks-by-genre/genre/tracks-dance/tracks-dance.component";
@@ -54,8 +54,6 @@ import {TracksPartComponent} from "./tracks/tracks-by-genre/tracks-part/tracks-p
 import {ZippyPlayerComponent} from "./tracks/zippy-player/zippy-player.component";
 import {PlaylistComponent} from "./playlists/playlist/playlist.component";
 import {NgxPaginationModule} from "ngx-pagination";
-import {ToplistComponent} from "./playlists/toplist/toplist.component";
-import {ToplistEditComponent} from "./playlists/toplist-edit/toplist-edit.component";
 import {PlaylistEditComponent} from "./playlists/playlist-edit/playlist-edit.component";
 import {PlaylistDetailsComponent} from "./playlists/playlist-details/playlist-details.component";
 import {PlaylistAllComponent} from "./playlists/playlist-all/playlist-all.component";
@@ -106,8 +104,6 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     MenuListItemComponent,
 
     PlaylistComponent,
-    ToplistComponent,
-    ToplistEditComponent,
     PlaylistEditComponent,
     PlaylistDetailsComponent,
     PlaylistAllComponent,
@@ -122,7 +118,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     TrackComponent,
     TrackAddComponent,
     TrackCommentAddComponent,
-    TrackListComponent,
+    TopListComponent,
     TrackVoteButtonComponent,
     TracksClubComponent,
     TracksDanceComponent,

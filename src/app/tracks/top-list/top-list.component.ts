@@ -9,10 +9,10 @@ import {VoteService} from '../../services/vote/vote.service';
 
 @Component({
   selector: 'app-track-list',
-  templateUrl: './track-list.component.html',
-  styleUrls: ['./track-list.component.scss']
+  templateUrl: './top-list.component.html',
+  styleUrls: ['./top-list.component.scss']
 })
-export class TrackListComponent implements OnInit {
+export class TopListComponent implements OnInit {
 
   displayedColumns: string[] = ['#', 'Tytuł', 'Artysta', 'Wersja', 'Punkty', 'Ulubione', 'Zagłosuj', 'Link'];
 
