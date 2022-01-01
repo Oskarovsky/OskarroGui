@@ -19,8 +19,7 @@ const httpOptions = {
 })
 export class AuthService {
 
-  constructor(private httpClient: HttpClient, private router: Router,
-              private tokenStorageService: TokenStorageService) {
+  constructor(private httpClient: HttpClient) {
   }
 
 

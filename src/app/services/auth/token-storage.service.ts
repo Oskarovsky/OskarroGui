@@ -32,7 +32,7 @@ export class TokenStorageService {
     if (sessionStorage.getItem(USER_KEY) !== null) {
       console.log('Current user session item: ' + sessionStorage.getItem(USER_KEY));
       if (sessionStorage.getItem(USER_KEY) != undefined) {
-        var ss: string = sessionStorage.getItem(USER_KEY);
+        let ss: string = sessionStorage.getItem(USER_KEY);
         return JSON.parse(ss);
       }
     }
