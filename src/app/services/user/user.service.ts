@@ -29,14 +29,6 @@ export class UserService {
     return this.httpClient.get(AUTH_API + '/user', {responseType: 'text'});
   }
 
-  getModeratorBoard(): Observable<any> {
-    return this.httpClient.get(AUTH_API + '/mod', {responseType: 'text'});
-  }
-
-  getAdminBoard(): Observable<any> {
-    return this.httpClient.get(AUTH_API + '/admin', {responseType: 'text'});
-  }
-
   /** GET one user by username */
   getUserByUsername(username: string): Observable<User> {
     return this.httpClient.get<User>(USER_API + '/' + username);
@@ -56,28 +48,18 @@ export class UserService {
     return this.httpClient.get<User>(USER_API + '/top/uploader/' + periodOfTime);
   }
 
-  /** GET specific amount Top Uploaders */
+  /** GET specific count Top Uploaders */
   getTopUploaders(periodOfTime: string, numberOfUsers: number): Observable<User[]> {
     return this.httpClient.get<User[]>(USER_API + '/top/uploader/' + periodOfTime + '/' + numberOfUsers);
   }
 
-  /** GET number of tracks added by user [find by userID] */
-  getNumberOfTracksAddedByUserId(userId: number): Observable<number> {
-    return this.httpClient.get<number>(USER_API + '/' + userId + '/tracks/amount');
-  }
-
-  /** GET number of tracks added by user [find by username] */
-  getNumberOfTracksAddedByUsername(username: string): Observable<number> {
-    return this.httpClient.get<number>(USER_API + '/' + username + '/tracks/amount');
-  }
-
   getNumberOfTracksAddedInGivenPeriodByUsername(username: string, periodOfTime: string): Observable<number> {
-    return this.httpClient.get<number>(USER_API + '/' + username + '/tracks/' + periodOfTime + '/amount');
+    return this.httpClient.get<number>(USER_API + '/' + username + '/tracks/' + periodOfTime + '/count');
   }
 
   /** POST update user */
   updateUser(userId: string, userDto: { username: any; firstName: any; facebookUrl: any; youtubeUrl: any; city: any; }): Observable<any> {
-    return this.httpClient.post(USER_API + '/' + userId + '/update',
+    return this.httpClient.patch(USER_API + '/' + userId,
       {
         id: userId,
         username: userDto.username,

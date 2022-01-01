@@ -66,10 +66,6 @@ export class TrackService {
     return this.http.get<Track[]>(TRACK_API + '/user/' + username + '/' + numberOfTracks);
   }
 
-  getLastAddedTracksByGenreOnlyWithUser(genre: string, numberOfTracks: number) {
-    return this.http.get<Track>(TRACK_API + '/genre/' + genre + '/lastAddedByUser/' + numberOfTracks);
-  }
-
   getTrackPageByGenre(genre: string, page: number): Observable<TrackResponse> {
     return this.http.get<TrackResponse>(TRACK_API + '/genre/' + genre + '/pages/' + page, httpOptions);
   }
@@ -79,7 +75,7 @@ export class TrackService {
   }
 
   getAllTrackCommentsByTrackId(trackId: number): Observable<TrackComment[]> {
-    return this.http.get<TrackComment[]>(TRACK_API + '/id/' + trackId + '/comments');
+    return this.http.get<TrackComment[]>(TRACK_API + '/' + trackId + '/comments');
   }
 
   addTrackComment(trackComment: TrackComment): Observable<TrackComment> {
@@ -87,6 +83,14 @@ export class TrackService {
   }
 
   deleteTrackCommentById(commentId: number) {
-    return this.http.delete(TRACK_API + '/comment/' + commentId + '/remove');
+    return this.http.delete(TRACK_API + '/comment/' + commentId);
+  }
+
+  getAllFavoritesTracksByUsername(username: string): Observable<any> {
+    return this.http.get<Track[]>(TRACK_API + '/favorites/user/' + username);
+  }
+
+  getAllFavoritesTracksIdsByUsername(username: string): Observable<any> {
+    return this.http.get<number[]>(TRACK_API + '/favorites/user/' + username + '/ids');
   }
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Track} from '../../tracks/track/model/track';
 import {TokenStorageService} from '../../services/auth/token-storage.service';
 import {UploadFileService} from '../../services/storage/upload-file.service';
-import {FavoriteService} from '../../services/favorite/favorite.service';
 import {TrackService} from '../../services/track/track.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -28,7 +27,6 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private tokenStorage: TokenStorageService,
               private uploadService: UploadFileService,
-              private favoriteService: FavoriteService,
               private route: ActivatedRoute,
               private router: Router,
               private alertService: AlertService,
@@ -97,7 +95,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   getAllFavoritesTracksByUser(username: string) {
-    this.favoriteService.getAllFavoritesTracksByUsername(username).subscribe((track: any) => {
+    this.trackService.getAllFavoritesTracksByUsername(username).subscribe((track: any) => {
       this.favoriteTracksByUser = track;
     });
   }

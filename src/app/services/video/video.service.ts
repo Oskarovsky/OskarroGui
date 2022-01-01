@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Track } from '../../tracks/track/model/track';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Track} from '../../tracks/track/model/track';
 import {Observable} from 'rxjs';
 import {Playlist} from '../../playlists/playlist/model/playlist';
 import {Video} from '../../videos/video/model/video';
-import {DomSanitizer} from '@angular/platform-browser';
 import {environment} from '../../../environments/environment';
 
 const API: string = environment.serverUrl;
@@ -19,12 +18,11 @@ export class VideoService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient,
-              private sanitizer: DomSanitizer) { }
+  constructor(private http: HttpClient) { }
 
   /** GET all video */
   getAllVideos(): Observable<Video[]> {
-    return this.http.get<Video[]>(VIDEO_API + '/findAll');
+    return this.http.get<Video[]>(VIDEO_API);
   }
 
   /** GET video by id */
@@ -33,11 +31,11 @@ export class VideoService {
   }
 
   addVideo(video: Video): Observable<Video> {
-    return this.http.post<Video>(VIDEO_API  + '/add', video);
+    return this.http.post<Video>(VIDEO_API, video);
   }
 
   getVideosByCategory(category: string): Observable<Video[]> {
-    return this.http.get<Video[]>(VIDEO_API + '/findAll/' + category);
+    return this.http.get<Video[]>(VIDEO_API + '/category/' + category);
   }
 
   deleteVideo(id: number): Observable<any> {
@@ -61,6 +59,6 @@ export class VideoService {
 
   /** GET list the all videos sorted by views number */
   getAllVideosSortedByViews(): Observable<Video> {
-    return this.http.get<Video>(VIDEO_API + '/all/sorted');
+    return this.http.get<Video>(VIDEO_API + '/sorted');
   }
 }

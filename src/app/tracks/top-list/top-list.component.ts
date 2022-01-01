@@ -3,7 +3,6 @@ import { TrackService} from '../../services/track/track.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {TokenStorageService} from '../../services/auth/token-storage.service';
-import {FavoriteService} from '../../services/favorite/favorite.service';
 import {Track} from '../track/model/track';
 import {VoteService} from '../../services/vote/vote.service';
 
@@ -45,7 +44,6 @@ export class TopListComponent implements OnInit {
 
   constructor(private trackService: TrackService,
               private tokenStorage: TokenStorageService,
-              private favoriteService: FavoriteService,
               private voteService: VoteService,
               private route: ActivatedRoute) {
   }
@@ -79,7 +77,7 @@ export class TopListComponent implements OnInit {
   }
 
   getAllFavoritesTracksIdsByUser(username: string) {
-    this.favoriteService.getAllFavoritesTracksIdsByUsername(username).subscribe((id: any) => {
+    this.trackService.getAllFavoritesTracksIdsByUsername(username).subscribe((id: any) => {
       this.favoriteTracksIds = id;
     });
   }

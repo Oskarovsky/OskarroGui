@@ -21,10 +21,8 @@
                   </ng-template>
                 </div>
 
-                <div class="userData">
+                <div *ngIf="currentUser" class="userData">
                   <h4 class="d-block" id="username">{{currentUser.username}}</h4>
-<!--                  <h6 class="d-block" style="color: white"><a href="javascript:void(0)">1,500</a> Playlist</h6>-->
-<!--                  <h6 class="d-block" style="color: white"><a href="javascript:void(0)">{{numberOfTracks}}</a> Utworów</h6>-->
                   <button mat-stroked-button value="Zmień zdjęcie" color="primary" id="buttonChangeImage"
                           onclick="showAvatarForm()">Zmień zdjęcie profilowe
                   </button>
@@ -35,8 +33,7 @@
                           [routerLink]="['/profile', 'edit', 'changePassword']">Zmień hasło</button>
                   <label style="display:none;" id="avatarForm" class="image-upload-container btn btn-bwm">
                     <button class="btn btn-success" style="margin-right: 20px" [disabled]="!selectedFile" (click)="upload()">Upload</button>
-                    <input type="file" accept='image/*' (change)="selectFile($event)"/>
-<!--                    <span role="alert" style="color: white">{{ message }}</span>-->
+                    <input type="file" accept='image/*' (change)="selectFile($event)" />
                   </label>
                 </div>
               </div>
@@ -62,7 +59,7 @@
                 </ul>
 
                 <!-- TAB CONTENT-->
-                <div class="tab-content ml-1">
+                <div *ngIf="currentUser" class="tab-content ml-1">
                   <div class="tab-pane fade in active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
                     <div class="row" style="color: white">
                       <div class="col-sm-3 col-md-2 col-5"><label style="font-weight:bold;">Nazwa użytkownika</label></div>
@@ -90,7 +87,7 @@
                       </div>
                     <hr />
                       <div class="row" style="color: white"><div class="col-sm-3 col-md-2 col-5"><label style="font-weight:bold;">Data rejestracji</label></div>
-                        <div class="col-md-8 col-6">{{ currentUser.createdAt.substring(0, currentUser.createdAt.indexOf('T')) }}</div>
+                        <div *ngIf="currentUser.createdAt" class="col-md-8 col-6">{{ currentUser.createdAt.substring(0, currentUser.createdAt.indexOf('T')) }}</div>
                       </div>
                     <hr />
                   </div>

@@ -4,7 +4,6 @@ import {UploadFileService} from '../services/storage/upload-file.service';
 import {HttpClient, HttpEventType, HttpResponse} from '@angular/common/http';
 import {Track} from '../tracks/track/model/track';
 import {TrackService} from '../services/track/track.service';
-import {FavoriteService} from '../services/favorite/favorite.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {AlertService} from '../services/alert/alert.service';
 import {first} from 'rxjs/operators';
@@ -31,7 +30,6 @@ export class ProfileComponent implements OnInit {
               private userService: UserService,
               private alertService: AlertService,
               private uploadService: UploadFileService,
-              private favoriteService: FavoriteService,
               private trackService: TrackService,
               private sanitizer: DomSanitizer) {
   }
@@ -109,7 +107,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getAllFavoritesTracksByUser(username: string) {
-    this.favoriteService.getAllFavoritesTracksByUsername(username)
+    this.trackService.getAllFavoritesTracksByUsername(username)
       .subscribe((track: any) => {
         this.favoriteTracksByUser = track;
     });

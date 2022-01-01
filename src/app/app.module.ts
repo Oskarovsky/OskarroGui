@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {NavigationComponent} from "./navigation/navigation.component";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
@@ -26,7 +26,6 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MenuListItemComponent} from "./navigation/menu-list-item/menu-list-item.component";
 import {SidebarRightComponent} from "./sidebar/sidebar-right/sidebar-right.component";
 import {FooterComponent} from "./footer/footer.component";
-import {AlertComponent} from "./alert/alert.component";
 import {HomeComponent} from "./home/home.component";
 import {CKEditorModule} from "ng2-ckeditor";
 import {AddPostComponent} from "./article/add-post/add-post.component";
@@ -60,7 +59,6 @@ import {PlaylistAllComponent} from "./playlists/playlist-all/playlist-all.compon
 import {PlaylistAddComponent} from "./playlists/playlist-add/playlist-add.component";
 import {AuditsComponent} from "./admin/audits/audits.component";
 import {ArticlePartComponent} from "./admin/components/article-part/article-part.component";
-import {TrackPartComponent} from "./admin/components/track-part/track-part.component";
 import {UserPartComponent} from "./admin/components/user-part/user-part.component";
 import {UserFilterPipe} from "./pipes/user-filter.pipe";
 import {UserManagementComponent} from "./admin/user-management/user-management.component";
@@ -90,7 +88,6 @@ import {ContactComponent} from "./info/contact/contact.component";
 import {AdminPanelComponent} from "./admin/admin-panel/admin-panel.component";
 import {AlertModule} from "./alert/alert.module";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-
 
 
 @NgModule({
@@ -133,7 +130,6 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
     AuditsComponent,
     ArticlePartComponent,
-    TrackPartComponent,
     UserPartComponent,
     UserManagementComponent,
 
