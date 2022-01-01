@@ -51,7 +51,7 @@ export class TrackService {
   }
 
   addTrackToFavorites(id: number, username: string): Observable<any> {
-    return this.http.get<any>(TRACK_API + '/' + id + '/addToFavorites/' + username);
+    return this.http.get<any>(TRACK_API + '/' + id + '/user/' + username + '/favorites');
   }
 
   getMostPopularTrackByGenre(genre: string): Observable<Track> {

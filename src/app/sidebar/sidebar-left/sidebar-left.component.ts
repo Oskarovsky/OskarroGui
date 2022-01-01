@@ -43,8 +43,7 @@ export class SidebarLeftComponent implements OnInit {
               private trackService: TrackService,
               private userService: UserService,
               private alertService: AlertService,
-              private tokenStorage: TokenStorageService,
-              private route: ActivatedRoute) { }
+              private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
     this.getRandomTrack();
