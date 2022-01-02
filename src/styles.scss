@@ -1,3 +1,12 @@
+@use 'node_modules/@angular/material' as mat;
+@import '~@angular/material/theming';
+
+// always include only once per project
+@include mat.core();
+
+// import our custom theme
+@import 'theme.scss';
+
 /* You can add global styles to this file, and also import other style files */
 html, body {
   margin: 0;
@@ -8,7 +17,6 @@ html, body {
 
 body {
   margin: 0;
-  /*font-family: Roboto, "Helvetica Neue", sans-serif;*/
 }
 
 .full-height {
@@ -136,3 +144,6 @@ body {
 @media only screen and (min-width: 1200px) {
 
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

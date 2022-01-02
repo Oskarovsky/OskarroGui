@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Playlist} from '../../playlists/playlist/model/playlist';
 import {Subscription} from 'rxjs';
 import {PlaylistService} from '../../services/playlist/playlist.service';
 import {TokenStorageService} from '../../services/auth/token-storage.service';
-import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../services/user/user.service';
 import {User} from '../../services/user/user';
 import {Track} from '../../tracks/track/model/track';
@@ -13,7 +12,8 @@ import {AlertService} from '../../services/alert/alert.service';
 @Component({
   selector: 'app-sidebar-left',
   templateUrl: './sidebar-left.component.html',
-  styleUrls: ['./sidebar-left.component.css']
+  styleUrls: ['./sidebar-left.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SidebarLeftComponent implements OnInit {
 
@@ -62,17 +62,6 @@ export class SidebarLeftComponent implements OnInit {
       this.username = this.tokenStorage.getUser().username;
       this.getLastAddedTracksByUsername(this.username, 5);
     }
-  }
-
-  public getLastAddedPlaylists(numberOfPlaylists: string) {
-    this.playlistService.getLastAddedPlaylists(numberOfPlaylists).subscribe(
-      response => {
-        this.playlists = response;
-      },
-      error => {
-        this.alertService.error('Nie udało się pobrać ostatnio dodanych playlist');
-      }
-    );
   }
 
   public getLastAddedUsers(numberOfUsers: string) {

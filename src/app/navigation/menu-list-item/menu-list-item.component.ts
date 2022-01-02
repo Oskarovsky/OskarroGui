@@ -21,24 +21,18 @@ import {NavigationService} from '../../services/navigation/navigation.service';
 })
 export class MenuListItemComponent implements OnInit {
   expanded: boolean | undefined;
-  // @HostBinding('attr.aria-expanded') ariaExpanded = this.expanded;
   @Input() item: NavItem | undefined;
   @Input() depth: number;
 
   constructor(public navService: NavigationService,
               public router: Router) {
-    // if (this.depth === undefined) {
-      this.depth = 0;
-    // }
+    this.depth = 0;
   }
 
   ngOnInit() {
     this.navService.currentUrl.subscribe((url: string) => {
       if (this.item !== undefined && this.item.route && url) {
-        // console.log(`Checking '/${this.item.route}' against '${url}'`);
         this.expanded = url.indexOf(`/${this.item.route}`) === 0;
-        // this.ariaExpanded = this.expanded;
-        // console.log(`${this.item.route} is expanded: ${this.expanded}`);
       }
     });
   }
