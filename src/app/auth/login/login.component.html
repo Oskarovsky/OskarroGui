@@ -4,6 +4,8 @@
   </h3>
   <article class="card-body mx-auto" style="max-width: 100%; min-width: 50%">
 
+<!--    <div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>-->
+
     <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
       <p>
         <a href="{{facebookAuthUrl}}" class="btn btn-block btn-facebook">

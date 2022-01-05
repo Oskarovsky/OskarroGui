@@ -49,8 +49,7 @@
 
 <!-- Load external sites scripts -->
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v12.0&appId=801225083418399&autoLogAppEvents=1" nonce="PABT7WAY"></script>
-
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v12.0&appId=3206283756069780&autoLogAppEvents=1" nonce="PcFeCjtj"></script>
 
 <script src="https://apis.google.com/js/platform.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -63,8 +62,9 @@
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '3206283756069780',
+      cookie     : true,
       xfbml      : true,
-      version    : 'v8.0'
+      version    : 'v12.0'
     });
     FB.AppEvents.logPageView();
   };
@@ -76,8 +76,11 @@
     js.src = "https://connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
-</script>
 
+  FB.login(function(response){
+    // handle the response
+  });
+</script>
 
 </body>
 </html>

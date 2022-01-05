@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
 
+/**
+ * Class is responsible for storing and retrieving the token and user information from Browser’s Session Storage.
+ * For Logout, we only need to clear this Session Storage.
+ * */
+
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
 
@@ -32,8 +37,7 @@ export class TokenStorageService {
     if (sessionStorage.getItem(USER_KEY) !== null) {
       console.log('Current user session item: ' + sessionStorage.getItem(USER_KEY));
       if (sessionStorage.getItem(USER_KEY) != undefined) {
-        let ss: string = sessionStorage.getItem(USER_KEY);
-        return JSON.parse(ss);
+        return JSON.parse(sessionStorage.getItem(USER_KEY));
       }
     }
   }

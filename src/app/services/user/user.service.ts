@@ -5,6 +5,11 @@ import {environment} from '../../../environments/environment';
 import {Playlist} from '../../playlists/playlist/model/playlist';
 import {User} from './user';
 
+/**
+ * UserService performs GET HTTP requests to various endpoints via Angular’s HttpClient for fetching user details.
+ * All the methods return an Observable instance that holds the content.
+ * */
+
 const API: string = environment.serverUrl;
 const AUTH_API = API + '/auth';
 const USER_API = API + '/user';
@@ -57,8 +62,13 @@ export class UserService {
     return this.httpClient.get<number>(USER_API + '/' + username + '/tracks/' + periodOfTime + '/count');
   }
 
+  getCurrentUser(): Observable<any> {
+    return this.httpClient.get(USER_API + '/me', httpOptions);
+  }
+
   /** POST update user */
-  updateUser(userId: string, userDto: { username: any; firstName: any; facebookUrl: any; youtubeUrl: any; city: any; }): Observable<any> {
+  updateUser(userId: string,
+             userDto: { username: any; firstName: any; facebookUrl: any; youtubeUrl: any; city: any; }): Observable<any> {
     return this.httpClient.patch(USER_API + '/' + userId,
       {
         id: userId,

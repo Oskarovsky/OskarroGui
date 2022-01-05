@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from '../../services/auth/token-storage.service';
 import {VideoService} from '../../services/video/video.service';
 import {AlertService} from '../../services/alert/alert.service';
+import {Video} from "../../videos/video/model/video";
 
 @Component({
   selector: 'app-sidebar-right',
@@ -13,14 +14,14 @@ export class SidebarRightComponent implements OnInit {
   isLoggedIn = false;
   username: string;
 
-  videoList: Array<any>;
+  videoList: Video[];
 
   constructor(private tokenStorageService: TokenStorageService,
               private videoService: VideoService,
               private alertService: AlertService) { }
 
   ngOnInit() {
-    this.getTopVideos();
+    this.getMostPopularVideos();
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
@@ -28,15 +29,16 @@ export class SidebarRightComponent implements OnInit {
     }
   }
 
-  getTopVideos() {
-    this.videoService.getTopVideos().subscribe(
-      (video: any) => {
-      this.videoList = video;
-    },
-        () => {
-      this.alertService.error('Nie udało się pobrać całej listy video');
-      }
-    );
+  /** Fetch videos with the most views */
+  getMostPopularVideos() {
+    this.videoService.getMostPopularVideos().subscribe({
+      next: data => {
+        this.videoList = data.filter(video => video.viewCount !== null)
+      },
+      error: () => {
+        this.alertService.error("Nie udało się pobrać całej listy video")
+      },
+    })
   }
 
 }
