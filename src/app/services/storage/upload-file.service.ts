@@ -37,12 +37,28 @@ export class UploadFileService {
     return this.http.request(req);
   }
 
+  uploadArticleImage(file: File, username: string, articleId: string): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    formData.append('username', username);
+    formData.append('articleId', articleId);
+    const req = new HttpRequest('POST', STORAGE_API + '/uploadArticleImage', formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+    return this.http.request(req);
+  }
+
   getFile(username: string): Observable<Blob> {
     return this.http.get(STORAGE_API + '/avatar/' + username, { responseType: 'blob' });
   }
 
   getCoverFile(trackId: number): Observable<Blob> {
     return this.http.get(STORAGE_API + '/cover/' + trackId, { responseType: 'blob' });
+  }
+
+  getArticleImage(articleId: number): Observable<Blob> {
+    return this.http.get(STORAGE_API + '/article/' + articleId, { responseType: 'blob' });
   }
 
 }

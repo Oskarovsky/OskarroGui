@@ -1,6 +1,8 @@
 <div class="example-container">
 
-  <form role="form" #myForm="ngForm" accept-charset="UTF-8" (ngSubmit)="onSubmit()" novalidate style="margin: 30px;">
+  <form role="form" accept-charset="UTF-8" (ngSubmit)="onSubmit()" novalidate style="margin: 30px;">
+    <input style="color: white" type="file" accept='image/*' (change)="selectFile($event)">
+
     <div class="form-group">
       <input autofocus autocomplete="none" type="text" name="Title" placeholder="Enter Title"
              [(ngModel)]="modelPost.title" class="form-control" required #PostTitle

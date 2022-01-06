@@ -7,6 +7,9 @@ import {CommentService} from '../../services/article/comment.service';
 import {TokenStorageService} from '../../services/auth/token-storage.service';
 import {Router} from '@angular/router';
 import {Track} from '../../tracks/track/model/track';
+import {HttpClient, HttpEventType, HttpResponse} from "@angular/common/http";
+import {UploadFileService} from "../../services/storage/upload-file.service";
+import {AlertService} from "../../services/alert/alert.service";
 
 @Component({
   selector: 'app-add-post',
@@ -52,10 +55,57 @@ export class AddPostComponent implements OnInit {
   };
 
 
-  constructor(private postService: PostService,
+  constructor(private httpClient: HttpClient,
+              private postService: PostService,
+              private uploadFileService: UploadFileService,
               private commentService: CommentService,
+              private alertService: AlertService,
               private tokenStorageService: TokenStorageService,
               private router: Router) { }
+
+  dbImage: any;
+  postResponse: any;
+  successResponse: string;
+  image: any;
+  currentFile: File;
+  selectedFile: { item: (arg0: number) => File; };
+  currentFileName = '';
+  message = '';
+
+  selectFile(event: any) {
+    this.selectedFile = event.target.files;
+  }
+
+  imageUploadAction(articleId: string) {
+    if (this.selectedFile) {
+      this.currentFile = this.selectedFile.item(0);
+      this.uploadFileService.uploadArticleImage(this.currentFile, this.modelUser.username, articleId).subscribe(
+        event => {
+          if (event.type === HttpEventType.UploadProgress) {
+          } else if (event instanceof HttpResponse) {
+            this.message = event.body.message;
+            this.currentFileName = 'trackCover_'.concat(this.currentFile.name);
+            this.alertService.success('Zdjęcie zostało dodane !');
+          }
+        },
+        err => {
+          this.alertService.error('Nie udało się dodać zdjęcia.');
+          this.currentFile = undefined;
+        });
+    }
+  }
+
+  viewImage(articleId: number) {
+    this.httpClient.get('https://localhost:8443/api/storage/article/' + articleId)
+      .subscribe(
+        res => {
+          this.postResponse = res;
+          this.dbImage = 'data:image/jpeg;base64,' + this.postResponse.image;
+        }
+      );
+  }
+
+
 
   ngOnInit() {
     this.isUserLogged = !!this.tokenStorageService.getToken();
@@ -89,7 +139,7 @@ export class AddPostComponent implements OnInit {
 
   onSubmit() {
     this.postService.addPost(this.post).subscribe(
-      (data: any) => {
+      () => {
         alert('Data saved successfully');
       }
     );
@@ -117,16 +167,17 @@ export class AddPostComponent implements OnInit {
       createdAt: null
     };
     this.postService.addPost(newPost).subscribe(
-      result => {
+      () => {
         newPost.title = title;
         newPost.description = description;
         newPost.content = content;
         this.posts.push(newPost);
       },
-      error => {
+      () => {
         alert('An error has occurred while saving the post');
-      }
+      },
     );
+    this.imageUploadAction('1')
   }
 
   redirect() {
