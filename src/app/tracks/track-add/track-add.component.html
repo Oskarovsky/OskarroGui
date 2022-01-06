@@ -89,9 +89,8 @@
           <button class="btn btn-success" [disabled]="!selectedFile" (click)="uploadCover(trackUrl.value)">Upload</button>
         </span>
         <span>
-          <input style="color: white" type="file" accept='image/*' (change)="selectFile($event)"/>
+          <input style="color: white" type="file" accept='image/*' (change)="selectFile($event)">
         </span>
-<!--        <span role="alert" style="color: white">{{ message }}</span>-->
       </label>
 
       <button type="submit" [disabled]="!userForm.form.valid"

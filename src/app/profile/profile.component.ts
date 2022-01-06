@@ -48,21 +48,15 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  getInnerHTMLValue() {
-  }
-
-
   getImageFromService(username: string) {
     const reader = new FileReader();
     this.uploadService.getFile(username).subscribe(
       data => {
         reader.addEventListener('load', () => {
           this.imageToShow = this.sanitizer.bypassSecurityTrustResourceUrl(reader.result as string);
-          console.log('YYY1 ' + this.imageToShow);
         }, false);
         if (data) {
           if (data.size > 0) {
-            console.log('YYY2 ' + data.size);
             this.isImage = true;
             reader.readAsDataURL(data);
           }

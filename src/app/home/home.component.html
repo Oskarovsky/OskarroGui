@@ -10,7 +10,19 @@
       <div class="card-header">
         <h4 class="card-title">{{post.title}}</h4>
       </div>
-      <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+
+      <div>
+        <img *ngIf="this.imagesToShow.get(post.id); else noCoverFound"
+             [src]="this.imagesToShow.get(post.id) | byPassSecurity" alt="Zdjęcie do utworu {{post.title}}">
+        <ng-template #noCoverFound>
+          <img id="profile-img" width="430"
+               src="/assets/img/reklama_logo.jpg"
+               alt="Domyślne zdjęcie do utworu {{post.title}}">
+        </ng-template>
+      </div>
+
+
+
       <div class="card-body text-center">
         <hr style="width:70%; left: 15%;">
         <div [innerHTML]="post.description" class="card-description card-text"></div>
@@ -20,8 +32,8 @@
       </div>
         <p class="card-text"><small class="text-muted">Dodane {{post.createdAt}}</small></p>
     </div>
-
   </div>
+
 
 </div>
 

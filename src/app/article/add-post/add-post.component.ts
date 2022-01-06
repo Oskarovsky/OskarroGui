@@ -95,18 +95,6 @@ export class AddPostComponent implements OnInit {
     }
   }
 
-  viewImage(articleId: number) {
-    this.httpClient.get('https://localhost:8443/api/storage/article/' + articleId)
-      .subscribe(
-        res => {
-          this.postResponse = res;
-          this.dbImage = 'data:image/jpeg;base64,' + this.postResponse.image;
-        }
-      );
-  }
-
-
-
   ngOnInit() {
     this.isUserLogged = !!this.tokenStorageService.getToken();
     if (this.isUserLogged) {
