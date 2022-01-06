@@ -77,13 +77,11 @@ export class AddPostComponent implements OnInit {
     this.getAllPosts();
     this.ckeConfigForDescription = {
       allowedContent: false,
-      // extraPlugins: 'divarea',
       forcePasteAsPlainText: true,
       height: 100,
     };
     this.ckeConfigForContent = {
       allowedContent: false,
-      // extraPlugins: 'divarea',
       forcePasteAsPlainText: true,
       height: 350,
     };

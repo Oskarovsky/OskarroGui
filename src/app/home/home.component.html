@@ -2,18 +2,23 @@
   <header class="mat-card-title">
     <p *ngIf="isLoggedIn">Cześć {{ currentUser.username }} !</p>
     <p *ngIf="!isLoggedIn">Jesteś nowy? <a routerLink="/register">Dołącz do naszej ekipy</a></p>
-
   </header>
 
-    <!-- Post list content -->
+  <!-- Post list content -->
   <div style="margin-bottom: 20px;">
-    <div *ngFor="let post of posts | slice:0:5; let i=index;"
-         class="card" style="background-color: rgba(0,0,0,0.8); width: 100%">
-      <h4 style="text-align: center; color: white">{{post.title}}</h4>
-      <hr style="width:70%; left: 15%; position: relative">
-      <div [innerHTML]="post.description" style="color: rgb(255,255,255)"></div>
-      <button type="submit" [routerLink]="['post', post.id, 'details']"
-              style=" position: relative; left: 40%; width: 20%">Przeczytaj całość</button>
+    <div *ngFor="let post of posts | slice:0:5; let i=index;" class="card">
+      <div class="card-header">
+        <h4 class="card-title">{{post.title}}</h4>
+      </div>
+      <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+      <div class="card-body text-center">
+        <hr style="width:70%; left: 15%;">
+        <div [innerHTML]="post.description" class="card-description card-text"></div>
+        <button [routerLink]="['post', post.id, 'details']" type="submit" class="btn btn-secondary card-button">
+          Przeczytaj całość
+        </button>
+      </div>
+        <p class="card-text"><small class="text-muted">Dodane {{post.createdAt}}</small></p>
     </div>
 
   </div>

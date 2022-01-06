@@ -8,8 +8,25 @@
 /* Card effect for articles */
 .card {
   background-color: #afafaf;
+  background-color: rgba(0,0,0,0.8);
+  width: 100%;
   padding: 20px;
   margin-top: 20px;
   border: 1px solid #333;
+}
+
+.card-title {
+  text-align: center;
+  color: white
+}
+
+.card-description {
+  color: rgb(255,255,255);
+  margin-bottom: 20px;
+}
+
+.card-button {
+  left: 40%;
+  width: 20%
 }
 

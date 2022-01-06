@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { TokenStorageService } from './services/auth/token-storage.service';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +14,7 @@ export class AppComponent implements OnInit {
   showModeratorBoard = false;
   username: string;
 
-  constructor(private http: HttpClient,
-              private tokenStorageService: TokenStorageService) {}
+  constructor() {}
 
   ngOnInit() {
   }

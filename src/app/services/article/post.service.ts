@@ -28,11 +28,6 @@ export class PostService {
     return this.http.get<Post[]>(POST_API + '/user/' + username);
   }
 
-  /** GET all posts by User name */
-  getAllPostsByUserId(userId: string): Observable<Post[]> {
-    return this.http.get<Post[]>(POST_API + '/userId/' + userId);
-  }
-
   /** GET post by id */
   getPostById(id: string): Observable<any> {
     return this.http.get<Playlist>(POST_API + '/' + id);

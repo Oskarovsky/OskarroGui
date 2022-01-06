@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../services/user/user.service';
 import {Subscription} from 'rxjs';
 import {TokenStorageService} from '../services/auth/token-storage.service';
-import {ActivatedRoute} from '@angular/router';
 import {PostService} from '../services/article/post.service';
 import {Post} from '../article/model/post';
 
@@ -25,8 +24,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private userService: UserService,
               private postService: PostService,
-              private tokenStorage: TokenStorageService,
-              private route: ActivatedRoute) { }
+              private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
     this.getLastAddedPosts(5);
@@ -38,7 +36,7 @@ export class HomeComponent implements OnInit {
 
   public getLastAddedPosts(numberOfPosts: number) {
     this.postService.getLastAddedPosts(numberOfPosts).subscribe(
-        (response: Post[]) => {
+      (response: Post[]) => {
         this.posts = response;
       },
       () => {

@@ -19,9 +19,7 @@ export class ArticlePartComponent implements OnInit {
   username: string;
 
   constructor(private postService: PostService,
-              private tokenStorage: TokenStorageService,
-              private route: ActivatedRoute,
-              private httpClient: HttpClient) { }
+              private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
