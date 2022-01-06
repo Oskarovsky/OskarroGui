@@ -49,7 +49,6 @@ export class HomeComponent implements OnInit {
           if (!this.idList.includes(t.id)) {
             this.idList.push(t.id);
             this.getArticleImage(t.id);
-            console.log("TEST1 -- " + t.id)
           }
         });
       },

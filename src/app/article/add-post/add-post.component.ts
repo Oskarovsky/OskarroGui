@@ -63,37 +63,12 @@ export class AddPostComponent implements OnInit {
               private tokenStorageService: TokenStorageService,
               private router: Router) { }
 
-  dbImage: any;
   postResponse: any;
   successResponse: string;
   image: any;
   currentFile: File;
   selectedFile: { item: (arg0: number) => File; };
-  currentFileName = '';
   message = '';
-
-  selectFile(event: any) {
-    this.selectedFile = event.target.files;
-  }
-
-  imageUploadAction(articleId: string) {
-    if (this.selectedFile) {
-      this.currentFile = this.selectedFile.item(0);
-      this.uploadFileService.uploadArticleImage(this.currentFile, this.modelUser.username, articleId).subscribe(
-        event => {
-          if (event.type === HttpEventType.UploadProgress) {
-          } else if (event instanceof HttpResponse) {
-            this.message = event.body.message;
-            this.currentFileName = 'trackCover_'.concat(this.currentFile.name);
-            this.alertService.success('Zdjęcie zostało dodane !');
-          }
-        },
-        err => {
-          this.alertService.error('Nie udało się dodać zdjęcia.');
-          this.currentFile = undefined;
-        });
-    }
-  }
 
   ngOnInit() {
     this.isUserLogged = !!this.tokenStorageService.getToken();
@@ -131,7 +106,6 @@ export class AddPostComponent implements OnInit {
         alert('Data saved successfully');
       }
     );
-
   }
 
   public getAllPosts() {
@@ -146,7 +120,7 @@ export class AddPostComponent implements OnInit {
   }
 
   createPost(title: string, description: string, content: string) {
-    const newPost: Post = {
+    const postRequest: Post = {
       id: null,
       title,
       description,
@@ -154,18 +128,36 @@ export class AddPostComponent implements OnInit {
       user: this.modelUser,
       createdAt: null
     };
-    this.postService.addPost(newPost).subscribe(
-      () => {
-        newPost.title = title;
-        newPost.description = description;
-        newPost.content = content;
-        this.posts.push(newPost);
+    this.postService.addPost(postRequest).subscribe(
+      response => {
+        this.imageUploadAction(String(response.id))
       },
       () => {
         alert('An error has occurred while saving the post');
       },
     );
-    this.imageUploadAction('1')
+  }
+
+  selectFile(event: any) {
+    this.selectedFile = event.target.files;
+  }
+
+  imageUploadAction(articleId: string) {
+    if (this.selectedFile) {
+      this.currentFile = this.selectedFile.item(0);
+      this.uploadFileService.uploadArticleImage(this.currentFile, this.modelUser.username, articleId).subscribe(
+        event => {
+          if (event.type === HttpEventType.UploadProgress) {
+          } else if (event instanceof HttpResponse) {
+            this.message = event.body.message;
+            this.alertService.success('Zdjęcie zostało dodane !');
+          }
+        },
+        err => {
+          this.alertService.error('Nie udało się dodać zdjęcia.');
+          this.currentFile = undefined;
+        });
+    }
   }
 
   redirect() {

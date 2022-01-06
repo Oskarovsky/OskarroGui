@@ -11,7 +11,7 @@
         <h4 class="card-title">{{post.title}}</h4>
       </div>
 
-      <div>
+      <div class="card-image">
         <img *ngIf="this.imagesToShow.get(post.id); else noCoverFound"
              [src]="this.imagesToShow.get(post.id) | byPassSecurity" alt="Zdjęcie do utworu {{post.title}}">
         <ng-template #noCoverFound>
