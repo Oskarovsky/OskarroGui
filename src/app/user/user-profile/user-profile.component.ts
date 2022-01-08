@@ -7,6 +7,7 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../services/user/user.service';
 import {AlertService} from '../../services/alert/alert.service';
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-user-profile',
@@ -20,10 +21,12 @@ export class UserProfileComponent implements OnInit {
   message = '';
   userAvatar: any;
   imageToShow: any;
+  isImage = false;
   isImageLoading: any;
   tracks: Array<any>;
   favoriteTracksByUser: Track[] = [];
   userProfile: any;
+  username: string;
 
   constructor(private tokenStorage: TokenStorageService,
               private uploadService: UploadFileService,
@@ -31,13 +34,14 @@ export class UserProfileComponent implements OnInit {
               private router: Router,
               private alertService: AlertService,
               private userService: UserService,
+              private sanitizer: DomSanitizer,
               private trackService: TrackService) { }
 
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
       this.currentUser = this.tokenStorage.getUser();
       this.getUserProfile();
-      this.getImageFromService();
+      this.getImageFromService(this.username);
       this.getLastAddedTracksByUsername(this.userProfile.username, 5);
       this.getAllFavoritesTracksByUser(this.userProfile.username);
     } else {
@@ -48,9 +52,9 @@ export class UserProfileComponent implements OnInit {
 
   getUserProfile() {
     this.sub = this.route.params.subscribe(params => {
-      const username = params['username'];
-      if (username) {
-        this.userService.getUserByUsername(username).subscribe(
+      this.username = params['username'];
+      if (this.username) {
+        this.userService.getUserByUsername(this.username).subscribe(
           response => {
             this.userProfile = response;
           },
@@ -62,25 +66,22 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  createImageFromBlob(image: Blob) {
+  getImageFromService(username: string) {
     const reader = new FileReader();
-    reader.addEventListener('load', () => {
-      this.imageToShow = reader.result;
-    }, false);
-
-    if (image) {
-      reader.readAsDataURL(image);
-    }
-  }
-
-  getImageFromService() {
-    this.isImageLoading = true;
-    this.uploadService.getFile(this.currentUser.username).subscribe(data => {
-      this.createImageFromBlob(data);
-    }, error => {
-      this.isImageLoading = false;
-      console.log(error);
-    });
+    this.uploadService.getFile(username).subscribe(
+      data => {
+        reader.addEventListener('load', () => {
+          this.imageToShow = this.sanitizer.bypassSecurityTrustResourceUrl(reader.result as string);
+        }, false);
+        if (data) {
+          if (data.size > 0) {
+            this.isImage = true;
+            reader.readAsDataURL(data);
+          }
+        }
+      }, err => {
+        console.log(err);
+      });
   }
 
   public getLastAddedTracksByUsername(username: string, numberOfTracks: number) {

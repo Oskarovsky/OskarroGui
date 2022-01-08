@@ -13,15 +13,11 @@
 
       <div class="card-image">
         <img *ngIf="this.imagesToShow.get(post.id); else noCoverFound"
-             [src]="this.imagesToShow.get(post.id) | byPassSecurity" alt="Zdjęcie do utworu {{post.title}}">
+             [src]="this.imagesToShow.get(post.id) | byPassSecurity" alt="Zdjęcie do artykulu {{post.title}}">
         <ng-template #noCoverFound>
-          <img id="profile-img" width="430"
-               src="/assets/img/reklama_logo.jpg"
-               alt="Domyślne zdjęcie do utworu {{post.title}}">
+          <img id="profile-img" width="430" src="/assets/img/reklama_logo.jpg" alt="Zdjęcie artykułu {{post.title}}">
         </ng-template>
       </div>
-
-
 
       <div class="card-body text-center">
         <hr style="width:70%; left: 15%;">
@@ -30,10 +26,10 @@
           Przeczytaj całość
         </button>
       </div>
-        <p class="card-text"><small class="text-muted">Dodane {{post.createdAt}}</small></p>
+        <p class="card-text">
+          <small class="text-muted">Data dodania: {{post.createdAt.substring(0, post.createdAt.indexOf('T'))}}</small>
+        </p>
     </div>
   </div>
-
-
 </div>
 

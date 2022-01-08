@@ -9,15 +9,9 @@
             <div class="card-title mb-4">
               <div class="d-flex justify-content-start">
                 <div class="image-container" style="margin-right: 1rem">
-                  <img [src]="imageToShow" width="150" height="150"
-                       alt="Avatar user"
-                       style="color: white"
-                       *ngIf="isImage; else noImageFound">
+                  <img [src]="imageToShow" *ngIf="isImage; else noImageFound" class="image-profile" alt="Avatar user">
                   <ng-template #noImageFound>
-                    <img id="profile-imgs" width="150" height="150"
-                         src="/assets/img/user_avatar.png"
-                         class="profile-img-card"
-                         alt="Avatar default"/>
+                    <img class="image-profile" src="/assets/img/user_avatar.png" alt="Avatar default">
                   </ng-template>
                 </div>
 
