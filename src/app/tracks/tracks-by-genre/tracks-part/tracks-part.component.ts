@@ -10,7 +10,6 @@ import {UploadFileService} from '../../../services/storage/upload-file.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    // 'Content-Type': 'application/json',
     'Access-Control-Allow-Origin' : '*' })
 };
 
@@ -44,14 +43,14 @@ export class TracksPartComponent implements OnInit {
       this.currentPage = params['page'] || 1;
     });
 
-    this.trackService.getTrackPageByGenre(this.genre, +this.currentPage - 1)
-      .subscribe(trackResponse => {
-      this.totalNumberOfTracks = trackResponse.totalElements;
-      this.numberOfPage = trackResponse.numberPage;
-      this.totalNumberOfPages = trackResponse.totalPages;
-      this.tracks = trackResponse.trackList;
-      this.secureAllUrl(this.tracks);
-    });
+    this.trackService.getTrackPageByGenre(this.genre, +this.currentPage - 1).subscribe(
+      trackResponse => {
+        this.totalNumberOfTracks = trackResponse.totalElements;
+        this.numberOfPage = trackResponse.numberPage;
+        this.totalNumberOfPages = trackResponse.totalPages;
+        this.tracks = trackResponse.trackList;
+        this.secureAllUrl(this.tracks);
+      });
   }
 
   ngOnInit() {
