@@ -22,7 +22,8 @@
   cursor: pointer;
 }
 
-.post-title{
+.post-title {
+  margin-bottom: 15px;
   font-size: 28px;
   font-weight: bold;
   opacity: 1;
@@ -185,5 +186,19 @@
     padding-right: 0;
     padding-left: 0;
   }
+}
+
+.image-area {
+  margin-right: 10px;
+  border: solid 3px black;
+  height: min-content;
+}
+
+.image-profile {
+  object-fit:contain;
+  max-width:100px;
+  max-height:100px;
+  color: white;
+  border: solid 1px #919191
 }
 

@@ -20,8 +20,7 @@ export class UserPartComponent implements OnInit {
   constructor(private playlistService: PlaylistService,
               private trackService: TrackService,
               private userService: UserService,
-              private tokenStorage: TokenStorageService,
-              private route: ActivatedRoute) { }
+              private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
@@ -30,14 +29,14 @@ export class UserPartComponent implements OnInit {
   }
 
   public getLastAddedUsers(numberOfUsers: string) {
-    this.userService.getLastAddedUsers(numberOfUsers).subscribe(
-      response => {
+    this.userService.getLastAddedUsers(numberOfUsers).subscribe({
+      next: response => {
         this.users = response;
       },
-      error => {
+      error: () => {
         alert('An error with fetching last added users has occurred');
       }
-    );
+    });
   }
 
 

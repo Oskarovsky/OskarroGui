@@ -12,7 +12,7 @@ import { VoteType } from './model/vote-type';
   templateUrl: './track-vote-button.component.html',
   styleUrls: ['./track-vote-button.component.css']
 })
-export class TrackVoteButtonComponent implements OnInit, AfterViewInit {
+export class TrackVoteButtonComponent implements OnInit {
 
   @Input() track: Track;
   votePayload: VotePayload;
@@ -38,9 +38,6 @@ export class TrackVoteButtonComponent implements OnInit, AfterViewInit {
     this.updateVoteDetails();
   }
 
-  ngAfterViewInit() {
-    // this.checkIfUserVotedForTrack(this.track.id, this.tokenStorage.getUser().id);
-  }
 
   upvotePost() {
     this.votePayload.voteType = VoteType.UPVOTE;

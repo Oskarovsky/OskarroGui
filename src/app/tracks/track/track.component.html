@@ -1,25 +1,25 @@
 <div class="row post no-gutters">
 
-<!-- BASIC TRACK INFORMATION -->
-  <div class="col-md-1" style="margin-right: 10px; border: solid 3px black; height: min-content">
+<!-- TRACK IMAGE (COVER) -->
+  <div class="col-md-1 image-area">
     <img *ngIf="coversToShow.get(trackId); else noCoverFound"
-         [src]="coversToShow.get(trackId)" width="100%" alt="Zdjęcie do utworu {{track.title}}">
+         [src]="coversToShow.get(trackId)" alt="Zdjęcie do utworu {{track.title}}"
+         style="min-height: 80px">
     <ng-template #noCoverFound>
-      <img id="profile-imga" width="100%"
-           src="/assets/img/logo_music.png"
-           alt="Domyślne zdjęcie do utworu {{track.title}}"
-           class="profile-img-card rounded-circle"/>
+      <img src="/assets/img/logo_music.png" alt="Sdjęcie do utworu {{track.title}}" class="profile-img-card rounded-circle"/>
     </ng-template>
-    <app-track-vote-button [track]="track"></app-track-vote-button>
+    <app-track-vote-button [track]="this.track"></app-track-vote-button>
   </div>
+
+  <!-- BASIC TRACK INFORMATION -->
   <div class="col-md-10">
         <span class="subreddit-info">
             <span class="subreddit-text"><a class="posturl" routerLink="">Dodano {{track.createdAt | dateAgo}}</a></span>
             <span *ngIf="track.user!==null">
-              Autor <a class="username" routerLink="/profile/{{track.user.username}}">{{track.user.username}}</a>
+              | Autor <a class="username" routerLink="/profile/{{track.user.username}}">{{track.user.username}}</a>
             </span>
             <span *ngIf="track.user==null">
-              Autor <a class="username" routerLink="/user/oskarro">Oskarro</a>
+              | Autor <a class="username" routerLink="/user/Oskarro">Oskarro</a>
             </span>
         </span>
     <hr />
@@ -29,14 +29,20 @@
     <div *ngIf="track.version === null" class="post-title">
       <a class="postname" href="/tracks/{{track.id}}">{{track.artist}} - {{track.title}}</a>
     </div>
-    <div *ngIf="track.urlSource !== null" class="post-title">
+    <div *ngIf="(track.urlSource !== null && track.urlPlugin !== null); else nullSafeUrl" class="post-title">
+      <div *ngIf="track.urlSource === 'ZIPPYSHARE'" class="post-title iframe_track">
+        <iframe [src]="track.safeUrl" width="1000" height="100" frameborder="0"></iframe>
+      </div>
+      <div *ngIf="track.urlSource === 'KRAKENFILES'" class="post-title iframe_track">
+        <iframe [src]="track.safeUrl" width="1000" height="100" frameborder="0"></iframe>
+      </div>
     </div>
-    <div *ngIf="track.urlSource === 'ZIPPYSHARE'" class="post-title iframe_track">
-      <iframe [src]="track.safeUrl" width="1000" height="100" frameborder="0"></iframe>
-    </div>
-    <div *ngIf="track.urlSource === 'KRAKENFILES'" class="post-title iframe_track">
-      <iframe [src]="track.safeUrl" width="1000" height="100" frameborder="0"></iframe>
-    </div>
+    <ng-template #nullSafeUrl>
+      <div class="post-title">
+        <img src="assets/img/player_error_oskarro.jpg" alt="Track not exist on server">
+      </div>
+    </ng-template>
+
     <div>
       <a *ngIf="isLoggedIn" href="{{track.url}}" role="button" target="_blank">
         <button class="btn-download">Pobierz utwór</button>
@@ -45,13 +51,37 @@
     <hr />
 
     <!-- DETAILS TRACK INFORMATION -->
-    <div *ngIf="track.urlSource === 'KRAKENFILES'" style="color: black">
-      <h3>Informacje o utworze</h3>
-      <div>Gatunek: {{track.genre}}</div>
-      <div>Rozmiar: {{trackDataFromAPI.size}}</div>
-      <div>Jakość: {{trackDataFromAPI.bitrate}}</div>
-      <div>Ilość wyświetleń: {{trackDataFromAPI.views}}</div>
-      <div>Ilość pobrań: {{trackDataFromAPI.downloads}}</div>
+    <div class="col-sm">
+      <table class="info-table table-sm">
+        <tbody *ngIf="track.urlSource === 'KRAKENFILES' && track.urlPlugin !== null; else noTrackDetails">
+        <tr>
+          <th scope="row">Gatunek</th>
+          <td>{{track.genre}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Rozmiar pliku</th>
+          <td>{{trackDataFromAPI.size}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Jakość dźwięku</th>
+          <td>{{trackDataFromAPI.bitrate}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Ilość wyświetleń</th>
+          <td>{{trackDataFromAPI.views}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Ilość pobrań</th>
+          <td>{{trackDataFromAPI.downloads}}</td>
+        </tr>
+        </tbody>
+        <ng-template #noTrackDetails>
+          <tr>
+            <th scope="row">Info</th>
+            <td>Nie można pobrać danych.</td>
+          </tr>
+        </ng-template>
+      </table>
     </div>
     <hr />
     <div>
@@ -79,10 +109,9 @@
                    alt="Place image title" class="rounded-circle"
                    *ngIf="imagesToShow.get(comment.user.username); else noImageFound">
               <ng-template #noImageFound>
-                <img id="profile-imgs" width="80" height="80"
-                     src="/assets/img/user_avatar.png"
+                <img src="/assets/img/user_avatar.png"
                      alt="image to show"
-                     class="profile-img-card rounded-circle"/>
+                     class="image-profile profile-img-card rounded-circle"/>
               </ng-template>
             </a>
             <div class="media-body">

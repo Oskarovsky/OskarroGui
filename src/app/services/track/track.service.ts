@@ -26,8 +26,8 @@ export class TrackService {
     return this.http.get<Track[]>(TRACK_API);
   }
 
-  getTrackById(id: number) {
-    return this.http.get(TRACK_API + '/' + id, httpOptions);
+  getTrackById(id: number): Observable<Track> {
+    return this.http.get<Track>(TRACK_API + '/' + id, httpOptions);
   }
 
   saveTrackToPlaylist(track: Track): Observable<Track> {
