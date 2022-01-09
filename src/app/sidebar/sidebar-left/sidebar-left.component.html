@@ -49,9 +49,9 @@
       <h3 class="sidebar-window-title" >PRZYPADKOWY HIT</h3>
     </div>
     <div *ngIf="randomTrack" class="panel-body text-center" style="color: #d4d4d4; background-color: #181818">
-      <h3>{{randomTrack.title}}</h3>
-      <h4>{{randomTrack.artist}}</h4>
-      <h5>({{randomTrack.version}})</h5>
+      <h2 style="margin: 5px">{{randomTrack.title}}</h2>
+      <h3 style="margin: 5px">{{randomTrack.artist}}</h3>
+      <h4 style="margin: 5px">({{randomTrack.version}})</h4>
       <p style="display: none" id="randomTrack">{{randomTrack.artist}} - {{randomTrack.title}} ({{randomTrack.version}})</p>
       <a [routerLink]="['track', randomTrack.id]">
         <i class="material-icons">play_circle_filled</i>
