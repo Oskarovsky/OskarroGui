@@ -1,19 +1,11 @@
-import {FormControl, FormGroup, AbstractControl, ValidationErrors} from '@angular/forms';
+import {AbstractControl, FormGroup} from '@angular/forms';
 
 export class PasswordValidator {
-
-  // static OldPasswordMustBeCorrect(control: FormControl) {
-  //   const invalid = false;
-  //   if (control.value !== PasswordValidator.oldPW) {
-  //     return { oldPasswordMustBeCorrect: true };
-  //   }
-  //   return null;
-  // }
 
   static newIsNotOld(group: FormGroup): any {
     const newPwd = group.controls['newPwd'];
     if (group.controls['oldPwd'].value === newPwd.value) {
-      newPwd.setErrors({ newIsNotOld: true });
+      newPwd.setErrors({ 'newIsNotOld': true });
     }
     return null;
   }

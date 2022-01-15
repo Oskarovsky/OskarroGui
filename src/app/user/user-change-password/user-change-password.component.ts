@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from '../../services/auth/auth.service';
 import {FormGroup, AbstractControl, Validators, FormBuilder} from '@angular/forms';
 import { PasswordValidator } from './password-validator';
@@ -37,10 +37,10 @@ export class UserChangePasswordComponent implements OnInit {
   public onSubmit() {
     this.passwordForm.email = this.currentUser.email;
     this.authService.changeUserPassword(this.passwordForm).subscribe(
-      data => {
-        this.alertService.success('Hasło zostało zmienione. Sprawdź czy otrzymałeś wiadomość mailową z potwierdzeniem.');
+      () => {
+        this.alertService.success('Hasło zostało zmienione.');
       },
-      err => {
+      () => {
         this.alertService.error('ERROR - Nie udało się zmienić hasła. Spróbuj ponownie.');
       }
     );

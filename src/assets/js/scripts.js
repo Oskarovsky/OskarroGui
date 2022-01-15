@@ -43,6 +43,23 @@ let comparePassword = function () {
   }
 }
 
+// let comparePasswordForChange = function () {
+//   if (document.getElementById('newPwd').value === document.getElementById('confirmPwd').value
+//     && document.getElementById('newPwd').value !== '') {
+//     document.getElementById('message').style.display = "none"
+//     document.getElementById('submit_change_password').disabled = false;
+//   } else {
+//     document.getElementById('message').style.display = "inline"
+//     document.getElementById('message').style.color = 'red';
+//     document.getElementById('message').innerHTML = 'Niepoprawne hasło';
+//     document.getElementById('submit_change_password').disabled = true;
+//   }
+// }
+
+let checkIfNone = function() {
+  return document.getElementById('message').textContent !== '';
+}
+
 let enableLoginButton = function () {
   if (document.getElementById("password_form").value !== ''
     && document.getElementById("username_form").value !== '') {

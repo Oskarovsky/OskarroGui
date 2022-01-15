@@ -42,6 +42,7 @@ import {UserChangePasswordComponent} from './user/user-change-password/user-chan
 import {TracksSetComponent} from './tracks/tracks-by-genre/genre/tracks-set/tracks-set.component';
 import {VideoAllComponent} from './videos/video-all/video-all.component';
 import {ZippyPlayerComponent} from './tracks/zippy-player/zippy-player.component';
+import {RegulationsComponent} from "./info/regulations/regulations.component";
 
 
 const routes: Routes = [
@@ -87,6 +88,7 @@ const routes: Routes = [
   /* INFO */
   { path: 'info/about', component: AboutComponent },
   { path: 'info/contact', component: ContactComponent },
+  { path: 'info/regulations', component: RegulationsComponent },
 
   /* USER */
   { path: 'login', component: LoginComponent },

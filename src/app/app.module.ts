@@ -89,6 +89,7 @@ import {AdminPanelComponent} from "./admin/admin-panel/admin-panel.component";
 import {AlertModule} from "./alert/alert.module";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {ByPassSecurityPipe} from "./pipes/by-pass-security-pipe";
+import { RegulationsComponent } from './info/regulations/regulations.component';
 
 
 @NgModule({
@@ -167,7 +168,8 @@ import {ByPassSecurityPipe} from "./pipes/by-pass-security-pipe";
     UserFilterPipe,
     VideoFilterPipe,
     DateAgoPipe,
-    ByPassSecurityPipe
+    ByPassSecurityPipe,
+    RegulationsComponent
   ],
   imports: [
     AppRoutingModule,
