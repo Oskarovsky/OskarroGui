@@ -46,12 +46,13 @@ import {RegulationsComponent} from "./info/regulations/regulations.component";
 
 
 const routes: Routes = [
-  { path: 'track/:id', component: TrackComponent },
-  { path: 'tracks/add', component: TrackAddComponent },
 
   /* TRACKS */
   { path: 'toplist', component: TopListComponent },
   { path: 'toplist/:genre', component: TopListComponent },
+
+  { path: 'track/:id', component: TrackComponent },
+  { path: 'tracks/add', component: TrackAddComponent },
 
   { path: 'tracks/vixa', component: TracksVixaComponent },
   { path: 'tracks/club', component: TracksClubComponent },

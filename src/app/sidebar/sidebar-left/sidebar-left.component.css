@@ -28,3 +28,9 @@ table, th, td {
   border: 1px solid gray;
   border-collapse: collapse;
 }
+
+.glowing-border {
+  outline: none;
+  box-shadow: 0 0 15px rebeccapurple;
+}
+

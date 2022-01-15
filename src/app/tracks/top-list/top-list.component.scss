@@ -1,13 +1,13 @@
-.title_table {
+.title-table {
   color:white;
-  background-color: rgb(48, 0, 62);
   border: 1px solid #ddd;
-  border-radius: 13px;
 }
 
-.title_table_name {
+.title-table-name {
   text-align: center;
   font-weight: bold;
+  vertical-align: middle;
+  margin: 10px;
 }
 
 #tracks {
@@ -80,10 +80,13 @@ a {
   left: 150px;
   transition: all .5s;
 }
-.highlight {margin-bottom:100px;}
 
 .buttonTable {
   margin-left: 10px;
   color: white;
+}
 
+.glowing-border {
+  outline: none;
+  box-shadow: 0 0 13px #9ecaed;
 }

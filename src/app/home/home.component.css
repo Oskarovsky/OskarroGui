@@ -35,3 +35,8 @@
   align-content: center;
 }
 
+.glowing-border {
+  outline: none;
+  box-shadow: 0 0 10px #9ecaed;
+}
+

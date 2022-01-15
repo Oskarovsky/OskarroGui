@@ -2,10 +2,10 @@
 
   <!-- region USER -->
   <div class="panel panel-default">
-    <div class="panel-heading sidebar-window-background">
+    <div class="panel-heading sidebar-window-background glowing-border">
       <h3 class="sidebar-window-title">TWOJE UTWORY</h3>
     </div>
-    <div *ngIf="isLoggedIn" class="panel-body text-center" style="color: #d4d4d4; background-color: #181818">
+    <div *ngIf="isLoggedIn" class="panel-body text-center glowing-border" style="color: #d4d4d4; background-color: #181818">
       <div>
         <p *ngFor="let userTrack of usersTrack" class="list-group-item" style="background-color: black">
           {{ userTrack.artist }} - {{ userTrack.title }}
@@ -44,11 +44,11 @@
   <!-- endregion -->
 
   <!-- region RANDOM HITS -->
-  <div class="panel panel-default" fxHide.lt-md>
-    <div class="panel-heading sidebar-window-background">
+  <div class="panel panel-default glowing-border" fxHide.lt-md>
+    <div class="panel-heading sidebar-window-background glowing-border">
       <h3 class="sidebar-window-title" >PRZYPADKOWY HIT</h3>
     </div>
-    <div *ngIf="randomTrack" class="panel-body text-center" style="color: #d4d4d4; background-color: #181818">
+    <div *ngIf="randomTrack" class="panel-body text-center glowing-border" style="color: #d4d4d4; background-color: #181818">
       <h2 style="margin: 5px">{{randomTrack.title}}</h2>
       <h3 style="margin: 5px">{{randomTrack.artist}}</h3>
       <h4 style="margin: 5px">({{randomTrack.version}})</h4>
@@ -61,11 +61,11 @@
   <!-- endregion -->
 
   <!-- region TOP5 -->
-  <div class="panel panel-default" fxHide.lt-md>
-    <div class="panel-heading sidebar-window-background">
+  <div class="panel panel-default glowing-border" fxHide.lt-md>
+    <div class="panel-heading sidebar-window-background glowing-border">
       <h3 class="sidebar-window-title">TOP 7</h3>
     </div>
-    <table class="table table-bordered" style="color: #d4d4d4; background-color: #181818">
+    <table class="table table-bordered glowing-border" style="color: #d4d4d4; background-color: #181818">
       <tbody>
       <tr>
         <td style="text-align: center">RETRO</td>
@@ -117,53 +117,55 @@
 
 
   <!-- region THE BEST UPLOADERS -->
-  <div class="panel panel-default" style="background-color: #181818" fxHide.lt-md>
-    <div class="panel-heading sidebar-window-background" style="margin-bottom: 5px">
+  <div class="panel panel-default panel-window glowing-border" style="background-color: #181818" fxHide.lt-md>
+    <div class="panel-heading sidebar-window-background glowing-border">
       <h3 class="sidebar-window-title">NAJLEPSI UPLOADERZY</h3>
     </div>
 
-    <ul class="nav justify-content-center" style="width: 100%">
-      <li class="active"><a data-toggle="tab" href="#week">Tydzień</a></li>
-      <li><a data-toggle="tab" href="#month">Miesiąc</a></li>
-      <li><a data-toggle="tab" href="#total">Total</a></li>
-    </ul>
+    <div class="panel-body text-center glowing-border" style="color: #d4d4d4; background-color: #181818">
+      <ul class="nav justify-content-center" style="width: 100%">
+        <li class="active"><a data-toggle="tab" href="#week">Tydzień</a></li>
+        <li><a data-toggle="tab" href="#month">Miesiąc</a></li>
+        <li><a data-toggle="tab" href="#total">Total</a></li>
+      </ul>
 
-    <div class="tab-content" id="topUploaders">
-      <div id="week" class="tab-pane fade in active">
-        <table style="color: white;">
-          <tr>
-            <th>Użytkownik</th>
-            <th>Punkty</th>
-          </tr>
-          <tr *ngFor="let topUploader of topUploadersWeek" style="color: #d4d4d4; background-color: #181818">
-            <td>{{ topUploader.username }}</td>
-            <td>{{ uploaderWeekMap.get(topUploader.username + 'week') }}</td>
-          </tr>
-        </table>
-      </div>
-      <div id="month" class="tab-pane fade">
-        <table style="color: white;">
-          <tr>
-            <th>Użytkownik</th>
-            <th>Punkty</th>
-          </tr>
-          <tr *ngFor="let topUploader of topUploadersMonth" style="color: #d4d4d4; background-color: #181818">
-            <td>{{ topUploader.username }}</td>
-            <td>{{ uploaderMonthMap.get(topUploader.username + 'month') }}</td>
-          </tr>
-        </table>
-      </div>
-      <div id="total" class="tab-pane fade">
-        <table style="color: white;">
-          <tr>
-            <th>Użytkownik</th>
-            <th>Punkty</th>
-          </tr>
-          <tr *ngFor="let topUploader of topUploadersTotal" style="color: #d4d4d4; background-color: #181818">
-            <td>{{ topUploader.username }}</td>
-            <td>{{ uploaderTotalMap.get(topUploader.username + 'total') }}</td>
-          </tr>
-        </table>
+      <div class="tab-content" id="topUploaders">
+        <div id="week" class="tab-pane fade in active">
+          <table style="color: white;">
+            <tr>
+              <th>Użytkownik</th>
+              <th>Punkty</th>
+            </tr>
+            <tr *ngFor="let topUploader of topUploadersWeek" style="color: #d4d4d4; background-color: #181818">
+              <td>{{ topUploader.username }}</td>
+              <td>{{ uploaderWeekMap.get(topUploader.username + 'week') }}</td>
+            </tr>
+          </table>
+        </div>
+        <div id="month" class="tab-pane fade">
+          <table style="color: white;">
+            <tr>
+              <th>Użytkownik</th>
+              <th>Punkty</th>
+            </tr>
+            <tr *ngFor="let topUploader of topUploadersMonth" style="color: #d4d4d4; background-color: #181818">
+              <td>{{ topUploader.username }}</td>
+              <td>{{ uploaderMonthMap.get(topUploader.username + 'month') }}</td>
+            </tr>
+          </table>
+        </div>
+        <div id="total" class="tab-pane fade">
+          <table style="color: white;">
+            <tr>
+              <th>Użytkownik</th>
+              <th>Punkty</th>
+            </tr>
+            <tr *ngFor="let topUploader of topUploadersTotal" style="color: #d4d4d4; background-color: #181818">
+              <td>{{ topUploader.username }}</td>
+              <td>{{ uploaderTotalMap.get(topUploader.username + 'total') }}</td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>

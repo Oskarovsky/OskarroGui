@@ -37,3 +37,8 @@
 .panel-window {
   background-color: #181818;
 }
+
+.glowing-border {
+  outline: none;
+  box-shadow: 0 0 15px rebeccapurple;
+}
