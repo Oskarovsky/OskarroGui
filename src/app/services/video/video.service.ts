@@ -48,7 +48,7 @@ export class VideoService {
   }
 
   /** GET tracklist from Video */
-  getPlaylistFromVideo(videoId: string): Observable<Playlist> {
+  getPlaylistFromVideo(videoId: number): Observable<Playlist> {
     return this.http.get<Playlist>(VIDEO_API + '/' + videoId + '/playlist');
   }
 

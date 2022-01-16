@@ -55,4 +55,8 @@ export class PlaylistService {
   updatePlaylistViewsNumber(id: number): Observable<any> {
     return this.http.get<number>(PLAYLIST_API + '/' + id + '/views');
   }
+
+  addTrackToPlaylist(track: Track, playlistId: number): Observable<Playlist> {
+    return this.http.post<Playlist>(PLAYLIST_API + '/' + playlistId + '/track', track)
+  }
 }

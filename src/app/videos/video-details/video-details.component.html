@@ -1,9 +1,9 @@
 <div class="example-container" style="margin-top: 20px; background: rgba(0,0,0,0.8)">
 
-  <div class="d-flex align-items-center p-3 my-3 text-white-50 rounded shadow-sm" style="background-color: purple">
+  <div class="d-flex align-items-center p-3 my-3 text-white-50 rounded glowing-border" style="background-color: #660088">
     <img class="mr-3" src="../../../assets/img/logo_oskarro.png" alt="" width="48" height="48">
     <div class="lh-100">
-      <h4 class="mb-0 text-white lh-100">{{video.name}}</h4>
+      <h1 class="mb-0 text-white lh-100">{{video.name}}</h1>
       <small>Oskarro.com</small>
     </div>
   </div>
@@ -21,23 +21,25 @@
     </div>
   </div>
 
-
   <!-- Track list -->
   <table *ngIf="isLoggedIn" class="table">
     <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Artist</th>
-      <th scope="col">Title</th>
-      <th scope="col">Version</th>
+      <th scope="col">Artysta</th>
+      <th scope="col">Tytuł</th>
+      <th scope="col">Wersja</th>
+      <th scope="col">Download</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let track of tracks; index as i">
-      <td scope="row">{{ i + 1 }}</td>
+    <tr *ngFor="let track of tracks">
+      <td scope="row">{{ track.position }}</td>
       <td>{{ track.title }}</td>
       <td>{{ track.artist }}</td>
       <td>{{ track.version }}</td>
+      <td *ngIf="track.url !== null && track.url !== ''; else noUrl"><a href="{{ track.url }}">Pobierz</a></td>
+      <ng-template #noUrl><td>Brak</td></ng-template>
     </tr>
     </tbody>
   </table>

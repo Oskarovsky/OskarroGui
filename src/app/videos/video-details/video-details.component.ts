@@ -40,6 +40,7 @@ export class VideoDetailsComponent implements OnInit {
     }
     this.getVideoById();
     this.getAllTracksFromVideo();
+    this.tracks = this.tracks.sort((a, b) => b.position - a.position);
   }
 
   public getVideoById() {
@@ -54,22 +55,6 @@ export class VideoDetailsComponent implements OnInit {
           error => {
             alert('An error with fetching video has occurred');
           });
-      }
-    });
-  }
-
-  public getPlaylistFormVideo() {
-    this.sub = this.route.params.subscribe(params => {
-      const id = params['id'];
-      if (id) {
-        this.videoService.getPlaylistFromVideo(id).subscribe(
-          response => {
-            this.playlist = response;
-          },
-          error => {
-            alert('An error with fetching playlist for current video');
-          }
-        );
       }
     });
   }

@@ -24,6 +24,7 @@ export class VideoComponent implements OnInit {
   videoCategory: string;
   isLoggedIn = false;
   showAdminBoard = false;
+  category: string
 
   constructor(private videoService: VideoService,
               private tokenStorage: TokenStorageService,
@@ -32,23 +33,15 @@ export class VideoComponent implements OnInit {
               private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      this.category = params['category']
+    });
+
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.showAdminBoard = this.tokenStorage.getUser().roles.includes('ROLE_ADMIN');
     }
     this.getVideosByCategory();
-  }
-
-  public getAllVideo() {
-    this.videoService.getAllVideos().subscribe(
-      response => {
-        this.videos = response;
-        this.secureAllUrl(this.videos);
-      },
-      error => {
-        alert('An error with fetching videos has occurred');
-      }
-    );
   }
 
   getVideosByCategory() {

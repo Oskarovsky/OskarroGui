@@ -30,14 +30,6 @@ export class TrackService {
     return this.http.get<Track>(TRACK_API + '/' + id, httpOptions);
   }
 
-  saveTrackToPlaylist(track: Track): Observable<Track> {
-    return this.http.post<Track>(TRACK_API + '/add', track);
-  }
-
-  saveTrackToVideo(track: Track): Observable<Track> {
-    return this.http.post<Track>(TRACK_API + '/add', track);
-  }
-
   addTrack(track: Track): Observable<Track> {
     return this.http.post<Track>(TRACK_API, track);
   }

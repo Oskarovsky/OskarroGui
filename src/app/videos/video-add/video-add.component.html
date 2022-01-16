@@ -1,10 +1,15 @@
-<div class="example-container">
-  <form name="form" #form="ngForm" (ngSubmit)="createVideo(videoName.value, videoCategory.value, videoUrl.value)">
+<div class="container">
+
+  <form name="form" (ngSubmit)="createVideo(videoName.value, videoCategory.value, videoUrl.value)">
+
+    <!-- NAZWA MIXA -->
     <mat-form-field appearance="fill">
       <mat-label>Nazwa</mat-label>
       <input #videoName matInput [(ngModel)]="modelVideo.name" name="name" />
     </mat-form-field>
     <br>
+
+    <!-- KATEGORIA -->
     <mat-form-field appearance="fill">
       <mat-label>Kategoria</mat-label>
       <mat-select #videoCategory [(ngModel)]="modelVideo.category">
@@ -12,11 +17,15 @@
       </mat-select>
     </mat-form-field>
     <br>
+
+    <!-- LINK YOUTUBE -->
     <mat-form-field appearance="fill">
       <mat-label>URL</mat-label>
-      <input #videoUrl matInput [(ngModel)]="modelVideo.url" name="name" />
+      <input #videoUrl matInput [(ngModel)]="modelVideo.url" name="url" />
     </mat-form-field>
+    <br>
 
+    <!-- SUBMIT BUTTON -->
     <button mat-raised-button
             type="button"
             (click)="createVideo(videoName.value, videoCategory.value, videoUrl.value)"

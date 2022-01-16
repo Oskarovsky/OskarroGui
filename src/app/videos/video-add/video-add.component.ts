@@ -25,6 +25,7 @@ export class VideoAddComponent implements OnInit {
     commentCount: null,
     viewCount: null,
     likeCount: null,
+    playlist: null,
     safeUrl: null
   };
 
@@ -55,6 +56,7 @@ export class VideoAddComponent implements OnInit {
       commentCount: 0,
       viewCount: 0,
       likeCount: 0,
+      playlist: null,
       safeUrl: null,
     };
     this.videoService.addVideo(newVideo).subscribe(

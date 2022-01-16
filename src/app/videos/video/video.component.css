@@ -4,6 +4,7 @@
 
 .search-field {
   margin-right: 15px;
+  margin-left: 15px;
   margin-bottom: 20px;
 }
 
@@ -24,4 +25,16 @@
 
 .button-area {
   margin-top: 20px;
+}
+
+.title-table {
+  color:white;
+  border: 1px solid #ddd;
+}
+
+.title-table-name {
+  text-align: center;
+  font-weight: bold;
+  vertical-align: middle;
+  margin: 10px;
 }

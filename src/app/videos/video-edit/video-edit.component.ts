@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Track} from '../../tracks/track/model/track';
-import {Subscription} from 'rxjs';
-import { Video } from '../video/model/video';
-import {PlaylistService} from '../../services/playlist/playlist.service';
+import {Observable, Subscription} from 'rxjs';
+import {Video} from '../video/model/video';
 import {TrackService} from '../../services/track/track.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {VideoService} from '../../services/video/video.service';
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {TokenStorageService} from "../../services/auth/token-storage.service";
+import {PlaylistService} from "../../services/playlist/playlist.service";
+import {Playlist} from "../../playlists/playlist/model/playlist";
 
 @Component({
   selector: 'app-video-edit',
@@ -18,15 +20,28 @@ export class VideoEditComponent implements OnInit {
   tracks: Track[] = [];
   sub: Subscription;
   video: Video;
+  videoId: string;
+  videoPlaylist: Playlist
 
-  constructor(private videoService: VideoService,
+  constructor(private tokenStorage: TokenStorageService,
+              private videoService: VideoService,
               private trackService: TrackService,
+              private playlistService: PlaylistService,
               private sanitizer: DomSanitizer,
+              private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getVideoById();
-    this.getAllTracksFromVideo();
+    this.sub = this.route.params.subscribe(params => {
+      this.videoId = params['id'];
+    });
+    if (this.tokenStorage.getToken()) {
+      this.getVideoById();
+      this.getPlaylistFromVideo(Number(this.videoId));
+      this.getAllTracksFromVideo();
+    } else {
+      this.redirect();
+    }
   }
 
   public getVideoById() {
@@ -38,68 +53,72 @@ export class VideoEditComponent implements OnInit {
             this.video = response;
             this.secureAllUrl(this.video);
           },
-          error => {
+          () => {
             alert('An error with fetching video has occurred');
           });
       }
     });
   }
 
+  public getPlaylistFromVideo(videoId: number) {
+    this.videoService.getPlaylistFromVideo(videoId).subscribe({
+      next: response => {
+        this.videoPlaylist = response;
+      },
+      error: () => {
+        alert('An error with fetching playlist for video has occurred');
+      }
+    })
+  }
+
   public getAllTracksFromVideo() {
     this.sub = this.route.params.subscribe(params => {
       const id = params['id'];
       if (id) {
-        this.videoService.getAllTracksFromVideo(id).subscribe(
-          response => {
+        this.videoService.getAllTracksFromVideo(id).subscribe({
+          next: response => {
             this.tracks = response;
           },
-          error => {
+          error: () => {
             alert('An error with fetching tracks has occurred');
           }
-        );
+        });
       }
     });
   }
 
   public updateTrack(updatedTrack: Track) {
-    this.trackService.saveTrackToVideo(updatedTrack).subscribe(
-      response => {
+    this.trackService.addTrack(updatedTrack).subscribe({
+      next: () => {
+        // TODO
       },
-      error => {
+      error: () => {
         alert('An error with updating tracks has occurred');
       }
-    );
+    });
   }
 
-  addTrackToVideo(title: string, artist: string, version: string) {
+  addTrackToVideoPlaylist(title: string, artist: string, version: string, url: string, position: string) {
     const newTrack: Track = {
       id: null,
-      title,
-      artist,
-      points: null,
-      genre: '',
-      version,
-      createdAt: '',
-      url: '',
-      urlSource: '',
-      urlPlugin: '',
-      safeUrl: '',
-      position: null,
-      playlist: null,
-      video: this.video,
-      favoriteUsers: null,
-      user: null,
-      cover: null
+      title: title,
+      artist: artist,
+      points: 0,
+      position: +position,
+      version: version,
+      url: url,
+      playlist: this.videoPlaylist,
     };
 
-    this.trackService.saveTrackToVideo(newTrack).subscribe(
-      response => {
+
+    this.playlistService.addTrackToPlaylist(newTrack, this.videoPlaylist.id).subscribe({
+      next: () => {
         this.tracks.push(newTrack);
       },
-      error => {
+      error: () => {
         alert('An error with adding track to video has occurred');
       }
-    );
+    });
   }
 
   deleteTrack(id: number) {
@@ -118,6 +137,10 @@ export class VideoEditComponent implements OnInit {
 
   secureAllUrl(video: Video) {
     video.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${video.url}`);
+  }
+
+  redirect() {
+    this.router.navigate(['/']);
   }
 
 }

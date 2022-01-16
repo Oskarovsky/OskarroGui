@@ -89,7 +89,7 @@ export class PlaylistEditComponent implements OnInit {
           response => {
             this.tracks = response;
           },
-          error => {
+          () => {
             alert('An error with fetching tracks has occurred');
           }
         );
@@ -98,13 +98,14 @@ export class PlaylistEditComponent implements OnInit {
   }
 
   public updateTrack(updatedTrack: Track) {
-    this.trackService.saveTrackToPlaylist(updatedTrack).subscribe(
-      response => {
+    this.trackService.addTrack(updatedTrack).subscribe({
+      next: () => {
+
       },
-      error => {
+      error: () => {
         alert('An error with updating tracks has occurred');
       }
-    );
+    });
   }
 
   updatePlaylist(updatedPlaylist: Playlist) {
@@ -154,13 +155,13 @@ export class PlaylistEditComponent implements OnInit {
       cover: null
     };
 
-    this.trackService.saveTrackToPlaylist(newTrack).subscribe(
-      response => {
+    this.trackService.addTrack(newTrack).subscribe({
+      next: () => {
         this.tracks.push(newTrack);
       },
-      error => {
+      error: () => {
         alert('An error with adding track to playlist has occurred');
       }
-    );
+    });
   }
 }
