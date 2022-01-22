@@ -25,14 +25,15 @@ export class PostDetailsComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       const postId = params['id'];
       if (postId) {
-        this.postService.getPostById(postId).subscribe(
-          response => {
+        this.postService.getPostById(postId).subscribe({
+          next: response => {
             this.post = response;
           },
-          error => {
-            alert('An error with fetching post by id has occurred');
+          error: err => {
+            console.log('An error with fetching article has occurred with id ' + postId, err)
+            alert('An error with fetching post by id has occurred')
           }
-        );
+        })
       }
     });
   }

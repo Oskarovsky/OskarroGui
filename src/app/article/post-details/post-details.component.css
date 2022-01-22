@@ -1,0 +1,23 @@
+.article-container {
+  background-color: rgba(0,0,0,0.8);
+  width: 100%;
+  border-color: gray
+}
+
+.article-title {
+  color: white;
+  margin: 1em;
+  font-size: 2em;
+  text-align: center
+}
+
+.article-content {
+  color: white;
+  margin-left: 2em;
+  margin-right: 2em
+}
+
+.button-item {
+  text-align: left;
+  margin: 2em;
+}
