@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
-import {Playlist} from '../../playlists/playlist/model/playlist';
 import {User} from './user';
 import {TokenStorageService} from "../auth/token-storage.service";
 

@@ -10,6 +10,7 @@ import {HttpClient, HttpEventType, HttpResponse} from "@angular/common/http";
 import {UploadFileService} from "../../services/storage/upload-file.service";
 import {AlertService} from "../../services/alert/alert.service";
 import {UserService} from "../../services/user/user.service";
+import {CommonsService} from "../../services/commons/commons.service";
 
 @Component({
   selector: 'app-add-post',
@@ -60,6 +61,7 @@ export class AddPostComponent implements OnInit {
               private uploadFileService: UploadFileService,
               private commentService: CommentService,
               private alertService: AlertService,
+              private commonsService: CommonsService,
               private tokenStorageService: TokenStorageService,
               private router: Router) { }
 
@@ -86,14 +88,14 @@ export class AddPostComponent implements OnInit {
         height: 350,
       };
     } else {
-      this.redirect();
+      this.commonsService.redirectToHomePage();
     }
   }
 
   onSubmit() {
     this.postService.addPost(this.post).subscribe(
       () => {
-        alert('Data saved successfully');
+        alert('New article saved successfully');
       }
     );
   }
@@ -103,8 +105,9 @@ export class AddPostComponent implements OnInit {
       res => {
         this.posts = res;
       },
-      error => {
+      err => {
         alert('An error with fetching posts has occurred');
+        console.log('An error with fetching posts has occurred', err);
       }
     );
   }
@@ -122,8 +125,9 @@ export class AddPostComponent implements OnInit {
       response => {
         this.imageUploadAction(String(response.id))
       },
-      () => {
+      (err) => {
         alert('An error has occurred while saving the post');
+        console.log('An error has occurred while saving the post', err);
       },
     );
   }
@@ -148,9 +152,5 @@ export class AddPostComponent implements OnInit {
           this.currentFile = undefined;
         });
     }
-  }
-
-  redirect() {
-    this.router.navigate(['/']);
   }
 }
