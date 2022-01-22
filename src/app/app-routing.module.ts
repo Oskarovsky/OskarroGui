@@ -43,6 +43,7 @@ import {TracksSetComponent} from './tracks/tracks-by-genre/genre/tracks-set/trac
 import {VideoAllComponent} from './videos/video-all/video-all.component';
 import {ZippyPlayerComponent} from './tracks/zippy-player/zippy-player.component';
 import {RegulationsComponent} from "./info/regulations/regulations.component";
+import {PostEditComponent} from "./article/post-edit/post-edit.component";
 
 
 const routes: Routes = [
@@ -76,9 +77,12 @@ const routes: Routes = [
   { path: 'playlist/add', component: PlaylistAddComponent },
   { path: 'playlist/:id/edit', component: PlaylistEditComponent },
   { path: 'playlist/:id/details', component: PlaylistDetailsComponent },
+
+  /* ARTICLE */
   { path: 'post/user/:username', component: PostComponent},
   { path: 'post/add', component: AddPostComponent},
   { path: 'post/:id/details', component: PostDetailsComponent},
+  { path: 'post/:id/edit', component: PostEditComponent},
 
   { path: 'video/category/:category', component: VideoComponent },
   { path: 'video/:id/edit', component: VideoEditComponent },

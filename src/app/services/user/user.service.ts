@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {Playlist} from '../../playlists/playlist/model/playlist';
 import {User} from './user';
+import {TokenStorageService} from "../auth/token-storage.service";
 
 /**
  * UserService performs GET HTTP requests to various endpoints via Angular’s HttpClient for fetching user details.
@@ -78,5 +79,15 @@ export class UserService {
         youtubeUrl: userDto.youtubeUrl,
         city: userDto.city
       }, httpOptions);
+  }
+
+  public collectUserData(service: TokenStorageService, model: User) {
+    model.username = service.getUser().username;
+    model.id = service.getUser().id;
+    model.email = service.getUser().email;
+    model.password = service.getUser().password;
+    model.provider = service.getUser().provider;
+    model.providerId = service.getUser().providerId;
+    model.imageUrl = service.getUser().imageUrl;
   }
 }

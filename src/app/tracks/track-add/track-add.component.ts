@@ -9,6 +9,7 @@ import {AlertService} from '../../services/alert/alert.service';
 import {HttpEventType, HttpResponse} from '@angular/common/http';
 import {UploadFileService} from '../../services/storage/upload-file.service';
 import {Cover} from '../track/model/cover';
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'app-track-add',
@@ -66,22 +67,17 @@ export class TrackAddComponent implements OnInit {
 
   urlSources: string[] = ['ZIPPYSHARE', 'KRAKENFILES'];
 
-  constructor(private tokenStorage: TokenStorageService,
+  constructor(private tokenStorageService: TokenStorageService,
               private router: Router,
               private uploadService: UploadFileService,
               private alertService: AlertService,
+              private userService: UserService,
               private trackService: TrackService) { }
 
   ngOnInit() {
-    if (this.tokenStorage.getToken()) {
+    if (this.tokenStorageService.getToken() && this.tokenStorageService.getUser().roles.includes('ROLE_ADMIN')) {
       this.isLoggedIn = true;
-      this.showAdminBoard = this.tokenStorage.getUser().roles.includes('ROLE_ADMIN');
-      this.modelUser.username = this.tokenStorage.getUser().username;
-      this.modelUser.id = this.tokenStorage.getUser().id;
-      this.modelUser.email = this.tokenStorage.getUser().email;
-      this.modelUser.password = this.tokenStorage.getUser().password;
-      this.modelUser.provider = this.tokenStorage.getUser().provider;
-      this.modelUser.imageUrl = this.tokenStorage.getUser().imageUrl;
+      this.userService.collectUserData(this.tokenStorageService, this.modelUser)
     } else {
       this.redirect();
     }

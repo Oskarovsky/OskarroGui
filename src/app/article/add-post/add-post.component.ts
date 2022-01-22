@@ -6,10 +6,10 @@ import {PostService} from '../../services/article/post.service';
 import {CommentService} from '../../services/article/comment.service';
 import {TokenStorageService} from '../../services/auth/token-storage.service';
 import {Router} from '@angular/router';
-import {Track} from '../../tracks/track/model/track';
 import {HttpClient, HttpEventType, HttpResponse} from "@angular/common/http";
 import {UploadFileService} from "../../services/storage/upload-file.service";
 import {AlertService} from "../../services/alert/alert.service";
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'app-add-post',
@@ -31,7 +31,6 @@ export class AddPostComponent implements OnInit {
   isUserLogged = false;
   user: null;
   post = new Post();
-  isAdmin = false;
 
   modelPost: Post = {
     id: null,
@@ -57,6 +56,7 @@ export class AddPostComponent implements OnInit {
 
   constructor(private httpClient: HttpClient,
               private postService: PostService,
+              private userService: UserService,
               private uploadFileService: UploadFileService,
               private commentService: CommentService,
               private alertService: AlertService,
@@ -72,32 +72,22 @@ export class AddPostComponent implements OnInit {
 
   ngOnInit() {
     this.isUserLogged = !!this.tokenStorageService.getToken();
-    if (this.isUserLogged) {
-      this.isAdmin = this.tokenStorageService.getUser().roles.includes('ROLE_ADMIN');
-      this.modelUser.username = this.tokenStorageService.getUser().username;
-      this.modelUser.id = this.tokenStorageService.getUser().id;
-      this.modelUser.email = this.tokenStorageService.getUser().email;
-      this.modelUser.password = this.tokenStorageService.getUser().password;
-      this.modelUser.provider = this.tokenStorageService.getUser().provider;
-      this.modelUser.imageUrl = this.tokenStorageService.getUser().imageUrl;
-
-      if (!this.isAdmin) {
-        this.redirect();
-      }
+    if (this.isUserLogged && this.tokenStorageService.getUser().roles.includes('ROLE_ADMIN')) {
+      this.userService.collectUserData(this.tokenStorageService, this.modelUser)
+      this.getAllPosts();
+      this.ckeConfigForDescription = {
+        allowedContent: false,
+        forcePasteAsPlainText: true,
+        height: 100,
+      };
+      this.ckeConfigForContent = {
+        allowedContent: false,
+        forcePasteAsPlainText: true,
+        height: 350,
+      };
     } else {
       this.redirect();
     }
-    this.getAllPosts();
-    this.ckeConfigForDescription = {
-      allowedContent: false,
-      forcePasteAsPlainText: true,
-      height: 100,
-    };
-    this.ckeConfigForContent = {
-      allowedContent: false,
-      forcePasteAsPlainText: true,
-      height: 350,
-    };
   }
 
   onSubmit() {

@@ -10,6 +10,7 @@ import {TrackComment} from './model/track-comment';
 import {User} from '../../services/user/user';
 import {TokenStorageService} from '../../services/auth/token-storage.service';
 import {UploadFileService} from '../../services/storage/upload-file.service';
+import {UserService} from "../../services/user/user.service";
 
 const krakenFilesJsonDomain = 'https://krakenfiles.com/json/'
 const httpOptions = {
@@ -60,9 +61,10 @@ export class TrackComponent implements OnInit {
   };
 
   constructor(private trackService: TrackService,
-              private tokenStorage: TokenStorageService,
+              private tokenStorageService: TokenStorageService,
               private route: ActivatedRoute,
               private router: Router,
+              private userService: UserService,
               private sanitizer: DomSanitizer,
               private http: HttpClient,
               private uploadFileService: UploadFileService) {
@@ -75,14 +77,9 @@ export class TrackComponent implements OnInit {
   ngOnInit() {
     this.getTrackWithDetails(this.trackId);
     this.getAllTrackComments(this.trackId);
-    if (this.tokenStorage.getToken()) {
+    if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
-      this.modelUser.username = this.tokenStorage.getUser().username;
-      this.modelUser.id = this.tokenStorage.getUser().id;
-      this.modelUser.email = this.tokenStorage.getUser().email;
-      this.modelUser.password = this.tokenStorage.getUser().password;
-      this.modelUser.provider = this.tokenStorage.getUser().provider;
-      this.modelUser.providerId = this.tokenStorage.getUser().providerId;
+      this.userService.collectUserData(this.tokenStorageService, this.modelUser)
     }
     this.getCoverImage(this.trackId);
     this.getUserImage(this.modelUser.username);

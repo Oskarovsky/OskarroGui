@@ -7,6 +7,7 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute, Route} from '@angular/router';
 import {User} from '../../services/user/user';
 import {TokenStorageService} from '../../services/auth/token-storage.service';
+import {UserService} from "../../services/user/user.service";
 
 @Component({
   selector: 'app-playlist-edit',
@@ -36,24 +37,20 @@ export class PlaylistEditComponent implements OnInit {
   genres: string[] = ['CLUB', 'RETRO', 'DANCE', 'HOUSE', 'TECHNO'];
 
   constructor(private playlistService: PlaylistService,
-              private tokenStorage: TokenStorageService,
+              private userService: UserService,
+              private tokenStorageService: TokenStorageService,
               private trackService: TrackService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    if (this.tokenStorage.getToken()) {
+    if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
-      this.modelUser.username = this.tokenStorage.getUser().username;
-      this.modelUser.id = this.tokenStorage.getUser().id;
-      this.modelUser.email = this.tokenStorage.getUser().email;
-      this.modelUser.password = this.tokenStorage.getUser().password;
-      this.modelUser.provider = this.tokenStorage.getUser().provider;
-      this.modelUser.imageUrl = this.tokenStorage.getUser().imageUrl;
+      this.userService.collectUserData(this.tokenStorageService, this.modelUser)
     }
-
     this.getPlaylistById();
     this.getAllTracksFromPlaylist();
   }
+
   getPlaylist() {
     this.sub = this.route.params.subscribe(params => {
       const id = params['id'];
@@ -70,13 +67,15 @@ export class PlaylistEditComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       const id = params['id'];
       if (id) {
-        this.playlistService.getPlaylist(id).subscribe(
-          response => {
+        this.playlistService.getPlaylist(id).subscribe({
+          next: response => {
             this.playlist = response;
           },
-          error => {
+          error: err => {
             alert('An error with fetching playlist has occurred');
-          });
+            console.log('An error with fetching playlist has occurred', err)
+          }
+        })
       }
     });
   }
@@ -85,14 +84,15 @@ export class PlaylistEditComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       const id = params['id'];
       if (id) {
-        this.playlistService.getAllTracksFromPlaylist(id).subscribe(
-          response => {
+        this.playlistService.getAllTracksFromPlaylist(id).subscribe({
+          next: response => {
             this.tracks = response;
           },
-          () => {
-            alert('An error with fetching tracks has occurred');
+          error: err => {
+            console.log('An error with fetching tracks has occurred', err)
+            alert('An error with fetching tracks has occurred')
           }
-        );
+        })
       }
     });
   }
@@ -100,7 +100,7 @@ export class PlaylistEditComponent implements OnInit {
   public updateTrack(updatedTrack: Track) {
     this.trackService.addTrack(updatedTrack).subscribe({
       next: () => {
-
+        console.log('New track has been added to playlist')
       },
       error: () => {
         alert('An error with updating tracks has occurred');
@@ -108,29 +108,19 @@ export class PlaylistEditComponent implements OnInit {
     });
   }
 
-  updatePlaylist(updatedPlaylist: Playlist) {
-    updatedPlaylist.id = this.playlistId;
-    this.playlistService.addPlaylist(updatedPlaylist).subscribe(
-      result => {
-
-      },
-      error => {
-        alert('An error with updating playlists has occurred');
-      }
-    );
-  }
-
   deleteTrack(id: number) {
     if (confirm('Czy na pewno chcesz usunąć ten utwór?')) {
-      this.trackService.deleteTrackFromPlaylist(id).subscribe(
-        response => {
+      this.trackService.deleteTrackFromPlaylist(id).subscribe({
+        next: () => {
           this.tracks.splice(Number(id), 1);
+          console.log('Track has been deleted with id ' + id);
           window.location.reload();
         },
-        error => {
-          alert('An error has occurred while deleting tracks from playlist');
+        error: err => {
+          console.log('An error has occurred while deleting tracks from playlist', err);
+          alert('An error has occurred while deleting tracks from playlist')
         }
-      );
+      })
     }
   }
 

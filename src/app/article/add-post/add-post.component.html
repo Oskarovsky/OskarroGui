@@ -1,38 +1,56 @@
 <div class="example-container">
 
-  <form role="form" accept-charset="UTF-8" (ngSubmit)="onSubmit()" novalidate style="margin: 30px;">
-    <input style="color: white" type="file" accept='image/*' (change)="selectFile($event)">
+  <div class="form-title">Dodaj nowy artykuł</div>
+  <form (ngSubmit)="onSubmit()" class="form-container" role="form" accept-charset="UTF-8" novalidate>
 
-    <div class="form-group">
-      <input autofocus autocomplete="none" type="text" name="Title" placeholder="Enter Title"
-             [(ngModel)]="modelPost.title" class="form-control" required #PostTitle
-             id="PostTitle">
+    <!-- ARTICLE TITLE -->
+    <div class="part-title">Tytuł</div>
+    <input [(ngModel)]="modelPost.title"
+           #PostTitle
+           class="form-control"
+           autofocus autocomplete="none"
+           type="text"
+           name="Article title"
+           placeholder="Enter title"
+           required
+           id="PostTitle">
+
+    <!-- ARTICLE DESCRIPTION -->
+    <div class="part-title">Opis artykułu</div>
+    <ckeditor [config]="ckeConfigForDescription"
+              [(ngModel)]="modelPost.description"
+              #PostDescription
+              name="Article description"
+              debounce="100"
+              required
+              id="PostDescription">
+    </ckeditor>
+
+    <!-- ARTICLE CONTENT -->
+    <div class="part-title">Główna zawartość</div>
+    <ckeditor [(ngModel)]="modelPost.content"
+              [config]="ckeConfigForContent"
+              #PostContent
+              name="Article content"
+              required
+              debounce="500">
+    </ckeditor>
+
+    <!-- ARTICLE IMAGE -->
+    <div class="article-part">
+      <div class="image-title">Dodaj zdjęcie</div>
+      <input class="image-part" type="file" accept='image/*' (change)="selectFile($event)">
     </div>
 
-    <div>
-      <h3>Description</h3>
-      <ckeditor name="Description" [config]="ckeConfigForDescription" debounce="100"
-                [(ngModel)]="modelPost.description" required #PostDescription
-                id="PostDescription" >
-      </ckeditor>
-    </div>
-
-    <div style="margin-top: 20px">
-      <h3>Content</h3>
-      <ckeditor [(ngModel)]="modelPost.content" #PostContent name="PageContent" required
-                [config]="ckeConfigForContent" debounce="500">
-      </ckeditor>
-    </div>
-
+    <!-- BUTTON -->
     <div class="form-group mt-4">
       <div class="row">
         <div class="col-3 col-md-3 mb-3">
           <button mat-raised-button
-                  type="button"
                   (click)="createPost(PostTitle.value, PostDescription.value, PostContent.value)"
-                  color="primary"
                   routerLink="/post/user/{{modelUser.username}}"
-                  style="margin-left: 10px;">Dodaj post
+                  type="button"
+                  color="primary">Dodaj post
           </button>
         </div>
       </div>

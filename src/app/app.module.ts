@@ -57,11 +57,9 @@ import {PlaylistEditComponent} from "./playlists/playlist-edit/playlist-edit.com
 import {PlaylistDetailsComponent} from "./playlists/playlist-details/playlist-details.component";
 import {PlaylistAllComponent} from "./playlists/playlist-all/playlist-all.component";
 import {PlaylistAddComponent} from "./playlists/playlist-add/playlist-add.component";
-import {AuditsComponent} from "./admin/audits/audits.component";
 import {ArticlePartComponent} from "./admin/components/article-part/article-part.component";
 import {UserPartComponent} from "./admin/components/user-part/user-part.component";
 import {UserFilterPipe} from "./pipes/user-filter.pipe";
-import {UserManagementComponent} from "./admin/user-management/user-management.component";
 import {BoardAdminComponent} from "./user/board-admin/board-admin.component";
 import {BoardModeratorComponent} from "./user/board-moderator/board-moderator.component";
 import {BoardUserComponent} from "./user/board-user/board-user.component";
@@ -90,6 +88,7 @@ import {AlertModule} from "./alert/alert.module";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {ByPassSecurityPipe} from "./pipes/by-pass-security-pipe";
 import { RegulationsComponent } from './info/regulations/regulations.component';
+import { PostEditComponent } from './article/post-edit/post-edit.component';
 
 
 @NgModule({
@@ -130,10 +129,8 @@ import { RegulationsComponent } from './info/regulations/regulations.component';
     TracksPartComponent,
     ZippyPlayerComponent,
 
-    AuditsComponent,
     ArticlePartComponent,
     UserPartComponent,
-    UserManagementComponent,
 
     AdminPanelComponent,
     BoardAdminComponent,
@@ -169,7 +166,8 @@ import { RegulationsComponent } from './info/regulations/regulations.component';
     VideoFilterPipe,
     DateAgoPipe,
     ByPassSecurityPipe,
-    RegulationsComponent
+    RegulationsComponent,
+    PostEditComponent
   ],
   imports: [
     AppRoutingModule,
