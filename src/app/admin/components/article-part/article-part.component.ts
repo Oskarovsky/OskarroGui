@@ -29,29 +29,30 @@ export class ArticlePartComponent implements OnInit {
     }
   }
 
-
   public getLastAddedPosts(numberOfPosts: number) {
-    this.postService.getLastAddedPosts(numberOfPosts).subscribe(
-      response => {
+    this.postService.getLastAddedPosts(numberOfPosts).subscribe({
+      next: response => {
         this.posts = response;
       },
-      error => {
+      error: err => {
+        console.log('An error with fetching posts has occurred', err);
         alert('An error with fetching posts has occurred');
       }
-    );
+    });
   }
 
   deletePost(id: number) {
     if (confirm('Czy na pewno chcesz usunąć post?')) {
-      this.postService.deletePost(id).subscribe(
-        response => {
+      this.postService.deletePost(id).subscribe({
+        next: () => {
           this.posts.splice(id, 1);
           window.location.reload();
         },
-        error => {
-          alert('Could not delete post');
+        error: (err) => {
+          console.log('Could not delete article post', err);
+          alert('Could not delete article post');
         }
-      );
+      })
     }
   }
 }

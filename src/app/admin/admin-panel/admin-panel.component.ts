@@ -35,7 +35,6 @@ export class AdminPanelComponent implements OnInit {
 
   ngOnInit() {
     this.isUserLogged = !!this.tokenStorageService.getToken();
-
     if (this.isUserLogged) {
       const user = this.tokenStorageService.getUser();
       this.isAdmin = user.roles.includes('ROLE_ADMIN');
@@ -48,7 +47,8 @@ export class AdminPanelComponent implements OnInit {
   }
 
   redirect() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/'])
+      .then(r => console.log("Permission denied. Redirect to main view.", r));
   }
 
 }

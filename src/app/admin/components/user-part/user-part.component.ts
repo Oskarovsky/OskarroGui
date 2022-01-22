@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PlaylistService} from '../../../services/playlist/playlist.service';
 import {TrackService} from '../../../services/track/track.service';
 import {UserService} from '../../../services/user/user.service';
 import {TokenStorageService} from '../../../services/auth/token-storage.service';
-import {ActivatedRoute} from '@angular/router';
 import {User} from '../../../services/user/user';
 
 
@@ -33,8 +32,9 @@ export class UserPartComponent implements OnInit {
       next: response => {
         this.users = response;
       },
-      error: () => {
+      error: (err) => {
         alert('An error with fetching last added users has occurred');
+        console.log('An error with fetching last added users has occurred', err);
       }
     });
   }

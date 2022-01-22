@@ -1,0 +1,14 @@
+.user-container {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  border: 0.4em purple solid;
+  background: white;
+  color: black;
+}
+
+.search-user-container {
+  background: white;
+  border-top: black 3px solid;
+}
+
