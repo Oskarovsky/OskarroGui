@@ -1,12 +1,12 @@
 <div class="example-container">
-  <div>
-    <mat-card-title>Wszystkie posty dodane przez użytkownika {{username}}</mat-card-title>
-    <!-- Post content -->
-    <div *ngIf="isLoggedIn"
-         class="row"
-         style="color: white; margin-top: 28px; width: 100%; text-align: center; display: inline-block">
-      <table class="table" style="margin: 0 auto">
-        <thead>
+
+  <div *ngIf="isLoggedIn; else notLoggedIn">
+    <div class="title-container">Artykuły dodane przez użytkownika {{username}}</div>
+
+    <!-- Article list content -->
+    <div *ngIf="posts.length !== 0; else emptyArticleList" class="row article-table">
+      <table class="table" style="margin: 0">
+        <thead style="border: white 1px solid">
         <tr>
           <th scope="col" style="text-align: center">#</th>
           <th scope="col" style="text-align: center">Tytuł</th>
@@ -20,31 +20,35 @@
           <td>{{ post.id }}</td>
           <td>{{ post.title }}</td>
           <td>{{ post.user.username }}</td>
-          <td>{{ post.createdAt.substr(0, post.createdAt.indexOf('T')) }}</td>
+          <td>{{ post.createdAt.slice(0, post.createdAt.indexOf('T')) }}</td>
           <td>
-            <i class="material-icons" (click)="deletePost(post.id)" style="float:right;">delete</i>
-            <i class="material-icons" style="float:right; margin-right: 2px;" [routerLink]="['/post', post.id, 'edit']">edit</i>
-            <i class="material-icons" style="float:right; margin-right: 2px;" [routerLink]="['/post', post.id, 'details']">slideshow</i>
+            <i class="material-icons icon-item" [routerLink]="['/post', post.id, 'details']">slideshow</i>
+            <i class="material-icons icon-item" [routerLink]="['/post', post.id, 'edit']">edit</i>
+            <i class="material-icons icon-item" (click)="deletePost(post.id)">delete</i>
           </td>
         </tr>
         </tbody>
       </table>
-
-
-
     </div>
 
-    <div style="text-align: left; margin-top: 10px">
+    <ng-template #emptyArticleList>
+      <div class="empty-list-info">
+        Lista dodanych artykułów jest pusta.
+      </div>
+    </ng-template>
+
+    <div *ngIf=isAdmin class="button-item">
       <button mat-raised-button
               type="button"
               color="primary"
               routerLink="/post/add">Dodaj nowy post
       </button>
     </div>
-
-    <div class="alert alert-warning" role="alert" *ngIf="!isLoggedIn">
-      <a routerLink="/login">Zaloguj się</a>, jeśli chcesz zobaczyć Twoje posty!
-    </div>
-
   </div>
+
+  <ng-template #notLoggedIn>
+    <div class="alert alert-warning" role="alert">
+      <a routerLink="/login">Zaloguj się</a>, aby wyświetlić listę artykułów
+    </div>
+  </ng-template>
 </div>

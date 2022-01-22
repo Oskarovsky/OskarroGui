@@ -4,6 +4,8 @@ import {Subscription} from 'rxjs';
 import {TokenStorageService} from '../../services/auth/token-storage.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PostService} from '../../services/article/post.service';
+import {CommonsService} from "../../services/commons/commons.service";
+
 
 @Component({
   selector: 'app-post',
@@ -20,20 +22,17 @@ export class PostComponent implements OnInit {
 
   constructor(private postService: PostService,
               private router: Router,
+              private commonsService: CommonsService,
               private tokenStorage: TokenStorageService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    if (this.tokenStorage.getToken()) {
+    if (this.tokenStorage.getToken() && this.tokenStorage.getUser().roles.includes('ROLE_ADMIN')) {
+      this.isAdmin = true;
       this.isLoggedIn = true;
-      const user = this.tokenStorage.getUser();
-      this.isAdmin = user.roles.includes('ROLE_ADMIN');
-      if (!this.isAdmin) {
-        this.redirect();
-      }
       this.getAllPostByUsername();
     } else {
-      this.redirect();
+      this.commonsService.redirectToHomePage()
     }
   }
 
@@ -43,34 +42,31 @@ export class PostComponent implements OnInit {
       const username = params['username'];
       this.username = username;
       if (username) {
-        this.postService.getAllPostsByUsername(username).subscribe(
-          response => {
+        this.postService.getAllPostsByUsername(username).subscribe({
+          next: response => {
             this.posts = response;
           },
-          error => {
+          error: err => {
+            console.log('An error with fetching posts has occurred', err);
             alert('An error with fetching posts has occurred');
           }
-        );
+        })
       }
     });
   }
 
   deletePost(id: number) {
     if (confirm('Czy na pewno chcesz usunąć post?')) {
-      this.postService.deletePost(id).subscribe(
-        response => {
+      this.postService.deletePost(id).subscribe({
+        next: () => {
           this.posts.splice(id, 1);
           window.location.reload();
         },
-        error => {
-          alert('Could not delete post');
+        error: err => {
+          console.log('Cannot delete post with id ' + id, err);
+          alert('Cannot delete the post');
         }
-      );
+      })
     }
-  }
-
-  redirect() {
-    this.router.navigate(['/'])
-      .then(r => console.log("Permission denied. Redirect to main view.", r));
   }
 }

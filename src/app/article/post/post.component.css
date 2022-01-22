@@ -1,0 +1,31 @@
+.title-container {
+  font-size: 2em;
+  margin: 1em;
+  text-align: center;
+  color: white;
+}
+
+.article-table {
+  color: white;
+  margin-top: 1em;
+  width: 100%;
+  text-align: center;
+  display: inline-block
+}
+
+.button-item {
+  text-align: left;
+  margin: 2em;
+}
+
+.empty-list-info {
+  text-align: center;
+  margin-top: 3em;
+  size: 1em;
+  color: white;
+}
+
+.icon-item {
+  align-content: center;
+  margin-right: 0.5em;
+}

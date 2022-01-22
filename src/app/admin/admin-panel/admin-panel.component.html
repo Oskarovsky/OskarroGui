@@ -1,10 +1,10 @@
 <div class="example-container main-container">
 
   <div style="margin: 5px">
-    <h1 class="admin-title">PANEL ADMINA</h1>
+    <div class="admin-title">PANEL ADMINA</div>
 
     <!-- PANEL ADMIN content -->
-    <div class="row">
+    <div *ngIf="isUserLogged; else notLoggedIn" class="row">
       <div class="col-8">
         <app-article-part></app-article-part>
       </div>
@@ -14,10 +14,11 @@
       </div>
     </div>
 
-
-    <div class="alert alert-warning" role="alert" *ngIf="!isUserLogged">
-      <a routerLink="/login">Zaloguj się</a>, aby uzyskać dostęp do panelu admina
-    </div>
+    <ng-template #notLoggedIn>
+      <div class="alert alert-warning" role="alert">
+        <a routerLink="/login">Zaloguj się</a>, aby uzyskać dostęp do panelu admina
+      </div>
+    </ng-template>
 
   </div>
 </div>
