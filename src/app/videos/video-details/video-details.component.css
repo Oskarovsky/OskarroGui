@@ -1,3 +1,26 @@
+.video-details-container {
+  margin-top: 20px;
+  background: rgba(0,0,0,0.8);
+}
+
+.glowing-border {
+  background-color: #660088;
+  outline: none;
+  box-shadow: 0 0 7px #bc8aef;
+}
+
+.video-area {
+  text-align: center;
+}
+
+.no-trackList {
+  text-align: center;
+  margin: 0.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 table {
   font-family: arial, sans-serif;
   color: white;
@@ -19,7 +42,3 @@ th {
   background-color: #181818;
 }
 
-.glowing-border {
-  outline: none;
-  box-shadow: 0 0 7px #bc8aef;
-}

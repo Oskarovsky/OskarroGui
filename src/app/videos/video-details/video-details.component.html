@@ -1,25 +1,17 @@
-<div class="example-container" style="margin-top: 20px; background: rgba(0,0,0,0.8)">
+<div class="example-container video-details-container">
 
-  <div class="d-flex align-items-center p-3 my-3 text-white-50 rounded glowing-border" style="background-color: #660088">
-    <img class="mr-3" src="../../../assets/img/logo_oskarro.png" alt="" width="48" height="48">
+  <div class="d-flex align-items-center p-3 my-3 text-white-50 rounded glowing-border">
+    <img class="mr-3" src="assets/img/logo_oskarro.png" alt="" width="48px" height="48px">
     <div class="lh-100">
       <h1 class="mb-0 text-white lh-100">{{video.name}}</h1>
       <small>Oskarro.com</small>
     </div>
   </div>
 
-  <div style="text-align:center">
-    <iframe width="640" height="360" [src]=video.safeUrl></iframe>
+  <div class="video-area">
+    <iframe [src]=video.safeUrl width="640" height="360"></iframe>
   </div>
   <br/>
-
-  <div class="col-md-9">
-    <div class="row">
-      <div class="col-md-12">
-        <p *ngIf="this.tracks.length === 0">Tracklist nie została jeszcze złożona !</p>
-      </div>
-    </div>
-  </div>
 
   <!-- Track list -->
   <table *ngIf="isLoggedIn" class="table">
@@ -32,7 +24,7 @@
       <th scope="col">Download</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="this.tracks.length !== 0; else emptyTrackList">
     <tr *ngFor="let track of tracks">
       <td scope="row">{{ track.position }}</td>
       <td>{{ track.title }}</td>
@@ -42,8 +34,21 @@
       <ng-template #noUrl><td>Brak</td></ng-template>
     </tr>
     </tbody>
+
+    <ng-template #emptyTrackList>
+      <tbody>
+      <tr>
+        <td colspan="5">
+          <p class="no-trackList">Tracklista nie została jeszcze złożona !</p>
+        </td>
+      </tr>
+      </tbody>
+    </ng-template>
+
   </table>
 
-  <button *ngIf="isLoggedIn && showAdminBoard" type="button" class="btn btn-dark" routerLink="../edit">Edytuj</button>
-
+  <button *ngIf="isLoggedIn && showAdminBoard"
+          [routerLink]="['/video', video.id, 'edit']"
+          type="button" class="btn btn-dark">Edytuj
+  </button>
 </div>

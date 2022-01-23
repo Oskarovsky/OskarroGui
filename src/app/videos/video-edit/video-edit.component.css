@@ -1,0 +1,17 @@
+.video-edit-title {
+  font-size: 2em;
+  margin: 1em;
+  align-content: center;
+  text-align: center;
+  color: white;
+}
+
+.no-trackList {
+  text-align: center;
+  color: white
+}
+
+.new-track-panel {
+  margin-top: 3em;
+  text-align: center;
+}

@@ -1,15 +1,9 @@
 <div class="example-container">
 
-  <h1 class="card-header" style="text-align: center; color: white">
+  <!-- TITLE -->
+  <div class="video-edit-title">
     Tracklista składanki: {{video.name}}
-  </h1>
-
-
-  <ng-template #emptyList>
-    <div>
-      <h3 style="color: white">Nie ma żadnych utworów w tej składance</h3>
-    </div>
-  </ng-template>
+  </div>
 
   <!-- Track list -->
   <table *ngIf="this.tracks.length !== 0; else emptyList" class="table" style="color: white">
@@ -66,9 +60,15 @@
     </tbody>
   </table>
 
+  <ng-template #emptyList>
+    <div class="no-trackList">
+      <div>Nie ma żadnych utworów w tej składance</div>
+    </div>
+  </ng-template>
+
   <!-- ADDING TRACK TO PLAYLIST PANEL -->
-  <div style="margin-top: 100px; text-align: center">
-    <h3 style="color: white">Dodaj nowy utwór do tracklisty</h3>
+  <div class="new-track-panel">
+    <div style="color: white">Dodaj nowy utwór do tracklisty</div>
 
     <div style="margin-bottom: 20px">
       <div style="color: white; margin: 5px">Artysta</div>

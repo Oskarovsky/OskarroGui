@@ -1,11 +1,10 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {VideoService} from '../../services/video/video.service';
 import {Video} from './model/video';
 import {Track} from '../../tracks/track/model/track';
-import { DomSanitizer } from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
-import {NavigationComponent} from '../../navigation/navigation.component';
 import {PlaylistService} from '../../services/playlist/playlist.service';
 import {TokenStorageService} from '../../services/auth/token-storage.service';
 
@@ -49,17 +48,18 @@ export class VideoComponent implements OnInit {
       const category = params['category'];
       this.videoCategory = category;
       if (category) {
-        this.videoService.getVideosByCategory(category).subscribe(
-          response => {
+        this.videoService.getVideosByCategory(category).subscribe({
+          next: response => {
             this.videos = response;
             this.secureAllUrl(this.videos);
           },
-          error => {
-            alert('An error with fetching videos has occurred');
+          error: err => {
+            alert('An error with fetching videos has occurred')
+            console.log('An error with fetching videos has occurred', err)
           }
-        );
+        })
       }
-    });
+    })
   }
 
 
