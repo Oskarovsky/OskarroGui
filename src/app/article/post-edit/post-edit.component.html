@@ -1,1 +1,29 @@
-<p>To trzeba zaimplementować!!</p>
+<p>To trzeba zaimplementowac!! [TODO]</p>
+
+<script type="text/javascript">
+
+  function getNumber(bEven) {
+    return new Promise(function (fulfill, reject) {
+      window.setTimeout(
+        function () {
+          var i = Math.round((Math.random() * 100), 0)
+          if ((i%2!==0 && bEven) || (i%2===0 && !bEven)) {
+            reject(i)
+          }
+          else {
+            fulfill(i)
+          }
+        }, 2000)
+    });
+  }
+
+  var res = getNumber(true)
+  res.then(
+    function (i) {console.log("Promise fulfilled, i = ", i)},
+
+  ).catch(
+    function (i) {console.log("Promise rejected, i = ", i)}
+  )
+  console.log("Promise made...")
+
+</script>

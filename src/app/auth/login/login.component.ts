@@ -40,38 +40,37 @@ export class LoginComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
-    }
-    else if(token){
+    } else if (token) {
       this.tokenStorage.saveToken(token);
-      this.userService.getCurrentUser().subscribe(
-        data => {
-          this.login(data);
+      this.userService.getCurrentUser().subscribe({
+        next: response => {
+          this.login(response)
         },
-        err => {
+        error: err => {
           this.errorMessage = err.error.message;
           this.isLoginFailed = true;
         }
-      );
-    }
-    else if(error){
+      })
+    } else if (error) {
       this.errorMessage = error;
       this.isLoginFailed = true;
     }
   }
 
   onSubmit() {
-    this.authService.login(this.form).subscribe(
-      data => {
-        this.tokenStorage.saveToken(data.accessToken);
-        this.tokenStorage.saveUser(data);
+    this.authService.login(this.form).subscribe({
+      next: response => {
+        this.tokenStorage.saveToken(response.accessToken);
+        this.tokenStorage.saveUser(response);
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
         this.reloadPage();
       },
-      error => {
+      error: err => {
         this.alertService.error('Wystąpił błąd w trakcie logowania. Spróbuj ponownie!');
+        console.log("Error has occurred during login process", err)
       }
-    );
+    })
   }
 
   login(user:User): void {

@@ -1,3 +1,26 @@
+.login-container {
+  background: rgba(0,0,0,0.8);
+}
+
+.login-title {
+  text-align: center;
+  color: white;
+  font-size: 2em;
+  margin: 1em;
+}
+
+.login-content {
+  max-width: 100%;
+  min-width: 50%
+}
+
+.login-alert {
+  position: relative;
+  text-align: center;
+  font-size: 15px;
+}
+
+
 .divider-text {
   position: relative;
   text-align: center;
