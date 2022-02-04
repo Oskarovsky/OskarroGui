@@ -1,6 +1,6 @@
-<div class="row justify-content-md-center" style="background-color: rgba(27,27,27,0.9);">
+<div class="row justify-content-md-center main-container">
   <div class="card-body col-8">
-    <h3 style="size: 3.0rem; color: white">Dodawanie nowego utworu</h3>
+    <div class="title-container">Dodawanie nowego utworu</div>
     <form #userForm="ngForm">
       <div class="form-group">
         <label for="title" style="color: white">Tytuł</label>
@@ -15,7 +15,9 @@
 
       <div class="form-group">
         <label for="artist" style="color: white">Artysta</label>
-        <input #trackArtist matInput type="text" [(ngModel)]="modelTrack.artist"
+        <input #trackArtist [(ngModel)]="modelTrack.artist"
+               matInput
+               type="text"
                class="form-control"
                style="background-color: #e5e1e1"
                id="artist"
@@ -26,7 +28,9 @@
 
       <div class="form-group">
         <label for="version" style="color: white">Wersja</label>
-        <input #trackVersion matInput type="text" [(ngModel)]="modelTrack.version"
+        <input #trackVersion [(ngModel)]="modelTrack.version"
+               matInput
+               type="text"
                class="form-control"
                style="background-color: #e5e1e1"
                id="version"
@@ -38,7 +42,8 @@
         <mat-form-field style="color: white">
           <label for="genres" style="color: white">Gatunek</label>
           <mat-select #trackGenre [(ngModel)]="modelTrack.genre"
-                      style="color: black" id="genres"
+                      style="color: black"
+                      id="genres"
                       name="genre"
                       required>
             <mat-option *ngFor="let genre of genres" [value]="genre">
@@ -50,7 +55,9 @@
 
       <div class="form-group">
         <label for="version" style="color: white">URL</label>
-        <input #trackUrl matInput type="text" [(ngModel)]="modelTrack.url"
+        <input #trackUrl [(ngModel)]="modelTrack.url"
+               matInput
+               type="text"
                class="form-control"
                style="background-color: #e5e1e1"
                id="url"
@@ -63,6 +70,7 @@
         <mat-form-field style="color: white">
           <label for="genres" style="color: white">Żródło URL</label>
           <mat-select #trackUrlSource [(ngModel)]="modelTrack.urlSource"
+                      type="url"
                       style="color: black"
                       id="urlSource"
                       name="urlSource"

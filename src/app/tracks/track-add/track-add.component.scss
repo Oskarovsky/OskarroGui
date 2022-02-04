@@ -6,6 +6,17 @@
 //  background-color: white;
 //}
 
+.main-container {
+  background-color: rgba(27,27,27,0.9);
+}
+
+.title-container {
+  font-size: 2em;
+  color: white;
+  margin-top: 0.5em;
+  margin-bottom: 0.8em;
+}
+
 ::ng-deep .mat-select{
   background-color: #e5e1e1;
   font-size: 20px;
