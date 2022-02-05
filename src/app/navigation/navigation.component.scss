@@ -10,26 +10,25 @@ $large-desktop: 1280px;
 $x-large-desktop: 1440px;
 $xx-large-desktop: 1920px;
 
-// generate min-width breakpoint
-@mixin breakpoint($point) {
-  @media (min-width: $point) { @content ; }
+.main-header {
+  border-bottom:3px solid purple;
 }
-// generate max-width breakpoint (use sparingly)
-@mixin breakpoint-max($point) {
-  @media (max-width: $point) { @content ; }
+
+.main-logo {
+  margin-right: 20px;
+  height: 40px;
+  width: 40px
 }
-// generate min-height breakpoint
-@mixin height-breakpoint($point) {
-  @media (min-height: $point) { @content ; }
-}
-// generate max-height breakpoint (use sparingly)
-@mixin height-breakpoint-max($point) {
-  @media (min-height: $point) { @content ; }
+
+.main-menu-btn {
+  color: white;
+  font-size: 1.4em;
 }
 
 .mat-sidenav {
   width: 360px;
 }
+
 .mat-sidenav-container {
   background-color: black !important;
   height: 100vh;
@@ -39,6 +38,7 @@ $xx-large-desktop: 1920px;
     flex-direction: column;
   }
 }
+
 .sidenav-toolbar {
   height: 64px;
   display: flex;
@@ -52,20 +52,6 @@ $xx-large-desktop: 1920px;
   padding-top: 0;
 }
 
-@include breakpoint-max(600px) {
-  .fixed-topnav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100% !important;
-  }
-
-  .mat-drawer-container,
-  .mat-drawer {
-    padding-top: 56px;
-  }
-}
 .menu-list-item.mat-list-item {
   .mat-list-item-content {
     flex: 1 1 100%;
@@ -75,10 +61,6 @@ $xx-large-desktop: 1920px;
   font-size: 8pt;
   padding: 8px;
   align-self: flex-end;
-}
-
-.customer-content {
-
 }
 
 #navigation-menu {

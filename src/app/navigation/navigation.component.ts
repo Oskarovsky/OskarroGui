@@ -156,9 +156,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
               public navigationService: NavigationService,
               private tokenStorageService: TokenStorageService) {
     this.isMobileResolution = window.innerWidth < 768;
-    // if (this.depth === undefined) {
-      this.depth = 0;
-    // }
+    this.depth = 0;
   }
 
   title = 'Oskarro.com';
@@ -175,17 +173,12 @@ export class NavigationComponent implements OnInit, AfterViewInit {
         this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
         this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
       }
-
     }
   }
 
   logout() {
     this.tokenStorageService.signOut();
     window.location.reload();
-  }
-
-  public onToggleSidenav = () => {
-    this.sidenavToggle.emit();
   }
 
   public getIsMobileResolution(): boolean {
