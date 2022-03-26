@@ -100,15 +100,15 @@
 
   <mat-sidenav-content *ngIf="getIsMobileResolution()" fxFlexFill>
     <div class="container" style="background-color: black">
-      <div fxLayout="column" fxLayoutAlign="space-evenly center" fxFlexFill>
-        <div style="width: auto">
+      <div fxLayout="column" fxFlexFill>
+        <div>
           <app-alert></app-alert>
           <router-outlet></router-outlet>
         </div>
-        <div style="margin-left: 10px">
+        <div>
           <app-sidebar-left></app-sidebar-left>
         </div>
-        <div style="margin-right: 10px">
+        <div>
           <app-sidebar-right></app-sidebar-right>
         </div>
       </div>

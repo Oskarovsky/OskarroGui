@@ -6,6 +6,7 @@ import {PostService} from '../services/article/post.service';
 import {Post} from '../article/model/post';
 import {UploadFileService} from "../services/storage/upload-file.service";
 import {DomSanitizer, SafeResourceUrl, SafeHtml} from "@angular/platform-browser";
+import {NavigationComponent} from "../navigation/navigation.component";
 
 @Component({
   selector: 'app-home',
@@ -31,6 +32,7 @@ export class HomeComponent implements OnInit {
               private postService: PostService,
               private sanitizer: DomSanitizer,
               public fileService: UploadFileService,
+              public navigationComponent: NavigationComponent,
               private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {

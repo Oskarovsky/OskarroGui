@@ -16,9 +16,14 @@
   color: white;
 }
 
-.card-title {
-  text-align: center;
-  color: white
+.mobile-card {
+  background-color: #afafaf;
+  width: 100%;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #333;
+  color: white;
+  background-color: rgba(27,27,27,0.8);
 }
 
 .card-description {
@@ -36,8 +41,29 @@
   align-content: center;
 }
 
+.card-date {
+  margin-top: 1em;
+  align-content: center;
+}
+
 .glowing-border {
   outline: none;
   box-shadow: 0 0 10px #9ecaed;
+}
+
+.header-mobile {
+  font-size: 1em;
+}
+
+.card-header {
+  font-size: 1.5em;
+  text-align: center;
+  color: white
+}
+
+.mobile-card-header {
+  font-size: 1.5em;
+  text-align: center;
+  color: white
 }
 
