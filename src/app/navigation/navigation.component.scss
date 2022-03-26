@@ -29,6 +29,10 @@ $xx-large-desktop: 1920px;
   width: 360px;
 }
 
+.mat-divider {
+  border-top-color: rgba(143, 38, 185, 0.47);
+}
+
 .mat-sidenav-container {
   background-color: black !important;
   height: 100vh;

@@ -3,6 +3,7 @@ import {TokenStorageService} from '../../services/auth/token-storage.service';
 import {VideoService} from '../../services/video/video.service';
 import {AlertService} from '../../services/alert/alert.service';
 import {Video} from "../../videos/video/model/video";
+import {NavigationComponent} from "../../navigation/navigation.component";
 
 @Component({
   selector: 'app-sidebar-right',
@@ -17,6 +18,7 @@ export class SidebarRightComponent implements OnInit {
   videoList: Video[];
 
   constructor(private tokenStorageService: TokenStorageService,
+              public navigationComponent: NavigationComponent,
               private videoService: VideoService,
               private alertService: AlertService) { }
 

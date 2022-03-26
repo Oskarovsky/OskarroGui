@@ -31,7 +31,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   showModeratorBoard = false;
   username: string | undefined;
 
-  private isMobileResolution: boolean;
+  private readonly isMobileResolution: boolean;
   version = VERSION;
 
   @Output() public sidenavToggle = new EventEmitter();

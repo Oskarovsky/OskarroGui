@@ -8,18 +8,18 @@
   <span class="example-spacer"></span>
   <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">headset</mat-icon>
 
-  <button mat-button routerLink="/admin/panel" *ngIf="showAdminBoard">Admin</button>
-  <button mat-button routerLink="/register" *ngIf="!isLoggedIn">Zarejestruj się</button>
-  <button mat-button routerLink="/login" *ngIf="!isLoggedIn">Zaloguj się</button>
+  <button mat-button routerLink="/admin/panel" *ngIf="showAdminBoard && !getIsMobileResolution()">Admin</button>
+  <button mat-button routerLink="/register" *ngIf="!isLoggedIn && !getIsMobileResolution()">Zarejestruj się</button>
+  <button mat-button routerLink="/login" *ngIf="!isLoggedIn && !getIsMobileResolution()">Zaloguj się</button>
   <button mat-button routerLink="/profile" *ngIf="isLoggedIn">{{ username }}</button>
-  <button mat-button (click)="logout()" *ngIf="isLoggedIn">Wyloguj się</button>
+  <button mat-button (click)="logout()" *ngIf="isLoggedIn && !getIsMobileResolution()">Wyloguj się</button>
 
 </mat-toolbar>
 <!-- END -->
 
 
 <!-- NAVIGATION PANEL PANEL -->
-<div class="row" id="navigation-menu">
+<div *ngIf="!getIsMobileResolution()" class="row" id="navigation-menu">
   <button mat-button routerLink="/" class="main-menu-btn">Strona główna</button>
 
   <button mat-button [matMenuTriggerFor]="tracksMenu" class="main-menu-btn">Utwory</button>
@@ -59,18 +59,19 @@
 <mat-sidenav-container fxFlexFill>
   <mat-sidenav #appDrawer mode="over" opened="false">
     <mat-nav-list>
-      <a (click)="navigationService.closeNav()" mat-list-item>Close</a>
-      <a mat-list-item *ngIf="!isLoggedIn" routerLink="/login">
+      <a (click)="navigationService.closeNav()" style="font-size: 1em; color:#524c4c" mat-list-item>Ukryj menu</a>
+      <a (click)="navigationService.closeNav()" mat-list-item *ngIf="!isLoggedIn" routerLink="/login">
         <mat-icon class="routeIcon" style="margin-right: 15px;">slideshow</mat-icon>Zaloguj się
       </a>
-      <a mat-list-item class="menu-list-item" *ngIf="!isLoggedIn" routerLink="/signup">
+      <a (click)="navigationService.closeNav()" mat-list-item class="menu-list-item" *ngIf="!isLoggedIn" routerLink="/register">
         <mat-icon class="routeIcon" style="margin-right: 15px;">slideshow</mat-icon>Zarejestruj się
       </a>
-      <a mat-list-item class="menu-list-item" *ngIf="isLoggedIn" routerLink="/profile">
+      <a (click)="navigationService.closeNav()" mat-list-item class="menu-list-item" *ngIf="isLoggedIn" routerLink="/profile">
         <mat-icon class="routeIcon" style="margin-right: 15px;">slideshow</mat-icon>Panel użytkownika
       </a>
+      <mat-divider></mat-divider>
       <app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-menu-list-item>
-      <a mat-list-item class="menu-list-item" *ngIf="isLoggedIn" (click)="logout()">
+      <a *ngIf="isLoggedIn" (click)="logout()" (click)="navigationService.closeNav()" mat-list-item class="menu-list-item">
         <mat-icon class="routeIcon" style="margin-right: 15px;">slideshow</mat-icon>Wyloguj się
       </a>
     </mat-nav-list>
@@ -100,12 +101,12 @@
   <mat-sidenav-content *ngIf="getIsMobileResolution()" fxFlexFill>
     <div class="container" style="background-color: black">
       <div fxLayout="column" fxLayoutAlign="space-evenly center" fxFlexFill>
-        <div style="margin-left: 10px">
-          <app-sidebar-left></app-sidebar-left>
-        </div>
-        <div style="width: 100%">
+        <div style="width: auto">
           <app-alert></app-alert>
           <router-outlet></router-outlet>
+        </div>
+        <div style="margin-left: 10px">
+          <app-sidebar-left></app-sidebar-left>
         </div>
         <div style="margin-right: 10px">
           <app-sidebar-right></app-sidebar-right>

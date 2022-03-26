@@ -17,7 +17,7 @@
   <!-- endregion -->
 
   <!-- region OSKARRO -->
-  <div class="panel panel-default panel-window glowing-border">
+  <div *ngIf="!navigationComponent.getIsMobileResolution()" class="panel panel-default panel-window glowing-border">
     <div class="panel-heading sidebar-window-background glowing-border">
       <h3 class="sidebar-window-title">DEEJAY OSKARRO</h3>
     </div>
@@ -42,7 +42,7 @@
   <!-- endregion -->
 
   <!-- region FEATURED -->
-  <div class="panel panel-default panel-window glowing-border">
+  <div *ngIf="!navigationComponent.getIsMobileResolution()" class="panel panel-default panel-window glowing-border">
     <div class="panel-heading sidebar-window-background glowing-border">
       <h3 class="sidebar-window-title">POLECANE</h3>
     </div>
