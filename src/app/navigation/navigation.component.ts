@@ -152,7 +152,8 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     }
   ];
 
-  constructor(private http: HttpClient, public router: Router,
+  constructor(private http: HttpClient,
+              public router: Router,
               public navigationService: NavigationService,
               private tokenStorageService: TokenStorageService) {
     this.isMobileResolution = window.innerWidth < 768;

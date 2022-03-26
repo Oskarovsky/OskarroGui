@@ -8,6 +8,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {AlertService} from '../services/alert/alert.service';
 import {first} from 'rxjs/operators';
 import {UserService} from '../services/user/user.service';
+import {NavigationComponent} from "../navigation/navigation.component";
 
 @Component({
   selector: 'app-profile',
@@ -27,6 +28,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private tokenStorage: TokenStorageService,
               private http: HttpClient,
+              public navigationComponent: NavigationComponent,
               private userService: UserService,
               private alertService: AlertService,
               private uploadService: UploadFileService,

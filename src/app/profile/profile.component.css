@@ -1,15 +1,42 @@
-body{
+body {
   padding-top: 68px;
   padding-bottom: 50px;
 }
+
+.profile-container {
+  background-color: rgba(27,27,27,0.8);
+}
+
 .image-container {
   position: relative;
+}
+
+.header-container-mobile {
+  margin-bottom: 1em;
+}
+
+.image-container-mobile {
+  width: 50%;
+  float: left;
+}
+
+.buttons-container-mobile {
+  width: 50%;
+  float:right;
 }
 
 .image-profile {
   object-fit:contain;
   width:150px;
   height:150px;
+  color: white;
+  border: solid 1px #CCC
+}
+
+.image-profile-mobile {
+  object-fit:contain;
+  width: 10em;
+  height: 10em;
   color: white;
   border: solid 1px #CCC
 }
@@ -61,15 +88,41 @@ input {
   width: 116px;
 }
 
-#username {
+.username-text {
   font-size: 2.5rem;
   font-weight: bold;
   color: white;
+  text-align: center;
 }
 
-#buttonChangeImage,
-#buttonChangePassword,
-#buttonEditProfile {
-  margin: 2px;
+.header-button-mobile {
+  margin: 0.3em;
+  background-color: white
 }
 
+.information-nav {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.list-element {
+  font-size: 1em;
+  color: white
+}
+
+.text-key {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.text-value {
+  font-size: 1em;
+}
+
+.mat-divider{
+  border-top-width: 2px;
+  border-top-style: dashed;
+  border-top-color: rgb(102, 0, 136);
+  margin-top: 1em;
+}
