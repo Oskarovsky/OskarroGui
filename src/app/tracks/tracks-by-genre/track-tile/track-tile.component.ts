@@ -2,6 +2,7 @@ import {AfterViewChecked, Component, ElementRef, Input, OnChanges, OnInit, Secur
 import {Track} from '../../track/model/track';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {UploadFileService} from '../../../services/storage/upload-file.service';
+import {NavigationComponent} from "../../../navigation/navigation.component";
 
 @Component({
   selector: 'app-track-tile',
@@ -23,6 +24,7 @@ export class TrackTileComponent implements AfterViewChecked {
   idList: Array<number> = new Array<number>();
 
   constructor(public sanitizer: DomSanitizer,
+              public navigationComponent: NavigationComponent,
               public fileService: UploadFileService) {
   }
 

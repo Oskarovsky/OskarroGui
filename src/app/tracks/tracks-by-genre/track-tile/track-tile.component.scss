@@ -51,6 +51,12 @@
   height: min-content;
 }
 
+.image-area-mobile {
+  border: solid 3px black;
+  height: min-content;
+  width: 100%;
+  max-width: 5em;
+}
 
 .row.no-gutters {
   margin-right: 0;
