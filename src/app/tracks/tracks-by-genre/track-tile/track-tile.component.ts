@@ -44,7 +44,12 @@ export class TrackTileComponent implements AfterViewChecked {
       this.divShowMapa.set(t.id, false);
     });
     this.track = this.tracks.find(x => x.id === trackId);
-    this.mapa.set(this.track.id, this.track.safeUrl);
+    if (this.navigationComponent.getIsMobileResolution()) {
+      let urlMobile: string = this.sanitizer.sanitize(SecurityContext.RESOURCE_URL, this.track.safeUrl);
+      this.mapa.set(this.track.id, urlMobile);
+    } else {
+      this.mapa.set(this.track.id, this.track.safeUrl);
+    }
   }
 
   getCoverImage(trackId: number) {

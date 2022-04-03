@@ -6,6 +6,7 @@ import {VotePayload} from './model/vote-payload';
 import {throwError} from 'rxjs';
 import {VoteService} from '../../services/vote/vote.service';
 import { VoteType } from './model/vote-type';
+import {NavigationComponent} from "../../navigation/navigation.component";
 
 @Component({
   selector: 'app-track-vote-button',
@@ -21,6 +22,7 @@ export class TrackVoteButtonComponent implements OnInit {
 
   constructor(private tokenStorage: TokenStorageService,
               private trackService: TrackService,
+              public navigationComponent: NavigationComponent,
               private voteService: VoteService) {
     this.votePayload = {
       voteType: undefined,
