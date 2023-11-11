@@ -33,9 +33,6 @@
       <div *ngIf="track.urlSource !== null" class="post-title">
       </div>
       <div *ngIf="mapa.get(track.id) != null">
-        <div *ngIf="track.urlSource === 'ZIPPYSHARE'" class="post-title iframe_track">
-          <iframe [src]="mapa.get(track.id)" onload="resizeIframe(this)" width="110%" height="110" frameborder="0"></iframe>
-        </div>
         <div *ngIf="track.urlSource === 'KRAKENFILES'" class="post-title iframe_track">
           <iframe [src]="mapa.get(track.id)" onload="resizeIframe(this)" width="1000" height="100" frameborder="0"></iframe>
         </div>
@@ -99,10 +96,6 @@
         </div>
 
         <div *ngIf="mapa.get(track.id) != null">
-          <div *ngIf="track.urlSource === 'ZIPPYSHARE'" class="post-title iframe_track">
-            <iframe [src]="mapa.get(track.id).toString().replace('1000', '300') | byPassSecurity"
-                    frameborder="0" scrolling="no" onload="resizeIframe(this)" style="height: 100px"></iframe>
-          </div>
           <div *ngIf="track.urlSource === 'KRAKENFILES'" class="post-title iframe_track">
             <iframe [src]="mapa.get(track.id).toString().replace('1000', '300') | byPassSecurity"
                     frameborder="0" scrolling="no" onload="resizeIframe(this)" style="height: 100px"></iframe>

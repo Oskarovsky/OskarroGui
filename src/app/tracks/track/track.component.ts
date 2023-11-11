@@ -13,11 +13,6 @@ import {UploadFileService} from '../../services/storage/upload-file.service';
 import {UserService} from "../../services/user/user.service";
 
 const krakenFilesJsonDomain = 'https://krakenfiles.com/json/'
-const httpOptions = {
-  headers: new HttpHeaders({
-      'Access-Control-Allow-Origin' : '*',
-      'x-Trigger': 'CORS' })
-};
 
 @Component({
   selector: 'app-track',
@@ -39,14 +34,6 @@ export class TrackComponent implements OnInit {
   imagesToShow: Map<string, any> = new Map<string, any>();
   coversToShow: Map<number, any> = new Map<number, any>();
 
-
-  modelTrackComment: TrackComment = {
-    id: null,
-    text: '',
-    track: null,
-    user: null,
-    createdAt: ''
-  };
 
   modelUser: User = {
     id: null,
@@ -114,10 +101,6 @@ export class TrackComponent implements OnInit {
             console.log('Could not fetch information details from Krakenfiles. ' + err);
           }
         });
-        break;
-      }
-      case 'ZIPPYSHARE': {
-        /* TODO */
         break;
       }
       default: {

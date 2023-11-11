@@ -9,9 +9,7 @@ import {PlaylistEditComponent} from './playlists/playlist-edit/playlist-edit.com
 import {PlaylistDetailsComponent} from './playlists/playlist-details/playlist-details.component';
 import {LoginComponent} from './auth/login/login.component';
 import {RegisterComponent} from './auth/register/register.component';
-import {BoardModeratorComponent} from './user/board-moderator/board-moderator.component';
 import {BoardAdminComponent} from './user/board-admin/board-admin.component';
-import {BoardUserComponent} from './user/board-user/board-user.component';
 import {VideoComponent} from './videos/video/video.component';
 import {VideoAddComponent} from './videos/video-add/video-add.component';
 import {VideoDetailsComponent} from './videos/video-details/video-details.component';
@@ -41,7 +39,6 @@ import {ForgotPasswordComponent} from './user/forgot-password/forgot-password.co
 import {UserChangePasswordComponent} from './user/user-change-password/user-change-password.component';
 import {TracksSetComponent} from './tracks/tracks-by-genre/genre/tracks-set/tracks-set.component';
 import {VideoAllComponent} from './videos/video-all/video-all.component';
-import {ZippyPlayerComponent} from './tracks/zippy-player/zippy-player.component';
 import {RegulationsComponent} from "./info/regulations/regulations.component";
 import {PostEditComponent} from "./article/post-edit/post-edit.component";
 
@@ -70,7 +67,6 @@ const routes: Routes = [
   { path: 'tracks/techno/:page', component: TracksTechnoComponent },
   { path: 'tracks/disco/:page', component: TracksDiscoComponent },
   { path: 'tracks/set/:page', component: TracksSetComponent },
-  { path: 'tracks/player/zippy', component: ZippyPlayerComponent },
 
   { path: 'playlist/all', component: PlaylistAllComponent },
   { path: 'playlist/all/:username', component: PlaylistComponent },
@@ -104,9 +100,7 @@ const routes: Routes = [
   { path: 'profile/edit/changePassword', component: UserChangePasswordComponent },
   { path: 'profile/tracks/:page', component: UserTracksPartComponent },
   { path: 'profile/tracks', component: UserTracksPartComponent },
-  { path: 'user', component: BoardUserComponent },
-  { path: 'profile/:username', component: UserProfileComponent },
-  { path: 'mod', component: BoardModeratorComponent },
+  { path: 'user/:username', component: UserProfileComponent },
   { path: 'confirmAccount/:token', component: TokenConfirmationComponent },
   { path: 'oauth2/redirect', component: Oauth2RedirectHandlerComponent },
 

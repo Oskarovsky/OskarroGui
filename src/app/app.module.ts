@@ -50,7 +50,6 @@ import {TracksTechnoComponent} from "./tracks/tracks-by-genre/genre/tracks-techn
 import {TracksVixaComponent} from "./tracks/tracks-by-genre/genre/tracks-vixa/tracks-vixa.component";
 import {TrackTileComponent} from "./tracks/tracks-by-genre/track-tile/track-tile.component";
 import {TracksPartComponent} from "./tracks/tracks-by-genre/tracks-part/tracks-part.component";
-import {ZippyPlayerComponent} from "./tracks/zippy-player/zippy-player.component";
 import {PlaylistComponent} from "./playlists/playlist/playlist.component";
 import {NgxPaginationModule} from "ngx-pagination";
 import {PlaylistEditComponent} from "./playlists/playlist-edit/playlist-edit.component";
@@ -61,8 +60,6 @@ import {ArticlePartComponent} from "./admin/components/article-part/article-part
 import {UserPartComponent} from "./admin/components/user-part/user-part.component";
 import {UserFilterPipe} from "./pipes/user-filter.pipe";
 import {BoardAdminComponent} from "./user/board-admin/board-admin.component";
-import {BoardModeratorComponent} from "./user/board-moderator/board-moderator.component";
-import {BoardUserComponent} from "./user/board-user/board-user.component";
 import {ForgotPasswordComponent} from "./user/forgot-password/forgot-password.component";
 import {UserChangePasswordComponent} from "./user/user-change-password/user-change-password.component";
 import {UserEditComponent} from "./user/user-edit/user-edit.component";
@@ -127,15 +124,12 @@ import { PostEditComponent } from './article/post-edit/post-edit.component';
     TracksVixaComponent,
     TrackTileComponent,
     TracksPartComponent,
-    ZippyPlayerComponent,
 
     ArticlePartComponent,
     UserPartComponent,
 
     AdminPanelComponent,
     BoardAdminComponent,
-    BoardModeratorComponent,
-    BoardUserComponent,
     ForgotPasswordComponent,
     UserChangePasswordComponent,
     UserEditComponent,
