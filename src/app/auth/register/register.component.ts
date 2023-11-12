@@ -15,7 +15,6 @@ export class RegisterComponent implements OnInit {
   form: any = {};
   isSuccessful = false;
   registerForm: FormGroup;
-  submitted = false;
   facebookAuthUrl = FACEBOOK_AUTH_URL;
 
   constructor(private authService: AuthService,

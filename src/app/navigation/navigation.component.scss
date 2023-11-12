@@ -10,6 +10,14 @@ $large-desktop: 1280px;
 $x-large-desktop: 1440px;
 $xx-large-desktop: 1920px;
 
+.container-fluid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background: #121e1b url(../../assets/img/templatemo_main_bg.png) repeat;
+}
+
 .main-header {
   border-bottom:3px solid purple;
 }
@@ -36,11 +44,6 @@ $xx-large-desktop: 1920px;
 .mat-sidenav-container {
   background-color: black !important;
   height: 100vh;
-
-  .mat-sidenav-content {
-    display: flex;
-    flex-direction: column;
-  }
 }
 
 .sidenav-toolbar {

@@ -23,8 +23,6 @@ import {AdminPanelComponent} from './admin/admin-panel/admin-panel.component';
 import {PostDetailsComponent} from './article/post-details/post-details.component';
 import {TrackAddComponent} from './tracks/track-add/track-add.component';
 import {TokenConfirmationComponent} from './auth/token-confirmation/token-confirmation.component';
-import {ContactComponent} from './info/contact/contact.component';
-import {AboutComponent} from './info/about/about.component';
 import {UserTracksPartComponent} from './profile/user-tracks-part/user-tracks-part.component';
 import {UserProfileComponent} from './user/user-profile/user-profile.component';
 import {TracksVixaComponent} from './tracks/tracks-by-genre/genre/tracks-vixa/tracks-vixa.component';
@@ -87,8 +85,6 @@ const routes: Routes = [
   { path: 'video/all', component: VideoAllComponent },
 
   /* INFO */
-  { path: 'info/about', component: AboutComponent },
-  { path: 'info/contact', component: ContactComponent },
   { path: 'info/regulations', component: RegulationsComponent },
 
   /* USER */

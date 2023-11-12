@@ -14,6 +14,12 @@ import {UserService} from "../../services/user/user.service";
 
 const krakenFilesJsonDomain = 'https://krakenfiles.com/json/'
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Access-Control-Allow-Origin' : '*',
+    'x-Trigger': 'CORS' })
+};
+
 @Component({
   selector: 'app-track',
   templateUrl: './track.component.html',

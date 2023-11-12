@@ -78,8 +78,6 @@ import {UserTrackTileComponent} from "./profile/user-track-tile/user-track-tile.
 import {UserTracksComponent} from "./profile/user-tracks/user-tracks.component";
 import {UserTracksPartComponent} from "./profile/user-tracks-part/user-tracks-part.component";
 import {ProfileComponent} from "./profile/profile.component";
-import {AboutComponent} from "./info/about/about.component";
-import {ContactComponent} from "./info/contact/contact.component";
 import {AdminPanelComponent} from "./admin/admin-panel/admin-panel.component";
 import {AlertModule} from "./alert/alert.module";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
@@ -139,9 +137,6 @@ import { PostEditComponent } from './article/post-edit/post-edit.component';
     UserTracksComponent,
     UserTracksPartComponent,
     ProfileComponent,
-
-    AboutComponent,
-    ContactComponent,
 
     AddPostComponent,
     PostComponent,
