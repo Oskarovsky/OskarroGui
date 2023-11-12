@@ -70,4 +70,6 @@ export class TrackTileComponent implements AfterViewChecked {
       reader.readAsDataURL(image);
     }
   }
+
+    protected readonly window = window;
 }

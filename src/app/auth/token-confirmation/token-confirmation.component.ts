@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Router, ActivatedRoute} from '@angular/router';
-import { TokenConfirmationService } from 'src/app/services/auth/token-confirmation.service';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute, Router} from '@angular/router';
+import {TokenConfirmationService} from 'src/app/services/auth/token-confirmation.service';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -10,10 +10,6 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./token-confirmation.component.scss']
 })
 export class TokenConfirmationComponent implements OnInit {
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
 
   public token: string;
   public token2: string;
