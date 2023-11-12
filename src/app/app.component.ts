@@ -10,14 +10,10 @@ export class AppComponent implements OnInit {
 
   private roles: string[];
   isLoggedIn = false;
-  showAdminBoard = false;
-  showModeratorBoard = false;
   username: string;
 
   constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() { }
 
 }

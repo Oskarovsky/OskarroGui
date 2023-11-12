@@ -18,7 +18,6 @@ export class VideoComponent implements OnInit {
   videos: Video[];
   tracks: Track[];
   searchText: string;
-  safeVideoUrl: any;
   sub: Subscription;
   videoCategory: string;
   isLoggedIn = false;
