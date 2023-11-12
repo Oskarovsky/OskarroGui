@@ -6,7 +6,7 @@
          [src]="coversToShow.get(trackId)" alt="Zdjęcie do utworu {{track.title}}"
          style="min-height: 80px">
     <ng-template #noCoverFound>
-      <img src="/assets/img/logo_music.png" alt="Sdjęcie do utworu {{track.title}}" class="profile-img-card rounded-circle"/>
+      <img src="/assets/img/logo_music.png" alt="Zdjęcie do utworu {{track.title}}" class="profile-img-card rounded-circle"/>
     </ng-template>
     <app-track-vote-button [track]="this.track"></app-track-vote-button>
   </div>
@@ -30,9 +30,6 @@
       <a class="postname" href="/tracks/{{track.id}}">{{track.artist}} - {{track.title}}</a>
     </div>
     <div *ngIf="(track.urlSource !== null && track.urlPlugin !== null); else nullSafeUrl" class="post-title">
-      <div *ngIf="track.urlSource === 'ZIPPYSHARE'" class="post-title iframe_track">
-        <iframe [src]="track.safeUrl" width="1000" height="100" frameborder="0"></iframe>
-      </div>
       <div *ngIf="track.urlSource === 'KRAKENFILES'" class="post-title iframe_track">
         <iframe [src]="track.safeUrl" width="1000" height="100" frameborder="0"></iframe>
       </div>

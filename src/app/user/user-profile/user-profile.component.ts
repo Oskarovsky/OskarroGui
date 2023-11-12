@@ -19,10 +19,8 @@ export class UserProfileComponent implements OnInit {
   currentUser: any;
   sub: Subscription;
   message = '';
-  userAvatar: any;
   imageToShow: any;
   isImage = false;
-  isImageLoading: any;
   tracks: Array<any>;
   favoriteTracksByUser: Track[] = [];
   userProfile: any;
@@ -66,7 +64,7 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  getImageFromService(username: string) {
+  getImageFromService(username: string): void {
     const reader = new FileReader();
     this.uploadService.getFile(username).subscribe(
       data => {

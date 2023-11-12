@@ -19,11 +19,9 @@ import {UserService} from "../../services/user/user.service";
 export class TrackAddComponent implements OnInit {
 
   track: Track;
-  tempTrack: Track;
   sub: Subscription;
   isLoggedIn = false;
   username: string;
-  showAdminBoard = false;
   currentFileName = '';
 
   currentUser: any;
@@ -65,7 +63,7 @@ export class TrackAddComponent implements OnInit {
 
   genres: string[] = ['VIXA', 'CLUB', 'RETRO', 'DANCE', 'DISCO', 'TECHNO', 'MIXY/SETY'];
 
-  urlSources: string[] = ['ZIPPYSHARE', 'KRAKENFILES'];
+  urlSources: string[] = ['KRAKENFILES'];
 
   constructor(private tokenStorageService: TokenStorageService,
               private router: Router,
@@ -74,8 +72,8 @@ export class TrackAddComponent implements OnInit {
               private userService: UserService,
               private trackService: TrackService) { }
 
-  ngOnInit() {
-    if (this.tokenStorageService.getToken() && this.tokenStorageService.getUser().roles.includes('ROLE_ADMIN')) {
+  ngOnInit(): void {
+    if (this.tokenStorageService.getToken() /*&& this.tokenStorageService.getUser().roles.includes('ROLE_ADMIN')*/) {
       this.isLoggedIn = true;
       this.userService.collectUserData(this.tokenStorageService, this.modelUser)
     } else {
@@ -132,7 +130,7 @@ export class TrackAddComponent implements OnInit {
         this.alertService.success('Utwór został dodany na stronę!');
       },
       error => {
-        this.alertService.error('Nie udało się dodać utworu. Sprawdź wprowadzone informacje i spróubuj jeszcze raz!');
+        this.alertService.error('Nie udało się dodać utworu. Sprawdź wprowadzone informacje i spróbuj jeszcze raz!');
       }
     );
   }
