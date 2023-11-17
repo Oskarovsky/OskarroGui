@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Playlist } from '../../playlists/playlist/model/playlist';
-import { Track } from 'src/app/tracks/track/model/track';
+import { Playlist } from '../../pages/playlists/playlist/model/playlist';
+import { Track } from 'src/app/pages/tracks/track/model/track';
 import {environment} from '../../../environments/environment';
-import {Post} from '../../article/model/post';
-import {Comment} from '../../article/model/comment';
+import {Post} from '../../pages/article/model/post';
+import {Comment} from '../../pages/article/model/comment';
 
 const API: string = environment.serverUrl;
 const COMMENT_POST_API = API + '/posts';

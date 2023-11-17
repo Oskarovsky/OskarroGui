@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Video } from '../../videos/video/model/video';
+import { Video } from '../../pages/videos/video/model/video';
 
 @Pipe({
   name: 'videoFilter'

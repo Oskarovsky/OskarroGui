@@ -1,44 +1,44 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {TrackComponent} from './tracks/track/track.component';
-import {TopListComponent} from './tracks/top-list/top-list.component';
+import {TrackComponent} from './pages/tracks/track/track.component';
+import {TopListComponent} from './pages/tracks/top-list/top-list.component';
 import {NotFoundComponent} from './not-found/not-found.component';
-import {PlaylistComponent} from './playlists/playlist/playlist.component';
-import {PlaylistAddComponent} from './playlists/playlist-add/playlist-add.component';
-import {PlaylistEditComponent} from './playlists/playlist-edit/playlist-edit.component';
-import {PlaylistDetailsComponent} from './playlists/playlist-details/playlist-details.component';
+import {PlaylistComponent} from './pages/playlists/playlist/playlist.component';
+import {PlaylistAddComponent} from './pages/playlists/playlist-add/playlist-add.component';
+import {PlaylistEditComponent} from './pages/playlists/playlist-edit/playlist-edit.component';
+import {PlaylistDetailsComponent} from './pages/playlists/playlist-details/playlist-details.component';
 import {LoginComponent} from './auth/login/login.component';
 import {RegisterComponent} from './auth/register/register.component';
-import {BoardAdminComponent} from './user/board-admin/board-admin.component';
-import {VideoComponent} from './videos/video/video.component';
-import {VideoAddComponent} from './videos/video-add/video-add.component';
-import {VideoDetailsComponent} from './videos/video-details/video-details.component';
-import {VideoEditComponent} from './videos/video-edit/video-edit.component';
-import {PlaylistAllComponent} from './playlists/playlist-all/playlist-all.component';
-import {ProfileComponent} from './profile/profile.component';
-import {HomeComponent} from './home/home.component';
-import {PostComponent} from './article/post/post.component';
-import {AddPostComponent} from './article/add-post/add-post.component';
-import {AdminPanelComponent} from './admin/admin-panel/admin-panel.component';
-import {PostDetailsComponent} from './article/post-details/post-details.component';
-import {TrackAddComponent} from './tracks/track-add/track-add.component';
+import {BoardAdminComponent} from './pages/user/board-admin/board-admin.component';
+import {VideoComponent} from './pages/videos/video/video.component';
+import {VideoAddComponent} from './pages/videos/video-add/video-add.component';
+import {VideoDetailsComponent} from './pages/videos/video-details/video-details.component';
+import {VideoEditComponent} from './pages/videos/video-edit/video-edit.component';
+import {PlaylistAllComponent} from './pages/playlists/playlist-all/playlist-all.component';
+import {ProfileComponent} from './pages/profile/profile.component';
+import {HomeComponent} from './pages/home/home.component';
+import {PostComponent} from './pages/article/post/post.component';
+import {AddPostComponent} from './pages/article/add-post/add-post.component';
+import {AdminPanelComponent} from './pages/admin/admin-panel/admin-panel.component';
+import {PostDetailsComponent} from './pages/article/post-details/post-details.component';
+import {TrackAddComponent} from './pages/tracks/track-add/track-add.component';
 import {TokenConfirmationComponent} from './auth/token-confirmation/token-confirmation.component';
-import {UserTracksPartComponent} from './profile/user-tracks-part/user-tracks-part.component';
-import {UserProfileComponent} from './user/user-profile/user-profile.component';
-import {TracksVixaComponent} from './tracks/tracks-by-genre/genre/tracks-vixa/tracks-vixa.component';
-import {TracksClubComponent} from './tracks/tracks-by-genre/genre/tracks-club/tracks-club.component';
-import {TracksDiscoComponent} from './tracks/tracks-by-genre/genre/tracks-disco/tracks-disco.component';
-import {TracksTechnoComponent} from './tracks/tracks-by-genre/genre/tracks-techno/tracks-techno.component';
-import {TracksRetroComponent} from './tracks/tracks-by-genre/genre/tracks-retro/tracks-retro.component';
-import {TracksDanceComponent} from './tracks/tracks-by-genre/genre/tracks-dance/tracks-dance.component';
+import {UserTracksPartComponent} from './pages/profile/user-tracks-part/user-tracks-part.component';
+import {UserProfileComponent} from './pages/user/user-profile/user-profile.component';
+import {TracksVixaComponent} from './pages/tracks/tracks-by-genre/genre/tracks-vixa/tracks-vixa.component';
+import {TracksClubComponent} from './pages/tracks/tracks-by-genre/genre/tracks-club/tracks-club.component';
+import {TracksDiscoComponent} from './pages/tracks/tracks-by-genre/genre/tracks-disco/tracks-disco.component';
+import {TracksTechnoComponent} from './pages/tracks/tracks-by-genre/genre/tracks-techno/tracks-techno.component';
+import {TracksRetroComponent} from './pages/tracks/tracks-by-genre/genre/tracks-retro/tracks-retro.component';
+import {TracksDanceComponent} from './pages/tracks/tracks-by-genre/genre/tracks-dance/tracks-dance.component';
 import {Oauth2RedirectHandlerComponent} from './auth/oauth2-redirect-handler/oauth2-redirect-handler.component';
-import {UserEditComponent} from './user/user-edit/user-edit.component';
-import {ForgotPasswordComponent} from './user/forgot-password/forgot-password.component';
-import {UserChangePasswordComponent} from './user/user-change-password/user-change-password.component';
-import {TracksSetComponent} from './tracks/tracks-by-genre/genre/tracks-set/tracks-set.component';
-import {VideoAllComponent} from './videos/video-all/video-all.component';
-import {RegulationsComponent} from "./info/regulations/regulations.component";
-import {PostEditComponent} from "./article/post-edit/post-edit.component";
+import {UserEditComponent} from './pages/user/user-edit/user-edit.component';
+import {ForgotPasswordComponent} from './pages/user/forgot-password/forgot-password.component';
+import {UserChangePasswordComponent} from './pages/user/user-change-password/user-change-password.component';
+import {TracksSetComponent} from './pages/tracks/tracks-by-genre/genre/tracks-set/tracks-set.component';
+import {VideoAllComponent} from './pages/videos/video-all/video-all.component';
+import {RegulationsComponent} from "./pages/info/regulations/regulations.component";
+import {PostEditComponent} from "./pages/article/post-edit/post-edit.component";
 
 
 const routes: Routes = [
@@ -111,7 +111,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {enableTracing: true})],
+  imports: [
+    RouterModule.forRoot(
+      routes,
+      { enableTracing: true }
+    )
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

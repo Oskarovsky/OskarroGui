@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpContext, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Track} from 'src/app/tracks/track/model/track';
+import {Track} from 'src/app/pages/tracks/track/model/track';
 import {environment} from '../../../environments/environment';
-import {TrackResponse} from '../../tracks/track/model/track-response';
-import {TrackComment} from '../../tracks/track/model/track-comment';
+import {TrackResponse} from '../../pages/tracks/track/model/track-response';
+import {TrackComment} from '../../pages/tracks/track/model/track-comment';
 
 const API: string = environment.serverUrl;
 const TRACK_API = API + '/tracks';

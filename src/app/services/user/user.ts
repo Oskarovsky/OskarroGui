@@ -1,4 +1,4 @@
-import {Track} from '../../tracks/track/model/track';
+import {Track} from '../../pages/tracks/track/model/track';
 
 export class User {
   id: number;

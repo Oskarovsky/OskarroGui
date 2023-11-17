@@ -1,5 +1,5 @@
 import {User} from '../services/user/user';
-import {Track} from '../tracks/track/model/track';
+import {Track} from '../pages/tracks/track/model/track';
 
 export class Vote {
   id: number;
