@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Playlist} from '../../playlists/playlist/model/playlist';
+import {Playlist} from '../../pages/playlists/playlist/model/playlist';
 
 @Pipe({
   name: 'playlistFilter'

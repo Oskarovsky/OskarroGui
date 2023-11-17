@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Playlist } from '../../playlists/playlist/model/playlist';
-import { Track } from 'src/app/tracks/track/model/track';
+import { Playlist } from '../../pages/playlists/playlist/model/playlist';
+import { Track } from 'src/app/pages/tracks/track/model/track';
 import {environment} from '../../../environments/environment';
 
 const API: string = environment.serverUrl;

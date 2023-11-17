@@ -1,0 +1,43 @@
+import {Component, OnInit} from '@angular/core';
+import {PlaylistService} from '../../../../services/playlist/playlist.service';
+import {TrackService} from '../../../../services/track/track.service';
+import {UserService} from '../../../../services/user/user.service';
+import {TokenStorageService} from '../../../../services/auth/token-storage.service';
+import {User} from '../../../../services/user/user';
+
+
+@Component({
+  selector: 'app-user-part',
+  templateUrl: './user-part.component.html',
+  styleUrls: ['./user-part.component.css']
+})
+export class UserPartComponent implements OnInit {
+
+  users: User[] = [];
+  searchText: string;
+
+  constructor(private playlistService: PlaylistService,
+              private trackService: TrackService,
+              private userService: UserService,
+              private tokenStorage: TokenStorageService) { }
+
+  ngOnInit() {
+    if (this.tokenStorage.getToken()) {
+      this.getLastAddedUsers('10');
+    }
+  }
+
+  public getLastAddedUsers(numberOfUsers: string) {
+    this.userService.getLastAddedUsers(numberOfUsers).subscribe({
+      next: response => {
+        this.users = response;
+      },
+      error: (err) => {
+        alert('An error with fetching last added users has occurred');
+        console.log('An error with fetching last added users has occurred', err);
+      }
+    });
+  }
+
+
+}

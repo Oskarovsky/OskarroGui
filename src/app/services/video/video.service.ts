@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Track} from '../../tracks/track/model/track';
+import {Track} from '../../pages/tracks/track/model/track';
 import {Observable} from 'rxjs';
-import {Playlist} from '../../playlists/playlist/model/playlist';
-import {Video} from '../../videos/video/model/video';
+import {Playlist} from '../../pages/playlists/playlist/model/playlist';
+import {Video} from '../../pages/videos/video/model/video';
 import {environment} from '../../../environments/environment';
 
 const API: string = environment.serverUrl;

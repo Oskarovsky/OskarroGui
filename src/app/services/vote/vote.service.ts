@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {VotePayload} from '../../tracks/track-vote-button/model/vote-payload';
+import {VotePayload} from '../../pages/tracks/track-vote-button/model/vote-payload';
 
 const API: string = environment.serverUrl;
 const VOTE_API = API + '/vote';
