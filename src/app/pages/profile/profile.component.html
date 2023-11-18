@@ -1,7 +1,7 @@
 <div *ngIf="currentUser; else loggedOut" class="card profile-container">
 
   <!--NORMAL FORMAT -->
-  <div *ngIf="!navigationComponent.getIsMobileResolution()" class="container">
+  <div *ngIf="!navigationComponent.getIsMobileResolution()" class="container" style="max-width: 1000px">
     <div class="row">
       <div class="col-12">
         <div class="card bg-transparent">
@@ -20,7 +20,7 @@
                 </div>
 
                 <div *ngIf="currentUser" class="userData">
-                  <p class="d-block" id="username">{{currentUser.username}}</p>
+                  <h1 class="d-block" id="username" style="color: white">{{currentUser.username}}</h1>
                   <button mat-stroked-button value="Zmień zdjęcie" color="primary" id="buttonChangeImage"
                           onclick="showAvatarForm()">Zmień zdjęcie profilowe
                   </button>

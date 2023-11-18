@@ -10,3 +10,8 @@ main {
   flex: 1;
   display: flex;
 }
+
+.glowing-border {
+  outline: none;
+  box-shadow: 0 0 px #9ecaed;
+}

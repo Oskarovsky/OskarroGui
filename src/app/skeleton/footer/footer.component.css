@@ -15,7 +15,7 @@ body{
 .copyright{
   align-content: center;
   text-align: center;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.8);
 }
 
 .copyright p{
@@ -23,7 +23,7 @@ body{
 }
 
 footer{
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.8);
   padding: 25px ;
 }
 
