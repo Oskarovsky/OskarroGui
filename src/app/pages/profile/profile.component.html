@@ -15,7 +15,7 @@
                 <div class="image-container" style="margin-right: 1rem">
                   <img [src]="imageToShow" *ngIf="isImage; else noImageFound" class="image-profile" alt="Avatar user">
                   <ng-template #noImageFound>
-                    <img class="image-profile" src="/frontend/src/assets/img/user_avatar.png" alt="Avatar default">
+                    <img class="image-profile" src="/assets/img/user_avatar.png" alt="Avatar default">
                   </ng-template>
                 </div>
 
@@ -147,7 +147,7 @@
             <div class="image-container-mobile">
               <img [src]="imageToShow" *ngIf="isImage; else noImageFoundMobile" class="image-profile-mobile" alt="Avatar user">
               <ng-template #noImageFoundMobile>
-                <img class="image-profile-mobile" src="/frontend/src/assets/img/user_avatar.png" alt="Avatar default">
+                <img class="image-profile-mobile" src="/assets/img/user_avatar.png" alt="Avatar default">
               </ng-template>
             </div>
 

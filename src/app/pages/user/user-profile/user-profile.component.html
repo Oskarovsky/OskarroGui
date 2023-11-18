@@ -11,7 +11,7 @@
                 <div class="image-container">
                   <img *ngIf="isImage; else noImageFound" [src]="imageToShow" class="image-profile" alt="Avatar image">
                   <ng-template #noImageFound>
-                    <img class="image-profile" src="/frontend/src/assets/img/user_avatar.png" alt="Default user avatar">
+                    <img class="image-profile" src="/assets/img/user_avatar.png" alt="Default user avatar">
                   </ng-template>
                 </div>
                 <div class="userData ml-3">

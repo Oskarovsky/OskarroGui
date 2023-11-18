@@ -6,7 +6,7 @@
          [src]="coversToShow.get(trackId)" alt="Zdjęcie do utworu {{track.title}}"
          style="min-height: 80px">
     <ng-template #noCoverFound>
-      <img src="/frontend/src/assets/img/logo_music.png" alt="Zdjęcie do utworu {{track.title}}" class="profile-img-card rounded-circle"/>
+      <img src="/assets/img/logo_music.png" alt="Zdjęcie do utworu {{track.title}}" class="profile-img-card rounded-circle"/>
     </ng-template>
     <app-track-vote-button [track]="this.track"></app-track-vote-button>
   </div>
@@ -36,7 +36,7 @@
     </div>
     <ng-template #nullSafeUrl>
       <div class="post-title">
-        <img src="../../../../assets/img/player_error_oskarro.jpg" alt="Track not exist on server">
+        <img src="/assets/img/player_error_oskarro.jpg" alt="Track not exist on server">
       </div>
     </ng-template>
 
@@ -106,7 +106,7 @@
                    alt="Place image title" class="rounded-circle"
                    *ngIf="imagesToShow.get(comment.user.username); else noImageFound">
               <ng-template #noImageFound>
-                <img src="/frontend/src/assets/img/user_avatar.png"
+                <img src="/assets/img/user_avatar.png"
                      alt="image to show"
                      class="image-profile profile-img-card rounded-circle"/>
               </ng-template>
@@ -142,7 +142,7 @@
                        *ngIf="imagesToShow.get(modelUser.username); else noImageFound">
                   <ng-template #noImageFound>
                     <img id="profile-img" width="100" height="100"
-                         src="/frontend/src/assets/img/user_avatar.png"
+                         src="/assets/img/user_avatar.png"
                          alt="image to show"
                          class="profile-img-card rounded-circle"/>
                   </ng-template>

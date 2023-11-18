@@ -1,9 +1,11 @@
 <!-- HOME NORMAL -->
-<div *ngIf="!navigationComponent.getIsMobileResolution()" class="card" style="background-color: rgba(27,27,27,0.8);">
-  <header class="mat-card-title">
-    <p *ngIf="isLoggedIn">Cześć {{ currentUser.username }} ! Koniecznie sprawdź najnowsze utwory na naszej stronie!</p>
-    <p *ngIf="!isLoggedIn">Jesteś tutaj po raz pierwszy? -- <a routerLink="/register">Dołącz do naszej ekipy</a></p>
-  </header>
+<div *ngIf="!navigationComponent.getIsMobileResolution()" style="background-color: rgba(27,27,27,0.8);">
+  <mat-card-header>
+    <mat-card-subtitle>
+      <p *ngIf="isLoggedIn">Cześć {{ currentUser.username }} ! Koniecznie sprawdź najnowsze utwory na naszej stronie!</p>
+      <p *ngIf="!isLoggedIn">Jesteś tutaj po raz pierwszy? -- <a routerLink="/register">Dołącz do naszej ekipy</a></p>
+    </mat-card-subtitle>
+  </mat-card-header>
 
   <!-- Post list content -->
   <div style="margin-bottom: 20px;">
