@@ -1,4 +1,4 @@
-import {Component, OnInit, SecurityContext} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, SecurityContext, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {catchError, map, Observable, Subscription, throwError} from 'rxjs';
 
@@ -60,7 +60,8 @@ export class TrackComponent implements OnInit {
               private userService: UserService,
               private sanitizer: DomSanitizer,
               private http: HttpClient,
-              private uploadFileService: UploadFileService) {
+              private uploadFileService: UploadFileService,
+              private el: ElementRef, private renderer: Renderer2) {
 
     this.sub = this.route.params.subscribe(params => {
       this.trackId = params['id'];
@@ -240,7 +241,7 @@ export class TrackComponent implements OnInit {
   /* endregion */
 
   secureUrl(track: Track) {
-    track.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`${track.urlPlugin}`);
+    track.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`${track.urlPlugin.replace("1000", '800')}`);
   }
 
 }

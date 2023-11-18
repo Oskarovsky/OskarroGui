@@ -1,4 +1,4 @@
-import {AfterViewChecked, Component, ElementRef, Input, OnChanges, OnInit, SecurityContext, SimpleChanges} from '@angular/core';
+import {AfterViewChecked, Component, Input, SecurityContext} from '@angular/core';
 import {Track} from '../../track/model/track';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {UploadFileService} from '../../../../services/storage/upload-file.service';
@@ -25,8 +25,7 @@ export class TrackTileComponent implements AfterViewChecked {
 
   constructor(public sanitizer: DomSanitizer,
               public navigationComponent: NavigationComponent,
-              public fileService: UploadFileService) {
-  }
+              public fileService: UploadFileService) { }
 
   ngAfterViewChecked() {
     this.tracks.forEach(t => {
@@ -44,10 +43,13 @@ export class TrackTileComponent implements AfterViewChecked {
       this.divShowMapa.set(t.id, false);
     });
     this.track = this.tracks.find(x => x.id === trackId);
+
     if (this.navigationComponent.getIsMobileResolution()) {
       let urlMobile: string = this.sanitizer.sanitize(SecurityContext.RESOURCE_URL, this.track.safeUrl);
       this.mapa.set(this.track.id, urlMobile);
     } else {
+      let informacja = this.track.safeUrl.valueOf()
+      console.log('OSKAR: ' + informacja)
       this.mapa.set(this.track.id, this.track.safeUrl);
     }
   }

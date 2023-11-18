@@ -1,40 +1,41 @@
 <!-- HOME NORMAL -->
-<div *ngIf="!navigationComponent.getIsMobileResolution()" style="background-color: rgba(27,27,27,0.8);">
-  <mat-card-header>
-    <mat-card-subtitle>
-      <p *ngIf="isLoggedIn">Cześć {{ currentUser.username }} ! Koniecznie sprawdź najnowsze utwory na naszej stronie!</p>
-      <p *ngIf="!isLoggedIn">Jesteś tutaj po raz pierwszy? -- <a routerLink="/register">Dołącz do naszej ekipy</a></p>
-    </mat-card-subtitle>
-  </mat-card-header>
+<div class="container" style="max-width: 1000px">
+  <div *ngIf="!navigationComponent.getIsMobileResolution()">
+    <mat-card-header>
+      <mat-card-subtitle>
+        <p *ngIf="isLoggedIn">Cześć {{ currentUser.username }} ! Koniecznie sprawdź najnowsze utwory na naszej stronie!</p>
+        <p *ngIf="!isLoggedIn">Jesteś tutaj po raz pierwszy? -- <a routerLink="/register">Dołącz do naszej ekipy</a></p>
+      </mat-card-subtitle>
+    </mat-card-header>
 
-  <!-- Post list content -->
-  <div style="margin-bottom: 20px;">
-    <div *ngFor="let post of posts | slice:0:5; let i=index;" class="card glowing-border">
-      <div class="card-header">
-        <p>{{post.title}}</p>
-      </div>
+    <!-- Post list content -->
+    <div style="margin-bottom: 20px;">
+      <div *ngFor="let post of posts | slice:0:5; let i=index;" class="card glowing-border">
+        <div class="card-header">
+          <p>{{post.title}}</p>
+        </div>
 
-      <div class="card-image">
-        <img *ngIf="this.imagesToShow.get(post.id); else noCoverFound"
-             [src]="this.imagesToShow.get(post.id) | byPassSecurity" alt="Zdjęcie do artykulu {{post.title}}">
-        <ng-template #noCoverFound>
-<!--          <img id="profile-img" width="430" src="/assets/img/reklama_logo.jpg" alt="Zdjęcie artykułu {{post.title}}">-->
-        </ng-template>
-      </div>
+        <div class="card-image">
+          <img *ngIf="this.imagesToShow.get(post.id); else noCoverFound"
+               [src]="this.imagesToShow.get(post.id) | byPassSecurity" alt="Zdjęcie do artykulu {{post.title}}">
+          <ng-template #noCoverFound>
+            <!--          <img id="profile-img" width="430" src="/assets/img/reklama_logo.jpg" alt="Zdjęcie artykułu {{post.title}}">-->
+          </ng-template>
+        </div>
 
-      <div class="text-center">
-        <hr style="width:70%; left: 15%;">
-        <div [innerHTML]="post.description" class="card-description card-text"></div>
-        <button [routerLink]="['post', post.id, 'details']" type="submit" class="btn btn-secondary card-button">
-          Przeczytaj całość
-        </button>
-      </div>
+        <div class="text-center">
+          <hr style="width:70%; left: 15%;">
+          <div [innerHTML]="post.description" class="card-description card-text"></div>
+          <button [routerLink]="['post', post.id, 'details']" type="submit" class="btn btn-secondary card-button">
+            Przeczytaj całość
+          </button>
+        </div>
         <p class="card-text">
           <small class="text-muted">Data dodania: {{post.createdAt.substring(0, post.createdAt.indexOf('T'))}}</small>
         </p>
+      </div>
     </div>
   </div>
-</div>
 
 
 
@@ -71,6 +72,7 @@
       <small class="text-muted">Data dodania: {{post.createdAt.substring(0, post.createdAt.indexOf('T'))}}</small>
     </p>
   </div>
+</div>
 </div>
 
 

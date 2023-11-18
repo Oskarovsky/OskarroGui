@@ -26,7 +26,7 @@
         </span>
       </div>
 
-      <div class="post-title" >
+      <div class="post-title">
         <a *ngIf="track.version !== null" class="postname" href="/track/{{track.id}}">{{track.artist}} - {{track.title}} ({{track.version}})</a>
         <a *ngIf="track.version === null" class="postname" href="/track/{{track.id}}">{{track.artist}} - {{track.title}}</a>
       </div>
@@ -38,7 +38,7 @@
         </div>
       </div>
       <div *ngIf="!divShowMapa.get(track.id)">
-        <input type="image" src="../../../../../assets/img/player_oskarro.jpg" alt="player_image" (click)="fakeClick(track.id)">
+        <input type="image" src="assets/img/player_oskarro.jpg" alt="player_image" (click)="fakeClick(track.id)">
       </div>
       <span>
         <a *ngIf="isLoggedIn" class="btnCommments" href="track/{{track.id}}" role="button">
@@ -102,7 +102,7 @@
           </div>
         </div>
         <div *ngIf="!divShowMapa.get(track.id)">
-          <input type="image" src="../../../../../assets/img/player_oskarro.jpg" alt="player_image"
+          <input type="image" src="assets/img/player_oskarro.jpg" alt="player_image"
                  style="max-width: 19em" (click)="fakeClick(track.id)">
         </div>
 

@@ -84,6 +84,7 @@ import {ByPassSecurityPipe} from "./pipes/by-pass-security-pipe";
 import { RegulationsComponent } from './pages/info/regulations/regulations.component';
 import { PostEditComponent } from './pages/article/post-edit/post-edit.component';
 import { BodyComponent } from './skeleton/body/body.component';
+import {MaterialModule} from "./material.module";
 
 
 @NgModule({
@@ -175,21 +176,7 @@ import { BodyComponent } from './skeleton/body/body.component';
     AlertModule,
 
     /* region MATERIAL ANGULAR */
-    MatButtonModule,
-    MatCardModule,
-    MatInputModule,
-    MatListModule,
-    MatToolbarModule,
-    MatGridListModule,
-    MatMenuModule,
-    MatIconModule,
-    MatSelectModule,
-    MatTableModule,
-    MatTabsModule,
-    MatSortModule,
-    MatExpansionModule,
-    MatPaginatorModule,
-    MatSidenavModule,
+    MaterialModule,
     /* endregion */
 
     CKEditorModule,
