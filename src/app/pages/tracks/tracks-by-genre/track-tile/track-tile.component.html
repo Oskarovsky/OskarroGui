@@ -5,14 +5,14 @@
            [src]="coversToShow.get(track.id)" alt="Zdjęcie do utworu {{track.title}}"
            style="min-height: 80px">
       <ng-template #noCoverFound>
-        <img src="/frontend/src/assets/img/logo_music.png"
+        <img src="/assets/img/logo_music.png"
              alt="Domyślne zdjęcie do utworu {{track.title}}"
              class="profile-img-card rounded-circle"/>
       </ng-template>
       <app-track-vote-button [track]="track"></app-track-vote-button>
     </div>
 
-    <div class="col-md-10">
+    <div class="col-md-10" #trackAreaDiv>
       <div class="info-area">
         <span class="subreddit-text">
           <a class="posturl" routerLink="">Dodano {{track.createdAt | dateAgo}}   |</a>
@@ -26,7 +26,7 @@
         </span>
       </div>
 
-      <div class="post-title" >
+      <div class="post-title">
         <a *ngIf="track.version !== null" class="postname" href="/track/{{track.id}}">{{track.artist}} - {{track.title}} ({{track.version}})</a>
         <a *ngIf="track.version === null" class="postname" href="/track/{{track.id}}">{{track.artist}} - {{track.title}}</a>
       </div>
@@ -34,11 +34,11 @@
       </div>
       <div *ngIf="mapa.get(track.id) != null">
         <div *ngIf="track.urlSource === 'KRAKENFILES'" class="post-title iframe_track">
-          <iframe [src]="mapa.get(track.id)" onload="resizeIframe(this)" width="1000" height="100" frameborder="0"></iframe>
+          <iframe [src]="mapa.get(track.id)" onload="resizeIframe(this)" width="100%" height="100" frameborder="0"></iframe>
         </div>
       </div>
       <div *ngIf="!divShowMapa.get(track.id)">
-        <input type="image" src="../../../../../assets/img/player_oskarro.jpg" alt="player_image" (click)="fakeClick(track.id)">
+        <input type="image" src="assets/img/player_oskarro.jpg" alt="player_image" (click)="fakeClick(track.id)" style="width: 100%">
       </div>
       <span>
         <a *ngIf="isLoggedIn" class="btnCommments" href="track/{{track.id}}" role="button">
@@ -102,7 +102,7 @@
           </div>
         </div>
         <div *ngIf="!divShowMapa.get(track.id)">
-          <input type="image" src="../../../../../assets/img/player_oskarro.jpg" alt="player_image"
+          <input type="image" src="assets/img/player_oskarro.jpg" alt="player_image"
                  style="max-width: 19em" (click)="fakeClick(track.id)">
         </div>
 

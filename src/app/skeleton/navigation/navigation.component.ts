@@ -1,18 +1,7 @@
-import {
-  Component,
-  EventEmitter,
-  OnInit,
-  Output,
-  ViewChild,
-  ElementRef,
-  ViewEncapsulation,
-  AfterViewInit,
-  Input,
-  HostBinding
-} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { TokenStorageService } from '../../services/auth/token-storage.service';
-import {NavItem, navItems} from './nav-item';
+import {Component, EventEmitter, HostBinding, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {TokenStorageService} from '../../services/auth/token-storage.service';
+import {NavItem} from './nav-item';
 import {VERSION} from '@angular/material/core';
 import {NavigationService} from '../../services/navigation/navigation.service';
 import {Router} from '@angular/router';

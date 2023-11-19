@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ACCESS_TOKEN } from 'src/assets/constants/app.const';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {TokenStorageService} from '../../services/auth/token-storage.service';
 import {AuthService} from '../../services/auth/auth.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 
 const httpOptions = {

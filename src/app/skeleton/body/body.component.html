@@ -1,4 +1,3 @@
-
 <mat-sidenav-container fxFlexFill>
   <mat-sidenav #appDrawer mode="over" opened="false">
     <mat-nav-list>
@@ -22,43 +21,53 @@
 
 
   <mat-sidenav-content *ngIf="!getIsMobileResolution()">
-    <div style="background: #121e1b url(../../../assets/img/templatemo_main_bg.png) repeat;">
-      <div class="container-fluid">
-        <div style="width: 18%; margin-left: 10px; margin-top: 30px;">
+      <div fxLayout="row" fxLayoutAlign="start top center" fxLayoutGap="16px">
+
+        <div fxFlex="20%">
           <app-sidebar-left></app-sidebar-left>
         </div>
-
-        <div style="width: 78%; background-color: rgba(0,0,0,0.4); margin-top: 20px;">
+        <div fxFlex="60%">
           <app-alert></app-alert>
           <router-outlet></router-outlet>
         </div>
-      </div>
-      <div class="container-fluid">
-        <div class="col" style="background-color: rgba(0,0,0,0.4); margin-top: 20px;">
+        <div fxFlex="20%">
           <app-sidebar-right></app-sidebar-right>
         </div>
+
       </div>
-      <!-- footer -->
-      <app-footer class="mt-auto"></app-footer>
-    </div>
+<!--      <div class="d-flex">-->
+<!--        <div class="flex-shrink-0 p-3 left-column">-->
+<!--            <app-sidebar-left></app-sidebar-left>-->
+<!--        </div>-->
+<!--        <div class="flex-grow-1 p-3 center-column" style="background-color: rgba(27,27,27,0.8); border: black">-->
+<!--            <app-alert></app-alert>-->
+<!--            <router-outlet></router-outlet>-->
+<!--        </div>-->
+<!--        <div class="flex-shrink-0 p-3 right-column">-->
+<!--            <app-sidebar-right></app-sidebar-right>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
   </mat-sidenav-content>
 
   <mat-sidenav-content *ngIf="getIsMobileResolution()" fxFlexFill>
     <div class="container" style="background-color: black">
       <div fxLayout="column" fxFlexFill>
+
         <div>
           <app-alert></app-alert>
           <router-outlet></router-outlet>
         </div>
+
         <div>
           <app-sidebar-left></app-sidebar-left>
         </div>
+
         <div>
           <app-sidebar-right></app-sidebar-right>
         </div>
+
       </div>
-      <!-- footer -->
-      <app-footer class="mt-auto" fxHide.lt-md="true"></app-footer>
     </div>
   </mat-sidenav-content>
 

@@ -1,7 +1,7 @@
-<div *ngIf="currentUser; else loggedOut" class="card profile-container">
+<div *ngIf="currentUser; else loggedOut">
 
   <!--NORMAL FORMAT -->
-  <div *ngIf="!navigationComponent.getIsMobileResolution()" class="container">
+  <div *ngIf="!navigationComponent.getIsMobileResolution()">
     <div class="row">
       <div class="col-12">
         <div class="card bg-transparent">
@@ -15,12 +15,12 @@
                 <div class="image-container" style="margin-right: 1rem">
                   <img [src]="imageToShow" *ngIf="isImage; else noImageFound" class="image-profile" alt="Avatar user">
                   <ng-template #noImageFound>
-                    <img class="image-profile" src="/frontend/src/assets/img/user_avatar.png" alt="Avatar default">
+                    <img class="image-profile" src="/assets/img/user_avatar.png" alt="Avatar default">
                   </ng-template>
                 </div>
 
                 <div *ngIf="currentUser" class="userData">
-                  <p class="d-block" id="username">{{currentUser.username}}</p>
+                  <h1 class="d-block" id="username" style="color: white">{{currentUser.username}}</h1>
                   <button mat-stroked-button value="Zmień zdjęcie" color="primary" id="buttonChangeImage"
                           onclick="showAvatarForm()">Zmień zdjęcie profilowe
                   </button>
@@ -136,7 +136,7 @@
   </div>
 
   <!-- MOBILE FORMAT -->
-  <div *ngIf="navigationComponent.getIsMobileResolution()" class="container">
+  <div *ngIf="navigationComponent.getIsMobileResolution()">
     <div class="row">
       <div class="card bg-transparent">
         <div class="card-body bg-transparent">
@@ -147,7 +147,7 @@
             <div class="image-container-mobile">
               <img [src]="imageToShow" *ngIf="isImage; else noImageFoundMobile" class="image-profile-mobile" alt="Avatar user">
               <ng-template #noImageFoundMobile>
-                <img class="image-profile-mobile" src="/frontend/src/assets/img/user_avatar.png" alt="Avatar default">
+                <img class="image-profile-mobile" src="/assets/img/user_avatar.png" alt="Avatar default">
               </ng-template>
             </div>
 

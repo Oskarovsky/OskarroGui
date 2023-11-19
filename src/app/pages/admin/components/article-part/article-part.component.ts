@@ -9,7 +9,7 @@ import {HttpClient} from '@angular/common/http';
 @Component({
   selector: 'app-article-part',
   templateUrl: './article-part.component.html',
-  styleUrls: ['./article-part.component.css']
+  styleUrls: ['./article-part.component.scss']
 })
 export class ArticlePartComponent implements OnInit {
 

@@ -1,112 +1,119 @@
-<div class="row justify-content-md-center main-container">
-  <div class="card-body col-8">
-    <div class="title-container">Dodawanie nowego utworu</div>
-    <form #userForm="ngForm">
-      <div class="form-group">
-        <label for="title" style="color: white">Tytuł</label>
-        <input #trackTitle type="text" matInput [(ngModel)]="modelTrack.title"
-               class="form-control"
-               style="background-color: #e5e1e1"
-               id="title"
-               name="title"
-               required
-               placeholder="Wprowadź tytuł">
-      </div>
+<div class="card-body">
+  <h2 class="card-header">DODAJ NOWY UTWÓR</h2>
+  <form #userForm="ngForm">
+    <div class="form-group">
+      <label for="title">Tytuł</label>
+      <input #trackTitle
+             [(ngModel)]="modelTrack.title"
+             matInput
+             type="text"
+             class="form-control"
+             style="background-color: #e5e1e1"
+             id="title"
+             name="title"
+             required
+             placeholder="Wprowadź tytuł">
+    </div>
 
-      <div class="form-group">
-        <label for="artist" style="color: white">Artysta</label>
-        <input #trackArtist [(ngModel)]="modelTrack.artist"
-               matInput
-               type="text"
-               class="form-control"
-               style="background-color: #e5e1e1"
-               id="artist"
-               name="artist"
-               required
-               placeholder="Wprowadź nazwę artysty">
-      </div>
+    <div class="form-group">
+      <label for="artist">Artysta</label>
+      <input #trackArtist
+             [(ngModel)]="modelTrack.artist"
+             matInput
+             type="text"
+             class="form-control"
+             style="background-color: #e5e1e1"
+             id="artist"
+             name="artist"
+             required
+             placeholder="Wprowadź nazwę artysty">
+    </div>
 
-      <div class="form-group">
-        <label for="version" style="color: white">Wersja</label>
-        <input #trackVersion [(ngModel)]="modelTrack.version"
-               matInput
-               type="text"
-               class="form-control"
-               style="background-color: #e5e1e1"
-               id="version"
-               name="version"
-               placeholder="Wprowadź nazwę wersji/remixu">
-      </div>
+    <div class="form-group">
+      <label for="version">Wersja</label>
+      <input #trackVersion
+             [(ngModel)]="modelTrack.version"
+             matInput
+             type="text"
+             class="form-control"
+             style="background-color: #e5e1e1"
+             id="version"
+             name="version"
+             placeholder="Wprowadź nazwę wersji/remixu">
+    </div>
 
-      <div class="form-group">
-        <mat-form-field style="color: white">
-          <label for="genres" style="color: white">Gatunek</label>
-          <mat-select #trackGenre [(ngModel)]="modelTrack.genre"
-                      style="color: black"
-                      id="genres"
-                      name="genre"
-                      required>
-            <mat-option *ngFor="let genre of genres" [value]="genre">
-              {{genre}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+    <div class="form-group">
+      <mat-form-field>
+        <label for="genres" style="color: white">Gatunek</label>
+        <mat-select #trackGenre
+                    [(ngModel)]="modelTrack.genre"
+                    style="color: black"
+                    id="genres"
+                    name="genre"
+                    required>
+          <mat-option *ngFor="let genre of genres" [value]="genre">
+            {{genre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
-      <div class="form-group">
-        <label for="version" style="color: white">URL</label>
-        <input #trackUrl [(ngModel)]="modelTrack.url"
-               matInput
-               type="text"
-               class="form-control"
-               style="background-color: #e5e1e1"
-               id="url"
-               name="url"
-               required
-               placeholder="Wprowadź link do utworu">
-      </div>
+    <div class="form-group">
+      <label for="version">URL</label>
+      <input #trackUrl
+             [(ngModel)]="modelTrack.url"
+             matInput
+             type="text"
+             class="form-control"
+             style="background-color: #e5e1e1"
+             id="url"
+             name="url"
+             required
+             placeholder="Wprowadź link do utworu">
+    </div>
 
-      <div class="form-group">
-        <mat-form-field style="color: white">
-          <label for="genres" style="color: white">Żródło URL</label>
-          <mat-select #trackUrlSource [(ngModel)]="modelTrack.urlSource"
-                      type="url"
-                      style="color: black"
-                      id="urlSource"
-                      name="urlSource"
-                      required>
-            <mat-option *ngFor="let urlSource of urlSources" [value]="urlSource">
-              {{urlSource}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+    <div class="form-group">
+      <mat-form-field>
+        <label for="genres">Żródło URL</label>
+        <mat-select #trackUrlSource
+                    [(ngModel)]="modelTrack.urlSource"
+                    type="url"
+                    style="color: black"
+                    id="urlSource"
+                    name="urlSource"
+                    required>
+          <mat-option *ngFor="let urlSource of urlSources" [value]="urlSource">
+            {{urlSource}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
-      <div>
-        <span style="font-size: large; color: white; margin-right: 15px">Możesz dodać okładkę do utworu:</span>
-        <span>
+    <div>
+      <span style="font-size: large; color: white; margin-right: 15px">Możesz dodać okładkę do utworu:</span>
+      <span>
           <button mat-stroked-button value="Dodaj zdjęcie" color="primary" id="buttonChangeImage"
                   onclick="showAvatarForm()">Dodaj zdjęcie
           </button>
         </span>
-      </div>
+    </div>
 
 
-      <label style="display:none;" id="avatarForm" class="image-upload-container btn btn-bwm">
+    <label style="display:none;" id="avatarForm" class="image-upload-container btn btn-bwm">
         <span style="margin-right: 10px">
-          <button class="btn btn-success" [disabled]="!selectedFile" (click)="uploadCover(trackUrl.value)">Upload</button>
+          <button class="btn btn-success" [disabled]="!selectedFile"
+                  (click)="uploadCover(trackUrl.value)">Upload</button>
         </span>
-        <span>
+      <span>
           <input style="color: white" type="file" accept='image/*' (change)="selectFile($event)">
         </span>
-      </label>
+    </label>
 
-      <button type="submit" [disabled]="!userForm.form.valid"
-              (click)="addNewTrack(trackTitle.value, trackArtist.value, trackVersion.value,
+    <button type="submit" [disabled]="!userForm.form.valid"
+            (click)="addNewTrack(trackTitle.value, trackArtist.value, trackVersion.value,
               trackGenre.value, trackUrl.value, trackUrlSource.value)"
-              class="btn btn-info" style="margin-top: 30px">Dodaj utwór
-      </button>
+            class="btn btn-info" style="margin-top: 30px">Dodaj utwór
+    </button>
 
-    </form>
-  </div>
+  </form>
 </div>
