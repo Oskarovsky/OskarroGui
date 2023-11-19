@@ -1,15 +1,13 @@
-<div class="example-container main-container">
-
+<div>
   <div style="margin: 5px">
-    <div class="admin-title">PANEL ADMINA</div>
+    <h2 class="card-header">PANEL ADMINA</h2>
 
     <!-- PANEL ADMIN content -->
-    <div *ngIf="isUserLogged; else notLoggedIn" class="row">
-      <div class="col-8">
+    <div *ngIf="isUserLogged; else notLoggedIn">
+      <div>
         <app-article-part></app-article-part>
       </div>
-
-      <div class="col-4">
+      <div>
         <app-user-part></app-user-part>
       </div>
     </div>

@@ -19,7 +19,7 @@
           <img *ngIf="this.imagesToShow.get(post.id); else noCoverFound"
                [src]="this.imagesToShow.get(post.id) | byPassSecurity" alt="Zdjęcie do artykulu {{post.title}}">
           <ng-template #noCoverFound>
-            <!--          <img id="profile-img" width="430" src="/assets/img/reklama_logo.jpg" alt="Zdjęcie artykułu {{post.title}}">-->
+              <img id="profile-img" width="300" src="/assets/img/placeholder_advertising.png" alt="Zdjęcie artykułu {{post.title}}">
           </ng-template>
         </div>
 

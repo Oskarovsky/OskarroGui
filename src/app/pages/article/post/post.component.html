@@ -1,10 +1,9 @@
-<div class="example-container">
-
+<div>
   <div *ngIf="isLoggedIn; else notLoggedIn">
     <div class="title-container">Artykuły dodane przez użytkownika {{username}}</div>
 
     <!-- Article list content -->
-    <div *ngIf="posts.length !== 0; else emptyArticleList" class="row article-table">
+    <div *ngIf="posts.length !== 0; else emptyArticleList" class="article-table">
       <table class="table" style="margin: 0">
         <thead style="border: white 1px solid">
         <tr>

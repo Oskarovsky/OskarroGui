@@ -1,7 +1,7 @@
-<div *ngIf="currentUser; else loggedOut" class="card profile-container">
+<div *ngIf="currentUser; else loggedOut">
 
   <!--NORMAL FORMAT -->
-  <div *ngIf="!navigationComponent.getIsMobileResolution()" class="container" style="max-width: 1000px">
+  <div *ngIf="!navigationComponent.getIsMobileResolution()">
     <div class="row">
       <div class="col-12">
         <div class="card bg-transparent">
@@ -136,7 +136,7 @@
   </div>
 
   <!-- MOBILE FORMAT -->
-  <div *ngIf="navigationComponent.getIsMobileResolution()" class="container">
+  <div *ngIf="navigationComponent.getIsMobileResolution()">
     <div class="row">
       <div class="card bg-transparent">
         <div class="card-body bg-transparent">
