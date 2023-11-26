@@ -6,23 +6,8 @@ import {AppComponent} from './app.component';
 import {NavigationComponent} from "./skeleton/navigation/navigation.component";
 import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
-import {MatButtonModule} from "@angular/material/button";
-import {MatCardModule} from "@angular/material/card";
-import {MatInputModule} from "@angular/material/input";
-import {MatListModule} from "@angular/material/list";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatGridListModule} from "@angular/material/grid-list";
-import {MatMenuModule} from "@angular/material/menu";
-import {MatIconModule} from "@angular/material/icon";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatSelectModule} from "@angular/material/select";
-import {MatTableModule} from "@angular/material/table";
-import {MatTabsModule} from "@angular/material/tabs";
-import {MatSortModule} from "@angular/material/sort";
-import {MatExpansionModule} from "@angular/material/expansion";
-import {MatPaginatorModule} from "@angular/material/paginator";
 import {FlexLayoutModule, FlexModule} from "@angular/flex-layout";
-import {MatSidenavModule} from "@angular/material/sidenav";
 import {MenuListItemComponent} from "./skeleton/navigation/menu-list-item/menu-list-item.component";
 import {SidebarRightComponent} from "./skeleton/sidebar/sidebar-right/sidebar-right.component";
 import {FooterComponent} from "./skeleton/footer/footer.component";
@@ -81,10 +66,11 @@ import {AdminPanelComponent} from "./pages/admin/admin-panel/admin-panel.compone
 import {AlertModule} from "./alert/alert.module";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {ByPassSecurityPipe} from "./pipes/by-pass-security-pipe";
-import { RegulationsComponent } from './pages/info/regulations/regulations.component';
-import { PostEditComponent } from './pages/article/post-edit/post-edit.component';
-import { BodyComponent } from './skeleton/body/body.component';
+import {RegulationsComponent} from './pages/info/regulations/regulations.component';
+import {PostEditComponent} from './pages/article/post-edit/post-edit.component';
+import {BodyComponent} from './skeleton/body/body.component';
 import {MaterialModule} from "./material.module";
+import {AutoOpenMenuComponent} from './skeleton/navigation/auto-open-menu/auto-open-menu.component';
 
 
 @NgModule({
@@ -158,7 +144,8 @@ import {MaterialModule} from "./material.module";
     ByPassSecurityPipe,
     RegulationsComponent,
     PostEditComponent,
-    BodyComponent
+    BodyComponent,
+    AutoOpenMenuComponent
   ],
   imports: [
     AppRoutingModule,
