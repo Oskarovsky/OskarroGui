@@ -1,16 +1,16 @@
 <!-- HOME NORMAL -->
 <div>
   <div *ngIf="!navigationComponent.getIsMobileResolution()">
-    <mat-card-header>
-      <mat-card-subtitle>
+    <mat-card-header style="padding: 1em">
+      <mat-card-subtitle class="main-message">
         <p *ngIf="isLoggedIn">Cześć {{ currentUser.username }} ! Koniecznie sprawdź najnowsze utwory na naszej stronie!</p>
         <p *ngIf="!isLoggedIn">Jesteś tutaj po raz pierwszy? -- <a routerLink="/register">Dołącz do naszej ekipy</a></p>
       </mat-card-subtitle>
     </mat-card-header>
 
     <!-- Post list content -->
-    <div style="margin-bottom: 20px;">
-      <div *ngFor="let post of posts | slice:0:5; let i=index;" class="card glowing-border">
+    <div style="margin-bottom: 20px; margin-top: 2rem">
+      <div *ngFor="let post of posts | slice:0:5; let i=index;" class="card">
         <div class="card-header">
           <p>{{post.title}}</p>
         </div>

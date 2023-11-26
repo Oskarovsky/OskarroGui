@@ -11,7 +11,7 @@
   background-color: rgba(0,0,0,0.8);
   width: 100%;
   padding: 20px;
-  border: 1px solid #333;
+  border: 0.1rem solid #333;
   color: white;
 }
 
@@ -64,5 +64,11 @@
   font-size: 1.5em;
   text-align: center;
   color: white
+}
+
+.main-message {
+  font-size: 1.5em;
+  text-align: center;
+  color: white;
 }
 
